@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/tw_icon.png" type="image/png" sizes="16x16">
+    <!-- <link rel="stylesheet" href="css/bootstrap.css"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/offcanvas.css">
+    <link rel="stylesheet" href="css/alink.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+    <title>基隆市</title>
+    <style>
+        img {
+            opacity: 1;
+            transition: opacity 0.3s;
+        }
+
+        html {
+            font-size: 16px;
+            font-family: 微軟正黑體;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 5px 2px;
+        }
+
+        .randomimg {
+            /* height: 100%; */
+            width: 100%;
+            transition: 0.5s;
+            opacity: 0.5;
+        }
+
+        .imgtext {
+            position: relative;
+        }
+
+        .imgtext>span {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            color: white;
+            font-size: 2em;
+            text-shadow: 0 0 0.2em #000;
+            font-family: 微軟正黑體;
+            font-weight: bolder;
+        }
+
+        .imgtext:hover .rounded-3 {
+            opacity: 1;
+        }
+
+        .wrap {
+            /*父元素*/
+            width: 100%;
+            height: auto;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .x {
+            width: 5%;
+        }
+
+        .left {
+            width: 30%;
+        }
+
+        .middle {
+            width: 30%;
+
+        }
+
+        .right {
+            width: 30%;
+
+        }
+
+
+
+
+        .randomdiv {
+            width: 100%;
+        }
+
+        .banner {
+            background-image: url(./images/banner/keelung.jpg);
+            /* background-attachment: fixed; */
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .bannertext {
+            text-align: center;
+            font-size: 4em;
+            font-family: 微軟正黑體;
+            font-weight: bold;
+            color: #FFF;
+            text-shadow: 0 0 10px #000;
+            /* text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; */
+            line-height: -10px;
+        }
+
+        .bannertext_small {
+            text-align: center;
+            font-size: 1em;
+            font-family: 微軟正黑體;
+            font-weight: bold;
+            color: #FFF;
+            text-shadow: 0 0 5px #000;
+            line-height: -10px;
+        }
+
+
+        td {
+            vertical-align: middle;
+        }
+
+
+
+
+        .left,
+        .middle,
+        .right {
+            position: relative;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .left>span,
+        .middle>span,
+        .right>span {
+            position: absolute;
+            top: 0.5em;
+            left: 1em;
+            color: #FFF;
+            font-size: 1.5em;
+            font-family: 微軟正黑體;
+            text-shadow: 0 0 0.2em #000;
+            font-weight: bold;
+        }
+
+        .travelimg {
+            opacity: 0.8;
+            filter: brightness(50%);
+            width: 100%;
+            height: 200px;
+            transition: 0.5s;
+        }
+
+        .left:hover .rounded-3,
+        .middle:hover .rounded-3,
+        .right:hover .rounded-3 {
+            /* opacity:2; */
+            opacity: 1;
+            transform: scale(1.05);
+            filter: brightness(100%);
+
+        }
+
+        /* travlename */
+        dialog {
+            border: none;
+            box-shadow: 0 2px 6px rgb(0, 0, 0);
+            border-radius: 10px;
+            width: 1000px;
+            height: 500px;
+            background-color: rgba(255, 255, 255, 0.95);
+
+
+        }
+
+        dialog::backdrop {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        #infoModal1,
+        #infoModal2,
+        #infoModal3,
+        #infoModal4,
+        #infoModal5,
+        #infoModal6,
+        #infoModal7,
+        #infoModal8,
+        #infoModal9,
+        #infoModal10,
+        #infoModal11,
+        #infoModal12 {
+            transition: 0.5s;
+            /*opacity: 0.5; */
+
+        }
+
+        .map {
+            border-style: inset;
+            border-width: 1px;
+            border-color: red;
+            background-color: #FFF;
+        }
+        .rounded-5{
+            opacity:0.7;
+        }
+        .rounded-5:hover{
+            opacity:1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="menu">
+        <div class="offcanvas offcanvas-start " id="demo">
+            <div class="offcanvas-header">
+                <h1 class="offcanvas-title"><a href="./index.html">探索台灣</a></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+            </div>
+
+            <div class="offcanvas-body">
+                <a href="about.html">
+                    <p>關於這個網站</p>
+                </a>
+                <a href="gowhere.html">
+                    <p>去哪裡玩</p>
+                </a>
+                <a href="goround.html">
+                    <p>去環島吧</p>
+                </a>
+                <a href="mailus.html">
+                    <p>來留言吧</p>
+                </a>
+
+            </div>
+        </div>
+        <div class="container-fluid mt-3">
+            <!-- <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#demo">Ｏ</button> -->
+            <button class="btn btn-primary btn-lg" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#demo">♥</button>
+        </div>
+    </div>
+    <div class="banner"><br><br><br><br>
+
+        <p class="bannertext">基隆市<br></p>
+        <p class="bannertext_small">
+
+            基隆位於臺灣北部，三面環山，<br>
+            僅北面一處有少量平原迎向大海，即為深水谷灣之基隆港。<br>
+            港灣深入市區，水面寬闊，集商港、軍港、漁港於一身，為進入北臺灣門戶。<br></p>
+        <!-- <button id="show">show</button> -->
+
+
+        <br><br><br><br><br>
+    </div>
+    <hr id="a">
+    <div>
+        <p style="text-align: center;">景點介紹</p>
+        <!-- 第一列 -->
+        <div class="wrap">
+            <div class="x"></div>
+
+
+            <!-- 1 -->
+            <div class="left" id="show1">
+                <img class="rounded-3 travelimg" src="./images/travel/keelung/01.jpg" alt=""><br>
+                <span class="travlename">基隆廟口小吃</span>
+            </div>
+            <dialog id="infoModal1" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">基隆廟口小吃</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=25.128310,121.74358&hl=zh-TW&dirflg=r">
+                                    <span class="map">　基隆市仁愛區仁三路
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close1" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/keelung/01_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                        位於基隆市仁三路旁的奠濟宮周圍，從愛二路至愛三路之間的仁三路，<br>
+                        小吃種類眾多，短短3、400公尺，卻聚集了有近200個攤位，<br>
+                        走在其間，嘴巴沒有一刻停閒，這時你會期望自己是個超級大胃王，<br>
+                        能將這基隆廟口夜市的所有美食都能一一品嚐。<br><br>
+
+                        夜市中每位經營的老闆都巧心創作口味和料理，<br>
+                        用料實在而且價錢公道、色香味俱全；<br>
+                        也難怪每天這兒都相當的熱鬧。<br>
+                        著名小吃有鼎邊趖、天婦羅、肉羹、蚵仔煎與滷肉飯….等，<br>
+                        應有盡有，不論是海鮮還是香烤雞肉、水果冰品，各種小吃口味道地，<br>
+                        一路吃下來就像是走遍了整個臺灣，讓人來了還想再來。<br>
+                        除了本地人愛來這裡打打牙祭之外，觀光客也相偕而來呢！<br>
+                        所以想要一嚐臺灣的特有美食小吃，基隆廟口你可不能錯過喔！</span><br>
+                </div>
+            </dialog>
+
+
+            <!-- 2 -->
+            <div class="middle" id="show2">
+                <img class="rounded-3 travelimg" src="./images/travel/keelung/02.jpg" alt=""><br>
+                <span class="travlename">和平島公園</span><br>
+            </div>
+            <dialog id="infoModal2" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">和平島公園</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=25.160629,121.76384&hl=zh-TW&dirflg=r">
+                                    <span class="map">　基隆市中正區平一路360號
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close2" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/keelung/02_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                        和平島公園位於基隆港港口東側，島上奇岩異石林立，<br>
+                        海岸奇特的海蝕地形景觀，<br>
+                        如海蝕平臺、豆腐岩、海蝕溝、海蝕崖、風化窗、萬人堆、千疊敷、海蝕洞、蕈狀岩等。<br><br>
+
+                        本區雖長年受海風吹襲，<br>
+                        但藻生植物（如紫菜、髮菜、鹿角菜、筊白菜、鵝菜、石花菜、紅毛苔、青菜等），<br>
+                        魚生物（如黑毛、白毛、白帶魚、象魚、青魚、黃雞、龍蝦等），<br>
+                        均隨季節的不同，而遨遊於公園周圍。<br><br>
+
+                        公園以最少的人工設施來減少對自然破壞，<br>
+                        以維繫自然生態的心來建設這美麗的自然寶藏，<br>
+                        是北臺灣遊憩攬勝及自然教學的自然教室。<br>
+                    </span><br>
+                </div>
+            </dialog>
+
+
+
+
+            <!-- 3 -->
+            <div class="right" id="show3"><img class="rounded-3 travelimg" src="./images/travel/keelung/03.jpg"
+                    alt=""><br>
+                <span class="travlename">外木山情人湖濱海大道</span><br>
+            </div>
+
+            <dialog id="infoModal3" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">外木山情人湖濱海大道
+                                </span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=25.163322,121.72710&hl=zh-TW&dirflg=r">
+                                    <span class="map">　基隆市中山區湖海路一段
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close3" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/keelung/03_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    外木山海岸為基隆市轄區僅存最長的天然海岸。<br>
+                    自外木山漁港至澳底通村全長約5公里的海岸公路。<br>
+                    一側為開闊的海岸景觀，一側為高聳的單面山懸崖，是極富壯麗景色的海岸線。<br>
+                    在澳底漁村的沙灘是僅存的沙岸地型，小而美麗，<br>
+                    夏日時成為民眾戲水游泳的好去處。<br>
+                    夏季的日出是海岸不可多得的美景，坐在岸邊聆聽濤聲，<br>
+                    欣賞彩霞萬丈之景，令人心曠神怡。<br>
+                    海岸礁岩長年經海水沖蝕，<br>
+                    雕塑出奇特的造形，值得民眾深入觀賞體會。<br>
+                    </span><br>
+
+                </div>
+            </dialog>
+
+            <div class="x"></div>
+        </div>
+
+
+        <!-- 第二列 -->
+        <div class="wrap">
+            <div class="x"></div>
+
+
+            <!-- 4 -->
+            <div class="left" id="show4">
+                <img class="rounded-3 travelimg" src="./images/travel/keelung/04.jpg" alt=""><br>
+                <span class="travlename">基隆嶼</span>
+            </div>
+            <dialog id="infoModal4" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">基隆嶼</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=25.192753,121.78721&hl=zh-TW&dirflg=r">
+                                    <span class="map">　基隆市中正區基隆嶼
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close4" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/keelung/04_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    基隆嶼矗立於基隆東北方外海，是北臺灣最鮮明的島嶼地標，<br>
+                    也是各國船隻航行進出基隆港的指標，與基隆朝夕相伴，<br>
+                    其優美的拋物線外型使它躋身基隆八景之一。<br><br>
+
+                    沒有住民的基隆嶼為一美麗的火山島，四周皆為峭壁，幾無平地，<br>
+                    島上遊憩設施以步道和涼亭為主，珍貴的火成岩地質景觀，<br>
+                    和精采的原生植物為其特色。遊客沿著木棧道尋訪基隆嶼，<br>
+                    島上原生植物就在步道兩旁展現生態之美。<br>
+                    每逢春天，野百合花開遍了基隆嶼，蔚為島上美麗的焦點，<br>
+                    非常值得您來一趟野百合生態之旅。<br><br>
+                    
+                    島內景緻因陸上觀賞位置不同而改變，更因氣候變化而展現其多重的美感，<br>
+                    天氣清朗時可見火山島之氣勢，晨昏時其隱約外形更顯神秘感及飄渺。<br>
+                    </span><br>
+                </div>
+            </dialog>
+
+
+            <!-- 5 -->
+            <div class="middle" id="show5">
+                <img class="rounded-3 travelimg" src="./images/travel/keelung/05.jpg" alt=""><br>
+                <span class="travlename">基隆港</span><br>
+            </div>
+            <dialog id="infoModal5" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">基隆港</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=25.131022,121.74134&hl=zh-TW&dirflg=r">
+                                    <span class="map">　基隆市仁愛區忠一路
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close5" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/keelung/05_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    基隆港位於臺灣本島之北端，在富貴角與鼻頭角中間。<br>
+                    港之東、西、南三面層巒環抱，港口向西北開敞，<br>
+                    而向西南灣入內港，成一長約2,000公尺，寬約400公尺之狹長水道，<br>
+                    兼具軍港、商港等多種功能，為北臺灣的優良港灣。<br><br>
+
+                    而基隆係位於海口，對於海洋則如呼吸一般熟悉，<br>
+                    來到基隆等於接受海洋的洗禮，走一趟港都之旅，風情萬種。<br>
+                    出基隆火車站首先映入眼簾的即是基隆港，湛藍的海水四季與基隆人共同生活，<br>
+                    在此駐足可觀看海港風情，與定期由各國駛進之豪華客輪、郵輪，是談心賞夜景的最佳去處。<br><br>
+                    
+                    未來的基隆港，將不只是一個貨物吞吐、商船輻輳的港口，<br>
+                    而是透過整合開發港區周邊的建築、水岸公園、水產事業、海洋遊憩業，<br>
+                    呈現新的港區水岸面貌，更貼近民眾。<br>
+                    </span><br>
+                </div>
+            </dialog>
+
+
+
+
+            <!-- 6 -->
+            <div class="right" id="show6"><img class="rounded-3 travelimg" src="./images/travel/keelung/06.jpg"
+                    alt=""><br>
+                <span class="travlename">大武崙砲臺</span><br>
+            </div>
+
+            <dialog id="infoModal6" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">大武崙砲臺</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=25.158659,121.70934&hl=zh-TW&dirflg=r">
+                                    <span class="map">　基隆市安樂區基金一路208巷19號
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close6" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/keelung/06_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    原名五義埤的情人湖位於大武崙山上，係多條山澗匯集而成，<br>
+                    為基隆僅有的高地湖泊，附近林木茂密，湖區規劃有環山和環湖步道，<br>
+                    是基隆近郊散步、賞景、野餐的勝地。<br><br>
+
+                    由情人湖往大武崙山上開車約10分鐘，可抵大武崙砲臺，為基隆西側的重要防禦堡壘，<br>
+                    在西元1840年的清英鴉片戰爭及西元1884年的清法戰爭時，清政府均曾派員駐防。<br>
+                    現今所見的大武崙砲臺，正確的創建年代不詳。<br>
+                    但據其構造及設計特色來看，應為日治時期所改建之結果。<br><br>
+                    
+                    大武崙砲臺居高臨下，可西瞰情人湖，北俯大武崙澳，東望基隆港及東海，<br>
+                    遠眺四周，基隆嶼、外木山澳仔漁村、八斗子、北海岸一帶的秀麗風光盡收眼底，<br>
+                    是一處觀景的好地方。<br>
+                    </span><br>
+                </div>
+            </dialog>
+
+            <div class="x"></div>
+        </div>
+
+
+
+
+        <hr>
+        <div class="randomdiv">
+            <table>
+                <tr>
+                    <td colspan="3"><a id="randomhref_0" href="#">
+                            <div class="imgtext">
+                                <img id="counry_0" class="rounded-3 randomimg" src="" alt=""><span
+                                    id="counry_text0">aa</span>
+                            </div>
+                        </a></td>
+                    <td colspan="3"><a id="randomhref_1" href="#">
+                            <div class="imgtext">
+                                <img id="counry_1" class="rounded-3 randomimg" src="" alt=""><span
+                                    id="counry_text1">aa</span>
+                            </div>
+                        </a></td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td colspan="2"><a id="randomhref_2" href="#">
+                            <div class="imgtext">
+                                <img id="counry_2" class="rounded-3 randomimg" src="" alt=""><span
+                                    id="counry_text2">aa</span>
+                            </div>
+                        </a></td>
+                    <td colspan="2"><a id="randomhref_3" href="#">
+                            <div class="imgtext">
+                                <img id="counry_3" class="rounded-3 randomimg" src="" alt=""><span
+                                    id="counry_text3">aa</span>
+                            </div>
+                        </a></td>
+                    <td colspan="2"><a id="randomhref_4" href="#">
+                            <div class="imgtext">
+                                <img id="counry_4" class="rounded-3 randomimg" src="" alt=""><span
+                                    id="counry_text4">aa</span>
+                            </div>
+                        </a></td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <!-- <hr>在這裡輸入新ㄉ東西 -->　
+        </div>
+
+
+        <script>
+            let county = [
+                "./images/county/county001.png", "./images/county/county002.png", "./images/county/county003.png",
+                "./images/county/county004.png", "./images/county/county005.png", "./images/county/county006.png",
+                "./images/county/county007.png", "./images/county/county008.png", "./images/county/county009.png",
+                "./images/county/county010.png", "./images/county/county011.png", "./images/county/county012.png",
+                "./images/county/county013.png", "./images/county/county014.png", "./images/county/county015.png",
+                "./images/county/county016.png", "./images/county/county017.png", "./images/county/county018.png",
+                "./images/county/county019.png", "./images/county/county020.png", "./images/county/county021.png",
+                "./images/county/county022.png"
+            ];
+            let county2 = [
+                "臺北市", "新北市", "基隆市",
+                "宜蘭縣", "桃園市", "新竹縣",
+                "新竹市", "苗栗縣", "臺中市",
+                "彰化縣", "南投縣", "雲林縣",
+                "嘉義縣", "嘉義市", "臺南市",
+                "高雄市", "屏東縣", "花蓮縣",
+                "台東縣", "澎湖縣", "金門縣",
+                "連江縣（馬祖）"
+            ];
+            let countyhref = [
+                "taipei.html", "newtaipei.html", "keelung.html",
+                "yilan.html", "taoyuan.html", "hsinchucounty.html",
+                "hsinchucity.html", "miaoli.html", "taichung.html",
+                "changhua.html", "nantou.html", "yunlin.html",
+                "chiayicounty.html", "chiayicity.html", "tainan.html",
+                "kaohsiung.html", "pingtung.html", "hualien.html",
+                "taitung.html", "penghu.html", "kinmen.html",
+                "matsu.html"
+            ];
+            // console.log(county.length);
+            // let a = Math.floor(Math.random() * county.length);
+            var str = '';
+            var arr = [];
+            for (let i = 0; i < 6; i++) {
+                str = Math.floor(Math.random() * county.length);
+                for (j = 0; j < arr.length; j++) {
+                    if (arr[j] == str) {
+                        arr.splice(j, 1);
+                        i--;
+                    }
+                }
+                arr.push(str);
+            }
+            for (let i = 0; i < 5; i++) {
+                // document.getElementById('counry_' + i).innerHTML = county[arr[i]];
+                document.getElementById('counry_' + i).src = county[arr[i]];
+                document.getElementById('counry_text' + i).innerHTML = county2[arr[i]];
+                document.getElementById('randomhref_' + i).href = countyhref[arr[i]];
+            }
+            for (let i = 0; i > 8; i++) {
+
+            }
+
+            // 1
+
+            // let btn = document.querySelector("#show1");
+            // let infoModal = document.querySelector("#infoModal1");
+            // let close = document.querySelector("#close");
+            // btn.addEventListener("click", function () {
+            //     document.getElementById("infoModal1").style.opacity = "0";
+            //     setTimeout(function () {
+            //         infoModal.showModal();
+            //         document.getElementById("infoModal1").style.opacity = "1";
+            //     }, 100);
+            // }
+            // )
+            // close.addEventListener("click", function () {
+            //     document.getElementById("infoModal1").style.opacity = "0";
+            //     setTimeout(function () {
+            //         document.getElementById("infoModal1").style.opacity = "1";
+            //         infoModal.close();
+            //     }, 500);
+            // })
+
+            for (let i = 1; i <= 6; i++) {
+                let btn = document.querySelector("#show" + i);
+                let infoModal = document.querySelector("#infoModal" + i);
+                let close = document.querySelector("#close" + i);
+                btn.addEventListener("click", function () {
+                    document.getElementById("infoModal" + i).style.opacity = "0";
+                    setTimeout(function () {
+                        infoModal.showModal();
+                        document.getElementById("infoModal" + i).style.opacity = "1";
+                    }, 100);
+                }
+                )
+                close.addEventListener("click", function () {
+                    document.getElementById("infoModal" + i).style.opacity = "0";
+                    setTimeout(function () {
+                        document.getElementById("infoModal" + i).style.opacity = "1";
+                        infoModal.close();
+                    }, 500);
+                })
+            }
+
+
+
+        // document.getElementById("infoModal").onclick = function () {
+        //     document.getElementById("infoModal").style.opacity = "0";
+        //     setTimeout(function () {
+        //         document.getElementById("infoModal").style.opacity = "1";
+        //         infoModal.close();
+        //     }, 500);
+        // }
+
+
+
+        </script>
+</body>
+
+</html>

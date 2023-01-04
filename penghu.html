@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/tw_icon.png" type="image/png" sizes="16x16">
+    <!-- <link rel="stylesheet" href="css/bootstrap.css"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/offcanvas.css">
+    <link rel="stylesheet" href="css/alink.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+    <title>澎湖縣</title>
+    <style>
+        img {
+            opacity: 1;
+            transition: opacity 0.3s;
+        }
+
+        html {
+            font-size: 16px;
+            font-family: 微軟正黑體;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 5px 2px;
+        }
+
+        .randomimg {
+            /* height: 100%; */
+            width: 100%;
+            transition: 0.5s;
+            opacity: 0.5;
+        }
+
+        .imgtext {
+            position: relative;
+        }
+
+        .imgtext>span {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            color: white;
+            font-size: 2em;
+            text-shadow: 0 0 0.2em #000;
+            font-family: 微軟正黑體;
+            font-weight: bolder;
+        }
+
+        .imgtext:hover .rounded-3 {
+            opacity: 1;
+        }
+
+        .wrap {
+            /*父元素*/
+            width: 100%;
+            height: auto;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .x {
+            width: 5%;
+        }
+
+        .left {
+            width: 30%;
+        }
+
+        .middle {
+            width: 30%;
+
+        }
+
+        .right {
+            width: 30%;
+
+        }
+
+        .randomdiv {
+            width: 100%;
+        }
+
+        .banner {
+            background-image: url(./images/banner/penghu.jpg);
+            /* background-attachment: fixed; */
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .bannertext {
+            text-align: center;
+            font-size: 4em;
+            font-family: 微軟正黑體;
+            font-weight: bold;
+            color: #FFF;
+            text-shadow: 0 0 10px #000;
+            /* text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; */
+            line-height: -10px;
+        }
+
+        .bannertext_small {
+            text-align: center;
+            font-size: 1em;
+            font-family: 微軟正黑體;
+            font-weight: bold;
+            color: #FFF;
+            text-shadow: 0 0 5px #000;
+            line-height: -10px;
+        }
+
+
+        td {
+            vertical-align: middle;
+        }
+
+
+
+
+        .left,
+        .middle,
+        .right {
+            position: relative;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .left>span,
+        .middle>span,
+        .right>span {
+            position: absolute;
+            top: 0.5em;
+            left: 1em;
+            color: #FFF;
+            font-size: 1.5em;
+            font-family: 微軟正黑體;
+            text-shadow: 0 0 0.2em #000;
+            font-weight: bold;
+        }
+
+        .travelimg {
+            opacity: 0.8;
+            filter: brightness(50%);
+            width: 100%;
+            height: 200px;
+            transition: 0.5s;
+        }
+
+        .left:hover .rounded-3,
+        .middle:hover .rounded-3,
+        .right:hover .rounded-3 {
+            /* opacity:2; */
+            opacity: 1;
+            transform: scale(1.05);
+            filter: brightness(100%);
+
+        }
+
+        /* travlename */
+        dialog {
+            border: none;
+            box-shadow: 0 2px 6px rgb(0, 0, 0);
+            border-radius: 10px;
+            width: 1000px;
+            height: 500px;
+            background-color: rgba(255, 255, 255, 0.95);
+
+
+        }
+
+        dialog::backdrop {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        #infoModal1,
+        #infoModal2,
+        #infoModal3,
+        #infoModal4,
+        #infoModal5,
+        #infoModal6,
+        #infoModal7,
+        #infoModal8,
+        #infoModal9,
+        #infoModal10,
+        #infoModal11,
+        #infoModal12 {
+            transition: 0.5s;
+            /*opacity: 0.5; */
+
+        }
+
+        .map {
+            border-style: inset;
+            border-width: 1px;
+            border-color: red;
+            background-color: #FFF;
+        }
+
+        .rounded-5 {
+            opacity: 0.7;
+        }
+
+        .rounded-5:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="menu">
+        <div class="offcanvas offcanvas-start " id="demo">
+            <div class="offcanvas-header">
+                <h1 class="offcanvas-title"><a href="./index.html">探索台灣</a></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+            </div>
+
+            <div class="offcanvas-body">
+                <a href="about.html">
+                    <p>關於這個網站</p>
+                </a>
+                <a href="gowhere.html">
+                    <p>去哪裡玩</p>
+                </a>
+                <a href="goround.html">
+                    <p>去環島吧</p>
+                </a>
+                <a href="mailus.html">
+                    <p>來留言吧</p>
+                </a>
+
+            </div>
+        </div>
+        <div class="container-fluid mt-3">
+            <!-- <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#demo">Ｏ</button> -->
+            <button class="btn btn-primary btn-lg" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#demo">♥</button>
+        </div>
+    </div>
+    <div class="banner"><br><br><br><br>
+
+        <p class="bannertext">澎湖縣<br></p>
+        <p class="bannertext_small">
+
+            澎湖，臺灣海峽最閃耀的明珠，九十座島嶼上累積著歷史人文的智慧結晶，<br>
+            壯麗的海洋景色，讓澎湖處處充滿了大自然的禮讚。<br><br>
+
+            澎湖群島遍布玄武岩地質景觀，大自然鬼斧神工的多樣雕琢，令地質學者觀後為之驚嘆，讚譽為「上帝的石雕公園」。<br>
+            清澈的澎湖灣以及澎湖冬天的風，更使澎湖成為國際風帆船選手年度巡迴必經之地，媲美加勒比海與西班牙南部海域。春夏花火節火樹銀花綻放熱情和浪漫，<br>
+            秋冬菊島海鮮節的生鮮美饌品嚐澎湖海洋的頂級美味，碧海藍天與柔白細緻沙灘的雙重享受，<br>
+            各式各樣的沙灘水上遊樂設施，讓你盡情的享受水上世界，還有歎為觀止的海洋生態，成串的美景肯定會贏得您連聲的讚嘆！<br>
+        </p>
+        <!-- <button id="show">show</button> -->
+
+
+        <br><br><br><br><br>
+    </div>
+    <hr id="a">
+    <div>
+        <p style="text-align: center;">景點介紹</p>
+        <!-- 第一列 -->
+        <div class="wrap">
+            <div class="x"></div>
+
+
+            <!-- 1 -->
+            <div class="left" id="show1">
+                <img class="rounded-3 travelimg" src="./images/travel/penghu/01.jpg" alt=""><br>
+                <span class="travlename">澎湖跨海大橋</span>
+            </div>
+            <dialog id="infoModal1" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">澎湖跨海大橋</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=23.657823,119.55453&hl=zh-TW&dirflg=r">
+                                    <span class="map">　澎湖縣白沙鄉通西嶼鄉橋樑
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close1" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/penghu/01_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    連接白沙、西嶼兩島的跨海大橋，<br>
+                    橫跨波濤洶湧的吼門水道，全長2,494公尺，<br>
+                    兩端建有半圓形拱門，建好當時為遠東最長的跨海大橋。<br>
+                    該橋於民國59年（西元1970年）完工通車，初時僅為單線，會車不易，<br>
+                    經重建拓寬為雙線，並於民國85年（西元1996年）3月完工，使島間交通更為便利。<br><br>
+                    
+                    漫步橋面，可觀壯闊海景，可聽宏偉浪濤，<br>
+                    可沐徐徐海風，成為休憩身心一大樂事。</span><br>
+                </div>
+            </dialog>
+
+
+            <!-- 2 -->
+            <div class="middle" id="show2">
+                <img class="rounded-3 travelimg" src="./images/travel/penghu/02.jpg" alt=""><br>
+                <span class="travlename">七美嶼</span><br>
+            </div>
+            <dialog id="infoModal2" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">七美嶼</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=23.206560,119.42443&hl=zh-TW&dirflg=r">
+                                    <span class="map">　澎湖縣七美鄉
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close2" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/penghu/02_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    七美鄉位於澎湖群島的最南端，清代初期稱為「南嶼」或「大嶼」，<br>
+                    至西元1944年才由「望安庄」分出，成為「大嶼庄」，次年改為「大嶼鄉」，<br>
+                    後為感念七美人貞烈節操及動人的事蹟，於是改名為「七美鄉」作為永久誌念。<br>
+                    七美嶼為一被切割之臺地，因流水作用與地質岩性，<br>
+                    於北側西湖村與西側平和村形成河谷地形，整個島是東北高西南低的傾斜臺地，<br>
+                    島嶼中間被一座東西走向之山陵（俗稱中崎山），分成南、北兩部分。<br>
+                    七美嶼海拔高度為澎湖群島第二高，僅次於「貓嶼」。<br><br>
+                    
+                    七美嶼西南方三十浬處即是聞名全臺的「南淺漁場」，自古以來即是著名的漁場。<br>
+                    七美的海產資源豐富，島上居民們多以漁撈及海產加工為主，農業為副。<br>
+                    據考古發現在南港、東湖等地，發現有距今約四千年左右之石器工場遺留，<br>
+                    可見本島嶼開發極早，為重要文化遺址。<br>
+                    除此之外，本地有一著名特產－「七美草」，<br>
+                    據說是一帖可以治療風濕症、關節炎等筋骨酸痛症狀的單味良藥。<br>
+                    此種藥草生長於山野地下深處，須挖掘數尺深，才能見到根部，挖取不易，<br>
+                    目前野生「七美草」幾已絕跡，數量相當稀少，十分珍貴。<br>
+
+                    </span><br>
+                </div>
+            </dialog>
+
+
+
+
+            <!-- 3 -->
+            <div class="right" id="show3"><img class="rounded-3 travelimg" src="./images/travel/penghu/03.jpg"
+                    alt=""><br>
+                <span class="travlename">澎湖天后宮
+                </span><br>
+            </div>
+
+            <dialog id="infoModal3" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">澎湖天后宮
+                                </span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=23.564694,119.56403&hl=zh-TW&dirflg=r">
+                                    <span class="map">　澎湖縣馬公市正義街1號
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close3" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/penghu/03_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    位於馬公市中央里的天后宮主祀媽祖，<br>
+                    建於西元1604年，是全臺灣歷史最悠久的媽祖廟。<br>
+                    廟體建築出自唐山名匠之手，有深具藝術造詣的各類建築構建與裝飾，<br>
+                    廟中並典藏有現存全臺灣最早的古碑—沈有容諭退紅毛番韋麻郎等之碑，<br>
+                    陳列於清風閣文物館中供民眾參觀，<br>
+                    另有清乾隆皇帝御賜題「與天同功」的金匾可供憑弔，<br>
+                    俱為珍貴的歷史文物。<br>
+                    </span><br>
+
+                </div>
+            </dialog>
+
+            <div class="x"></div>
+        </div>
+
+
+        <!-- 第二列 -->
+        <div class="wrap">
+            <div class="x"></div>
+
+
+            <!-- 4 -->
+            <div class="left" id="show4">
+                <img class="rounded-3 travelimg" src="./images/travel/penghu/04.jpg" alt=""><br>
+                <span class="travlename">觀音亭</span>
+            </div>
+            <dialog id="infoModal4" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">觀音亭</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=23.567592,119.56206&hl=zh-TW&dirflg=r">
+                                    <span class="map">　澎湖縣馬公市介壽路7號
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close4" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/penghu/04_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    奉祀南海觀世音菩薩的觀音亭，<br>
+                    位於聞名的澎湖灣畔，始建於西元1696年。<br>
+                    在西元1884年清法戰爭時一度被毀，而於西元1891年改建。<br><br>
+
+                    觀音亭旁即為歐式城堡造型的澎湖青年活動中心，<br>
+                    其建材係採澎湖所產硓（石古）石和玄武岩，饒具特色。<br>
+                    附近海域則是戲水人潮熙攘不斷的海水浴場，<br>
+                    是眺望西嶼落霞美景的最佳地點。<br>
+                    </span><br>
+                </div>
+            </dialog>
+
+
+            <!-- 5 -->
+            <div class="middle" id="show5">
+                <img class="rounded-3 travelimg" src="./images/travel/penghu/05.jpg" alt=""><br>
+                <span class="travlename">中央老街</span><br>
+            </div>
+            <dialog id="infoModal5" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">中央老街</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=23.564864,119.56487&hl=zh-TW&dirflg=r">
+                                    <span class="map">　澎湖縣馬公市中央街
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close5" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/penghu/05_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    天后宮旁的中央街，<br>
+                    至馬公建城以來與居民相伴，是澎湖歷史最悠久的一條街，<br>
+                    短短兩百公尺的閩式商店街，<br>
+                    可看到四百多年歷史的四眼井、摸乳巷、施公祠等，<br>
+                    許多在地傳統特產都由此發跡，<br>
+                    澎湖必買的黑糖糕、干貝醬、冰心糕這裡都買得到。<br>
+                    懷舊的街巷中也不乏異國風情，<br>
+                    巴洛克式的中藥行與日式老旅社，<br>
+                    保留當年風華榮景，值得細細品味。</span><br>
+                </div>
+            </dialog>
+
+
+
+
+            <!-- 6 -->
+            <div class="right" id="show6"><img class="rounded-3 travelimg" src="./images/travel/penghu/06.jpg"
+                    alt=""><br>
+                <span class="travlename">篤行十村眷村文化園區</span><br>
+            </div>
+
+            <dialog id="infoModal6" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">篤行十村眷村文化園區</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=23.563854,119.56094&hl=zh-TW&dirflg=r">
+                                    <span class="map">　澎湖縣馬公市新復里
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close6" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/penghu/06_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    全台最古老的眷村—篤行十村，<br>
+                    同時也是台灣已故歌手潘安邦以及張雨生的故鄉，<br>
+                    一棟棟日式木造老屋，經翻修後改造成文創園區，<br>
+                    在地藝術家進駐後，佈置各式各樣的裝置藝術，每個角落都成為復古好拍的場景。<br>
+                    園區內還有懷舊柑仔店、復古旅店、咖啡輕食等休憩點，<br>
+                    除此之外，「潘安邦紀念館」與「張雨生故事館」吸引廣大樂迷朝聖，<br>
+                    聆聽著琅琅上口的樂曲，每一展示品都是經典中的經典。<br>
+                    </span><br>
+                </div>
+            </dialog>
+
+            <div class="x"></div>
+        </div>
+
+
+
+
+        <hr>
+        <div class="randomdiv">
+            <table>
+                <tr>
+                    <td colspan="3"><a id="randomhref_0" href="#">
+                            <div class="imgtext">
+                                <img id="counry_0" class="rounded-3 randomimg" src="" alt=""><span
+                                    id="counry_text0">aa</span>
+                            </div>
+                        </a></td>
+                    <td colspan="3"><a id="randomhref_1" href="#">
+                            <div class="imgtext">
+                                <img id="counry_1" class="rounded-3 randomimg" src="" alt=""><span
+                                    id="counry_text1">aa</span>
+                            </div>
+                        </a></td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td colspan="2"><a id="randomhref_2" href="#">
+                            <div class="imgtext">
+                                <img id="counry_2" class="rounded-3 randomimg" src="" alt=""><span
+                                    id="counry_text2">aa</span>
+                            </div>
+                        </a></td>
+                    <td colspan="2"><a id="randomhref_3" href="#">
+                            <div class="imgtext">
+                                <img id="counry_3" class="rounded-3 randomimg" src="" alt=""><span
+                                    id="counry_text3">aa</span>
+                            </div>
+                        </a></td>
+                    <td colspan="2"><a id="randomhref_4" href="#">
+                            <div class="imgtext">
+                                <img id="counry_4" class="rounded-3 randomimg" src="" alt=""><span
+                                    id="counry_text4">aa</span>
+                            </div>
+                        </a></td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <!-- <hr>在這裡輸入新ㄉ東西 -->　
+        </div>
+
+
+        <script>
+            let county = [
+                "./images/county/county001.png", "./images/county/county002.png", "./images/county/county003.png",
+                "./images/county/county004.png", "./images/county/county005.png", "./images/county/county006.png",
+                "./images/county/county007.png", "./images/county/county008.png", "./images/county/county009.png",
+                "./images/county/county010.png", "./images/county/county011.png", "./images/county/county012.png",
+                "./images/county/county013.png", "./images/county/county014.png", "./images/county/county015.png",
+                "./images/county/county016.png", "./images/county/county017.png", "./images/county/county018.png",
+                "./images/county/county019.png", "./images/county/county020.png", "./images/county/county021.png",
+                "./images/county/county022.png"
+            ];
+            let county2 = [
+                "臺北市", "新北市", "基隆市",
+                "宜蘭縣", "桃園市", "新竹縣",
+                "新竹市", "苗栗縣", "臺中市",
+                "彰化縣", "南投縣", "雲林縣",
+                "嘉義縣", "嘉義市", "臺南市",
+                "高雄市", "屏東縣", "花蓮縣",
+                "台東縣", "澎湖縣", "金門縣",
+                "連江縣（馬祖）"
+            ];
+            let countyhref = [
+                "taipei.html", "newtaipei.html", "keelung.html",
+                "yilan.html", "taoyuan.html", "hsinchucounty.html",
+                "hsinchucity.html", "miaoli.html", "taichung.html",
+                "changhua.html", "nantou.html", "yunlin.html",
+                "chiayicounty.html", "chiayicity.html", "tainan.html",
+                "kaohsiung.html", "pingtung.html", "hualien.html",
+                "taitung.html", "penghu.html", "kinmen.html",
+                "matsu.html"
+            ];
+            // console.log(county.length);
+            // let a = Math.floor(Math.random() * county.length);
+            var str = '';
+            var arr = [];
+            for (let i = 0; i < 6; i++) {
+                str = Math.floor(Math.random() * county.length);
+                for (j = 0; j < arr.length; j++) {
+                    if (arr[j] == str) {
+                        arr.splice(j, 1);
+                        i--;
+                    }
+                }
+                arr.push(str);
+            }
+            for (let i = 0; i < 5; i++) {
+                // document.getElementById('counry_' + i).innerHTML = county[arr[i]];
+                document.getElementById('counry_' + i).src = county[arr[i]];
+                document.getElementById('counry_text' + i).innerHTML = county2[arr[i]];
+                document.getElementById('randomhref_' + i).href = countyhref[arr[i]];
+            }
+            for (let i = 0; i > 8; i++) {
+
+            }
+
+            // 1
+
+            // let btn = document.querySelector("#show1");
+            // let infoModal = document.querySelector("#infoModal1");
+            // let close = document.querySelector("#close");
+            // btn.addEventListener("click", function () {
+            //     document.getElementById("infoModal1").style.opacity = "0";
+            //     setTimeout(function () {
+            //         infoModal.showModal();
+            //         document.getElementById("infoModal1").style.opacity = "1";
+            //     }, 100);
+            // }
+            // )
+            // close.addEventListener("click", function () {
+            //     document.getElementById("infoModal1").style.opacity = "0";
+            //     setTimeout(function () {
+            //         document.getElementById("infoModal1").style.opacity = "1";
+            //         infoModal.close();
+            //     }, 500);
+            // })
+
+            for (let i = 1; i <= 6; i++) {
+                let btn = document.querySelector("#show" + i);
+                let infoModal = document.querySelector("#infoModal" + i);
+                let close = document.querySelector("#close" + i);
+                btn.addEventListener("click", function () {
+                    document.getElementById("infoModal" + i).style.opacity = "0";
+                    setTimeout(function () {
+                        infoModal.showModal();
+                        document.getElementById("infoModal" + i).style.opacity = "1";
+                    }, 100);
+                }
+                )
+                close.addEventListener("click", function () {
+                    document.getElementById("infoModal" + i).style.opacity = "0";
+                    setTimeout(function () {
+                        document.getElementById("infoModal" + i).style.opacity = "1";
+                        infoModal.close();
+                    }, 500);
+                })
+            }
+
+
+
+        // document.getElementById("infoModal").onclick = function () {
+        //     document.getElementById("infoModal").style.opacity = "0";
+        //     setTimeout(function () {
+        //         document.getElementById("infoModal").style.opacity = "1";
+        //         infoModal.close();
+        //     }, 500);
+        // }
+
+
+
+        </script>
+</body>
+
+</html>

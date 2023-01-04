@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/tw_icon.png" type="image/png" sizes="16x16">
+    <!-- <link rel="stylesheet" href="css/bootstrap.css"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/offcanvas.css">
+    <link rel="stylesheet" href="css/alink.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+    <title>高雄市</title>
+    <style>
+        img {
+            opacity: 1;
+            transition: opacity 0.3s;
+        }
+
+        html {
+            font-size: 16px;
+            font-family: 微軟正黑體;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 5px 2px;
+        }
+
+        .randomimg {
+            /* height: 100%; */
+            width: 100%;
+            transition: 0.5s;
+            opacity: 0.5;
+        }
+
+        .imgtext {
+            position: relative;
+        }
+
+        .imgtext>span {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            color: white;
+            font-size: 2em;
+            text-shadow: 0 0 0.2em #000;
+            font-family: 微軟正黑體;
+            font-weight: bolder;
+        }
+
+        .imgtext:hover .rounded-3 {
+            opacity: 1;
+        }
+
+        .wrap {
+            /*父元素*/
+            width: 100%;
+            height: auto;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .x {
+            width: 5%;
+        }
+
+        .left {
+            width: 30%;
+        }
+
+        .middle {
+            width: 30%;
+
+        }
+
+        .right {
+            width: 30%;
+
+        }
+
+        .randomdiv {
+            width: 100%;
+        }
+
+        .banner {
+            background-image: url(./images/banner/kaohsiung.jpg);
+            /* background-attachment: fixed; */
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .bannertext {
+            text-align: center;
+            font-size: 4em;
+            font-family: 微軟正黑體;
+            font-weight: bold;
+            color: #FFF;
+            text-shadow: 0 0 10px #000;
+            /* text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; */
+            line-height: -10px;
+        }
+
+        .bannertext_small {
+            text-align: center;
+            font-size: 1em;
+            font-family: 微軟正黑體;
+            font-weight: bold;
+            color: #FFF;
+            text-shadow: 0 0 5px #000;
+            line-height: -10px;
+        }
+
+
+        td {
+            vertical-align: middle;
+        }
+
+
+
+
+        .left,
+        .middle,
+        .right {
+            position: relative;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .left>span,
+        .middle>span,
+        .right>span {
+            position: absolute;
+            top: 0.5em;
+            left: 1em;
+            color: #FFF;
+            font-size: 1.5em;
+            font-family: 微軟正黑體;
+            text-shadow: 0 0 0.2em #000;
+            font-weight: bold;
+        }
+
+        .travelimg {
+            opacity: 0.8;
+            filter: brightness(50%);
+            width: 100%;
+            height: 200px;
+            transition: 0.5s;
+        }
+
+        .left:hover .rounded-3,
+        .middle:hover .rounded-3,
+        .right:hover .rounded-3 {
+            /* opacity:2; */
+            opacity: 1;
+            transform: scale(1.05);
+            filter: brightness(100%);
+
+        }
+
+        /* travlename */
+        dialog {
+            border: none;
+            box-shadow: 0 2px 6px rgb(0, 0, 0);
+            border-radius: 10px;
+            width: 1000px;
+            height: 500px;
+            background-color: rgba(255, 255, 255, 0.95);
+
+
+        }
+
+        dialog::backdrop {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        #infoModal1,
+        #infoModal2,
+        #infoModal3,
+        #infoModal4,
+        #infoModal5,
+        #infoModal6,
+        #infoModal7,
+        #infoModal8,
+        #infoModal9,
+        #infoModal10,
+        #infoModal11,
+        #infoModal12 {
+            transition: 0.5s;
+            /*opacity: 0.5; */
+
+        }
+
+        .map {
+            border-style: inset;
+            border-width: 1px;
+            border-color: red;
+            background-color: #FFF;
+        }
+
+        .rounded-5 {
+            opacity: 0.7;
+        }
+
+        .rounded-5:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="menu">
+        <div class="offcanvas offcanvas-start " id="demo">
+            <div class="offcanvas-header">
+                <h1 class="offcanvas-title"><a href="./index.html">探索台灣</a></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+            </div>
+
+            <div class="offcanvas-body">
+                <a href="about.html">
+                    <p>關於這個網站</p>
+                </a>
+                <a href="gowhere.html">
+                    <p>去哪裡玩</p>
+                </a>
+                <a href="goround.html">
+                    <p>去環島吧</p>
+                </a>
+                <a href="mailus.html">
+                    <p>來留言吧</p>
+                </a>
+
+            </div>
+        </div>
+        <div class="container-fluid mt-3">
+            <!-- <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#demo">Ｏ</button> -->
+            <button class="btn btn-primary btn-lg" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#demo">♥</button>
+        </div>
+    </div>
+    <div class="banner"><br><br><br><br>
+
+        <p class="bannertext">高雄市<br></p>
+        <p class="bannertext_small">
+
+            臺灣南方最繁華的國際城市——高雄市，為2009年世界運動會主辦城市，<br>
+            因受海洋氣候調節，全年陽光普照、氣候宜人，有獨特的「海洋首都」特性。<br>
+            來到高雄，您不僅可以體驗自然生態、品嘗珍饈佳饌，<br>
+            還能欣賞客家美濃紙傘、內門宋江陣、大樹佛光山…等多元的民族文化，<br>
+            更別提擁有全臺最大的購物中心，及著名的觀光夜市，<br>
+            可說是全部旅遊元素一應俱全，實在值得您深度造訪。<br>
+        </p>
+        <!-- <button id="show">show</button> -->
+
+
+        <br><br><br><br><br>
+    </div>
+    <hr id="a">
+    <div>
+        <p style="text-align: center;">景點介紹</p>
+        <!-- 第一列 -->
+        <div class="wrap">
+            <div class="x"></div>
+
+
+            <!-- 1 -->
+            <div class="left" id="show1">
+                <img class="rounded-3 travelimg" src="./images/travel/kaohsiung/01.jpg" alt=""><br>
+                <span class="travlename">旗津</span>
+            </div>
+            <dialog id="infoModal1" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">旗津</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=22.614086,120.26970&hl=zh-TW&dirflg=r">
+                                    <span class="map">　高雄市旗津區
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close1" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/kaohsiung/01_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    旗津舊名旗後，為一個狹長形的島，<br>
+                    往旗津有兩種選擇，一是搭乘渡船，一是驅車穿過過港隧道。<br>
+                    旗津雖小，卻有多樣吸引人的去處，<br>
+                    在廟前路的天后宮，有三百年歷史；<br>
+                    旗津老街上，綿延清一色海產店，<br>
+                    價廉味美的新鮮海產，露天下大快朵頤，十分暢快。</span><br>
+                </div>
+            </dialog>
+
+
+            <!-- 2 -->
+            <div class="middle" id="show2">
+                <img class="rounded-3 travelimg" src="./images/travel/kaohsiung/02.jpg" alt=""><br>
+                <span class="travlename">西子灣</span><br>
+            </div>
+            <dialog id="infoModal2" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">西子灣</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=22.625731,120.26374&hl=zh-TW&dirflg=r">
+                                    <span class="map">　高雄市鼓山區蓮海路51號
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close2" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/kaohsiung/02_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    西子灣位於高雄市西側，壽山西南端山麓下，北瀕萬壽山，南臨旗津半島，<br>
+                    為一黃澄碧藍的海水浴場，是一處以夕陽美景及天然礁石聞名的灣澳。<br>
+                    距市中心車程約20分鐘，依山臨海，風景宜人，每當夜幕低垂，<br>
+                    將大海點綴的瑰麗可人，漁船燈火閃爍其間；西子灣的夕陽是高雄八景之一，<br>
+                    海天一色的美景，美不勝收，黃昏時分，<br>
+                    常可見一對對情侶在此互道情愫，更有詩情畫意的情境。<br><br>
+
+                    中山大學就座落於西子灣風景區內，倚著壽山，傍西子灣，<br>
+                    校園內草木蓊鬱、花團錦簇，校舍美輪美奐，是一座美麗的大學。<br>
+                    由中山大學左方的旅客服務中心即可進入西子灣海水浴場，<br>
+                    夏日總是有成群結隊的遊客到此戲潮、游泳，熱鬧非凡。<br>
+
+                    </span><br>
+                </div>
+            </dialog>
+
+
+
+
+            <!-- 3 -->
+            <div class="right" id="show3"><img class="rounded-3 travelimg" src="./images/travel/kaohsiung/03.jpg"
+                    alt=""><br>
+                <span class="travlename">澄清湖
+                </span><br>
+            </div>
+
+            <dialog id="infoModal3" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">澄清湖
+                                </span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=22.660360,120.35380&hl=zh-TW&dirflg=r">
+                                    <span class="map">　高雄市鳥松區大埤路32號
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close3" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/kaohsiung/03_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    澄清湖位於高雄市鳥松區，是高雄第一大湖，舊名「大埤湖」或「大貝湖」，<br>
+                    媲美大陸的西湖，也是重要的水源地和風景區。<br>
+                    梅隴春曉、曲橋釣月步入巍峨的觀光大門一眼就見到兩座紅色中式宮殿建築，<br>
+                    左邊的是淡水館，右為海水館。館內陳列世界各國的珍奇魚類。<br><br>
+
+                    著名景點有三橋、六勝、八景，三橋是九曲橋、鵲橋和吊橋，<br>
+                    六勝是自由亭、更上台、豐源閣、百花岡、富國島和千樹林，<br>
+                    八景為梅隴春曉、曲橋鉤月、柳岸觀蓮、高丘望海、深樹鳴禽、湖山佳氣、三亭攬勝和蓬島湧金。<br>
+                    在曲橋釣月景緻中最有名的就屬九曲橋，<br>
+                    九曲橋建於民國49年（西元1960年），橋長230公尺，寬2.5公尺，<br>
+                    支柱七支，橋面迴折九彎，故名為九曲橋。<br>
+                    </span><br>
+
+                </div>
+            </dialog>
+
+            <div class="x"></div>
+        </div>
+
+
+        <!-- 第二列 -->
+        <div class="wrap">
+            <div class="x"></div>
+
+
+            <!-- 4 -->
+            <div class="left" id="show4">
+                <img class="rounded-3 travelimg" src="./images/travel/kaohsiung/04.jpg" alt=""><br>
+                <span class="travlename">蓮池潭</span>
+            </div>
+            <dialog id="infoModal4" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">蓮池潭</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=22.678695,120.29691&hl=zh-TW&dirflg=r">
+                                    <span class="map">　高雄市左營區蓮潭路
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close4" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/kaohsiung/04_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    舊稱蓮花潭，位於高雄市左營區東側，<br>
+                    南鄰龜山、北接半屏山，潭面面積約42公頃，源於高屏溪。<br>
+                    蓮池潭周邊潭水因遍植荷花，在清領時期就名列鳳山八景，稱「泮水荷香」，<br>
+                    現因湖畔半屏山特殊造型與龍虎塔遠近倒映水中，而以「蓮潭夕照」聞名。<br>
+                    入夜後的蓮池潭，水霧濛濛，景色若隱若現，予人難以言喻的神秘感。<br><br>
+
+                    潭上亭台樓閣林立，潭畔遍植垂柳，景緻秀麗。<br>
+                    由南而北風景點分別有舊城、龍虎塔、五里亭、春秋閣、啟明堂、孔廟等，<br>
+                    吸引各地遊客前往，假日更是絡繹不絕。<br>
+                    </span><br>
+                </div>
+            </dialog>
+
+
+            <!-- 5 -->
+            <div class="middle" id="show5">
+                <img class="rounded-3 travelimg" src="./images/travel/kaohsiung/05.jpg" alt=""><br>
+                <span class="travlename">愛河</span><br>
+            </div>
+            <dialog id="infoModal5" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">愛河</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=22.624860,120.28912&hl=zh-TW&dirflg=r">
+                                    <span class="map">　高雄市前金區河東路
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close5" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/kaohsiung/05_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    愛河發源於高雄市仁武區，流經高雄市區，<br>
+                    為高雄主要河川之一，猶如城市的母親之河。<br>
+                    下游河岸整治而成河濱公園，是市區內散步休憩的好去處，<br>
+                    也是端午節划龍舟與元宵節燈會的舞台。<br>
+                    過去由於工業污染與都市廢水排放不當，使得愛河因污染嚴重而惡名昭彰，<br>
+                    但近年來經政府努力整治，並陸續在河岸兩旁進行綠化，<br>
+                    闢建休息設施，方使愛河的浪漫風華得以重現。<br><br>
+
+                    愛河入夜以後沿著水面點點霓虹彩光，<br>
+                    東西兩岸各具不同情調的「愛河曼波」與「黃金愛河」咖啡藝文廣場，<br>
+                    散發迷人的咖啡香及快慢交替的美妙樂音，<br>
+                    令人不得放慢腳步而融入其中，<br>
+                    讓港灣城市的水岸休閒風情，為身心靈作徹底的放鬆。</span><br>
+                </div>
+            </dialog>
+
+
+
+
+            <!-- 6 -->
+            <div class="right" id="show6"><img class="rounded-3 travelimg" src="./images/travel/kaohsiung/06.jpg"
+                    alt=""><br>
+                <span class="travlename">六合觀光夜市</span><br>
+            </div>
+
+            <dialog id="infoModal6" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">六合觀光夜市</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=22.632075,120.29915&hl=zh-TW&dirflg=r">
+                                    <span class="map">　高雄市新興區六合二路與中山一路口
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close6" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/kaohsiung/06_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    早在民國39年（西元1950年），<br>
+                    位於現在高雄市新興區大港埔附近的空地上，就開始聚集了許多小吃攤，<br>
+                    漸漸的越來越多，久而久之便形成以小吃聞名的「大港埔夜市」，<br>
+                    之後逐漸擴大。轉變成為現在的六合夜市。<br>
+                    六合夜市距離高雄火車站不遠，沿著中山路直行約十餘分鐘後右轉至六合路便可到達。<br><br>
+
+                    白天這裡是筆直的大馬路，到了晚上便成為人來人往的熱鬧市集，<br>
+                    以多樣化小吃聞名的「六合夜市」，<br>
+                    最特殊的景觀是招牌林立的牛排店及海產店，大大小小有10多家，<br>
+                    主要賣點是平價、家庭式的牛排套餐。<br>
+                    兩排攤位從山產、海產、特產到冷飲、冰品等應有盡有，<br>
+                    種類之多令人目不暇給，小吃口味之豐富為全臺有名。<br>
+                    而高雄市的特色木瓜牛奶及鹽蒸蝦更是你不可錯過的好味道。<br>
+                    </span><br>
+                </div>
+            </dialog>
+
+            <div class="x"></div>
+        </div>
+
+
+
+
+        <hr>
+        <div class="randomdiv">
+            <table>
+                <tr>
+                    <td colspan="3"><a id="randomhref_0" href="#">
+                            <div class="imgtext">
+                                <img id="counry_0" class="rounded-3 randomimg" src="" alt=""><span
+                                    id="counry_text0">aa</span>
+                            </div>
+                        </a></td>
+                    <td colspan="3"><a id="randomhref_1" href="#">
+                            <div class="imgtext">
+                                <img id="counry_1" class="rounded-3 randomimg" src="" alt=""><span
+                                    id="counry_text1">aa</span>
+                            </div>
+                        </a></td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td colspan="2"><a id="randomhref_2" href="#">
+                            <div class="imgtext">
+                                <img id="counry_2" class="rounded-3 randomimg" src="" alt=""><span
+                                    id="counry_text2">aa</span>
+                            </div>
+                        </a></td>
+                    <td colspan="2"><a id="randomhref_3" href="#">
+                            <div class="imgtext">
+                                <img id="counry_3" class="rounded-3 randomimg" src="" alt=""><span
+                                    id="counry_text3">aa</span>
+                            </div>
+                        </a></td>
+                    <td colspan="2"><a id="randomhref_4" href="#">
+                            <div class="imgtext">
+                                <img id="counry_4" class="rounded-3 randomimg" src="" alt=""><span
+                                    id="counry_text4">aa</span>
+                            </div>
+                        </a></td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <!-- <hr>在這裡輸入新ㄉ東西 -->　
+        </div>
+
+
+        <script>
+            let county = [
+                "./images/county/county001.png", "./images/county/county002.png", "./images/county/county003.png",
+                "./images/county/county004.png", "./images/county/county005.png", "./images/county/county006.png",
+                "./images/county/county007.png", "./images/county/county008.png", "./images/county/county009.png",
+                "./images/county/county010.png", "./images/county/county011.png", "./images/county/county012.png",
+                "./images/county/county013.png", "./images/county/county014.png", "./images/county/county015.png",
+                "./images/county/county016.png", "./images/county/county017.png", "./images/county/county018.png",
+                "./images/county/county019.png", "./images/county/county020.png", "./images/county/county021.png",
+                "./images/county/county022.png"
+            ];
+            let county2 = [
+                "臺北市", "新北市", "基隆市",
+                "宜蘭縣", "桃園市", "新竹縣",
+                "新竹市", "苗栗縣", "臺中市",
+                "彰化縣", "南投縣", "雲林縣",
+                "嘉義縣", "嘉義市", "臺南市",
+                "高雄市", "屏東縣", "花蓮縣",
+                "台東縣", "澎湖縣", "金門縣",
+                "連江縣（馬祖）"
+            ];
+            let countyhref = [
+                "taipei.html", "newtaipei.html", "keelung.html",
+                "yilan.html", "taoyuan.html", "hsinchucounty.html",
+                "hsinchucity.html", "miaoli.html", "taichung.html",
+                "changhua.html", "nantou.html", "yunlin.html",
+                "chiayicounty.html", "chiayicity.html", "tainan.html",
+                "kaohsiung.html", "pingtung.html", "hualien.html",
+                "taitung.html", "penghu.html", "kinmen.html",
+                "matsu.html"
+            ];
+            // console.log(county.length);
+            // let a = Math.floor(Math.random() * county.length);
+            var str = '';
+            var arr = [];
+            for (let i = 0; i < 6; i++) {
+                str = Math.floor(Math.random() * county.length);
+                for (j = 0; j < arr.length; j++) {
+                    if (arr[j] == str) {
+                        arr.splice(j, 1);
+                        i--;
+                    }
+                }
+                arr.push(str);
+            }
+            for (let i = 0; i < 5; i++) {
+                // document.getElementById('counry_' + i).innerHTML = county[arr[i]];
+                document.getElementById('counry_' + i).src = county[arr[i]];
+                document.getElementById('counry_text' + i).innerHTML = county2[arr[i]];
+                document.getElementById('randomhref_' + i).href = countyhref[arr[i]];
+            }
+            for (let i = 0; i > 8; i++) {
+
+            }
+
+            // 1
+
+            // let btn = document.querySelector("#show1");
+            // let infoModal = document.querySelector("#infoModal1");
+            // let close = document.querySelector("#close");
+            // btn.addEventListener("click", function () {
+            //     document.getElementById("infoModal1").style.opacity = "0";
+            //     setTimeout(function () {
+            //         infoModal.showModal();
+            //         document.getElementById("infoModal1").style.opacity = "1";
+            //     }, 100);
+            // }
+            // )
+            // close.addEventListener("click", function () {
+            //     document.getElementById("infoModal1").style.opacity = "0";
+            //     setTimeout(function () {
+            //         document.getElementById("infoModal1").style.opacity = "1";
+            //         infoModal.close();
+            //     }, 500);
+            // })
+
+            for (let i = 1; i <= 6; i++) {
+                let btn = document.querySelector("#show" + i);
+                let infoModal = document.querySelector("#infoModal" + i);
+                let close = document.querySelector("#close" + i);
+                btn.addEventListener("click", function () {
+                    document.getElementById("infoModal" + i).style.opacity = "0";
+                    setTimeout(function () {
+                        infoModal.showModal();
+                        document.getElementById("infoModal" + i).style.opacity = "1";
+                    }, 100);
+                }
+                )
+                close.addEventListener("click", function () {
+                    document.getElementById("infoModal" + i).style.opacity = "0";
+                    setTimeout(function () {
+                        document.getElementById("infoModal" + i).style.opacity = "1";
+                        infoModal.close();
+                    }, 500);
+                })
+            }
+
+
+
+        // document.getElementById("infoModal").onclick = function () {
+        //     document.getElementById("infoModal").style.opacity = "0";
+        //     setTimeout(function () {
+        //         document.getElementById("infoModal").style.opacity = "1";
+        //         infoModal.close();
+        //     }, 500);
+        // }
+
+
+
+        </script>
+</body>
+
+</html>

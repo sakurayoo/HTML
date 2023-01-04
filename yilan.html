@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="css/bootstrap.css"> -->
+    <link rel="icon" href="images/tw_icon.png" type="image/png" sizes="16x16">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/offcanvas.css">
+    <link rel="stylesheet" href="css/alink.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+    <title>宜蘭縣</title>
+    <style>
+        img {
+            opacity: 1;
+            transition: opacity 0.3s;
+        }
+
+        html {
+            font-size: 16px;
+            font-family: 微軟正黑體;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 5px 2px;
+        }
+
+        .randomimg {
+            /* height: 100%; */
+            width: 100%;
+            transition: 0.5s;
+            opacity: 0.5;
+        }
+
+        .imgtext {
+            position: relative;
+        }
+
+        .imgtext>span {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            color: white;
+            font-size: 2em;
+            text-shadow: 0 0 0.2em #000;
+            font-family: 微軟正黑體;
+            font-weight: bolder;
+        }
+
+        .imgtext:hover .rounded-3 {
+            opacity: 1;
+        }
+
+        .wrap {
+            /*父元素*/
+            width: 100%;
+            height: auto;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .x {
+            width: 5%;
+        }
+
+        .left {
+            width: 30%;
+        }
+
+        .middle {
+            width: 30%;
+
+        }
+
+        .right {
+            width: 30%;
+
+        }
+
+        .randomdiv {
+            width: 100%;
+        }
+
+        .banner {
+            background-image: url(./images/banner/yilan.jpg);
+            /* background-attachment: fixed; */
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .bannertext {
+            text-align: center;
+            font-size: 4em;
+            font-family: 微軟正黑體;
+            font-weight: bold;
+            color: #FFF;
+            text-shadow: 0 0 10px #000;
+            /* text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; */
+            line-height: -10px;
+        }
+
+        .bannertext_small {
+            text-align: center;
+            font-size: 1em;
+            font-family: 微軟正黑體;
+            font-weight: bold;
+            color: #FFF;
+            text-shadow: 0 0 5px #000;
+            line-height: -10px;
+        }
+
+
+        td {
+            vertical-align: middle;
+        }
+
+
+
+
+        .left,
+        .middle,
+        .right {
+            position: relative;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .left>span,
+        .middle>span,
+        .right>span {
+            position: absolute;
+            top: 0.5em;
+            left: 1em;
+            color: #FFF;
+            font-size: 1.5em;
+            font-family: 微軟正黑體;
+            text-shadow: 0 0 0.2em #000;
+            font-weight: bold;
+        }
+
+        .travelimg {
+            opacity: 0.8;
+            filter: brightness(50%);
+            width: 100%;
+            height: 200px;
+            transition: 0.5s;
+        }
+
+        .left:hover .rounded-3,
+        .middle:hover .rounded-3,
+        .right:hover .rounded-3 {
+            /* opacity:2; */
+            opacity: 1;
+            transform: scale(1.05);
+            filter: brightness(100%);
+
+        }
+
+        /* travlename */
+        dialog {
+            border: none;
+            box-shadow: 0 2px 6px rgb(0, 0, 0);
+            border-radius: 10px;
+            width: 1000px;
+            height: 500px;
+            background-color: rgba(255, 255, 255, 0.95);
+
+
+        }
+
+        dialog::backdrop {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        #infoModal1,
+        #infoModal2,
+        #infoModal3,
+        #infoModal4,
+        #infoModal5,
+        #infoModal6,
+        #infoModal7,
+        #infoModal8,
+        #infoModal9,
+        #infoModal10,
+        #infoModal11,
+        #infoModal12 {
+            transition: 0.5s;
+            /*opacity: 0.5; */
+
+        }
+
+        .map {
+            border-style: inset;
+            border-width: 1px;
+            border-color: red;
+            background-color: #FFF;
+        }
+        .rounded-5{
+            opacity:0.7;
+        }
+        .rounded-5:hover{
+            opacity:1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="menu">
+        <div class="offcanvas offcanvas-start " id="demo">
+            <div class="offcanvas-header">
+                <h1 class="offcanvas-title"><a href="./index.html">探索台灣</a></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+            </div>
+
+            <div class="offcanvas-body">
+                <a href="about.html">
+                    <p>關於這個網站</p>
+                </a>
+                <a href="gowhere.html">
+                    <p>去哪裡玩</p>
+                </a>
+                <a href="goround.html">
+                    <p>去環島吧</p>
+                </a>
+                <a href="mailus.html">
+                    <p>來留言吧</p>
+                </a>
+
+            </div>
+        </div>
+        <div class="container-fluid mt-3">
+            <!-- <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#demo">Ｏ</button> -->
+            <button class="btn btn-primary btn-lg" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#demo">♥</button>
+        </div>
+    </div>
+    <div class="banner"><br><br><br><br>
+
+        <p class="bannertext">宜蘭縣<br></p>
+        <p class="bannertext_small">
+
+            位處臺灣東北角的宜蘭縣，囿於三面背山、一面向海特殊地形，<br>
+            孕育獨特文化與人情味，呈現以三生共構的世外桃源，<br>
+            如今藉由亞洲第二長的公路隧道——雪山隧道，<br>
+            拉近與臺北不到50分鐘的時間，竭誠歡迎閣下打開心胸，<br>
+            細心品嚐自然環境的生態旅遊、養生的冷溫泉、豐沛的海洋遊憩資源，<br>
+            油綠的田園、悠閒漫活的生活，這就是水、綠、淨的宜蘭。<br></p>
+        <!-- <button id="show">show</button> -->
+
+
+        <br><br><br><br><br>
+    </div>
+    <hr id="a">
+    <div>
+        <p style="text-align: center;">景點介紹</p>
+        <!-- 第一列 -->
+        <div class="wrap">
+            <div class="x"></div>
+
+
+            <!-- 1 -->
+            <div class="left" id="show1">
+                <img class="rounded-3 travelimg" src="./images/travel/yilan/01.jpg" alt=""><br>
+                <span class="travlename">礁溪溫泉</span>
+            </div>
+            <dialog id="infoModal1" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">礁溪溫泉</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=24.831013,121.77596&hl=zh-TW&dirflg=r">
+                                    <span class="map">　宜蘭縣礁溪鄉公園路16號
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close1" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/yilan/01_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    礁溪鄉以溫泉聞名，位於宜蘭縣東北角，<br>
+                    四百多年前這兒住著噶瑪蘭人和泰雅族人，<br>
+                    到了西元1796年，福建人吳沙帶領移民進入，並慢慢開墾此地，<br>
+                    終於使礁溪逐漸成為宜蘭北部重鎮。<br>
+                    礁溪的發展與溫泉是密不可分的，從早期人們築圍沐浴，<br>
+                    到日治時代日本人設置公共澡堂和旅舍，<br>
+                    開啟溫泉的商業用途，一直到近年來規劃為溫泉觀光特定區，<br>
+                    並以溫泉從事各項農漁業的耕種養殖，<br>
+                    因此，溫泉也是繁榮此地的重要經濟命脈。<br><br>
+
+                    礁溪溫泉屬於碳酸氫鈉泉，<br>
+                    富含鈉、鎂、鈣、鉀、碳酸離子等化學成份，是臺灣少見的平地溫泉。<br>
+                    此泉色清無臭，湧到地表時約為58度C，洗後光滑柔細不黏膩，由於富含礦物質，<br>
+                    因此不論是浸泡、沐浴或經處理後成為礦泉水飲用，都對身體健康極有幫助。<br>
+                    到礁溪泡溫泉，已成為旅客到此一遊的重要行程。<br>
+                    在礁溪火車站方圓1.2公里的範圍內，為本地的溫泉區，<br>
+                    目前這兒約有近百家的旅館、飯店、浴池，形成「溫泉鄉」的特殊景致。</span><br>
+                </div>
+            </dialog>
+
+
+            <!-- 2 -->
+            <div class="middle" id="show2">
+                <img class="rounded-3 travelimg" src="./images/travel/yilan/02.jpg" alt=""><br>
+                <span class="travlename">龜山島</span><br>
+            </div>
+            <dialog id="infoModal2" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">龜山島</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=24.842373,121.95015&hl=zh-TW&dirflg=r">
+                                    <span class="map">　宜蘭縣頭城鎮海岸以東約10公里處
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close2" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/yilan/02_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    龜山島位在宜蘭縣頭城鎮海岸以東約10公里處，<br>
+                    是宜蘭縣縣屬島嶼之中最大的島嶼，也是臺灣目前尚存的活火山。<br>
+                    無論從陸路或海路，只要看到龜山島，就知道宜蘭到了。<br>
+                    龜山島不但是宜蘭最著名的地標，也是宜蘭人的精神象徵。<br>
+                    龜山島又名龜山嶼，為孤懸於海中之火山島嶼，因其型似浮龜而得名。<br>
+                    龜山島在地形上可分為龜首、龜甲、龜尾等三部份，<br>
+                    其岩層主要是由安山岩質之熔岩流和火山碎屑岩互層所構成。<br><br>
+                    自民國77年（西元1988年）解除戒嚴後，<br>
+                    在宜蘭縣政府及地方民意代表多年積極努力之下，<br>
+                    行政院於民國88年（西元1999年）將龜山島納為東北角暨宜蘭海岸國家風景區內。<br>
+                    依龜山島人文及生態資源特性，規劃成為兼具知性及感性之海上生態公園，<br>
+                    藉由遊客容納量的管制，減少旅遊環境衝突，<br>
+                    並結合鄰近海域賞鯨活動，成為北部藍色公路熱門的旅遊景點。<br>
+                    </span><br>
+                </div>
+            </dialog>
+
+
+
+
+            <!-- 3 -->
+            <div class="right" id="show3"><img class="rounded-3 travelimg" src="./images/travel/yilan/03.jpg"
+                    alt=""><br>
+                <span class="travlename">南方澳</span><br>
+            </div>
+
+            <dialog id="infoModal3" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">南方澳
+                                </span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://www.google.com/maps?f=d&saddr&daddr=24.584472,121.86452&hl=zh-TW&dirflg=r">
+                                    <span class="map">　宜蘭縣蘇澳鎮
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close3" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/yilan/03_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    位於蘇澳港南側，是臺灣沿海及近洋漁船的重要基地，<br>
+                    漁獲量極豐，為臺灣三大漁業重鎮之一。<br>
+                    此處有三個漁港及漁市，各依其功能、特色而有不同。<br>
+                    第一漁市每天約在下午2點左右，由漁會主持拍賣，<br>
+                    第二漁市為每天約在下午3點到5點，由漁民們各自販售。<br>
+                    第三漁港旁的漁港路，聚滿各式海鮮、特產品店，<br>
+                    也是遊客聚集的地方。<br>
+                    </span><br>
+
+                </div>
+            </dialog>
+
+            <div class="x"></div>
+        </div>
+
+
+        <!-- 第二列 -->
+        <div class="wrap">
+            <div class="x"></div>
+
+
+            <!-- 4 -->
+            <div class="left" id="show4">
+                <img class="rounded-3 travelimg" src="./images/travel/yilan/04.jpg" alt=""><br>
+                <span class="travlename">國立傳統藝術中心</span>
+            </div>
+            <dialog id="infoModal4" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">國立傳統藝術中心</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=24.685587,121.82405&hl=zh-TW&dirflg=r">
+                                    <span class="map">　宜蘭縣五結鄉五濱路二段201號
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close4" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/yilan/04_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    傳統藝術，是民間生活藝術之美，先民薪傳文化之源。<br>
+                    為了讓優美多樣的傳統藝術永續傳承，中心位於五結鄉冬山河下游，與親水公園僅一河之隔。<br>
+                    園區佔地24公頃，依傳統戲曲、音樂、舞蹈、工藝及民俗雜技之需求籌建，<br>
+                    21棟建築及景觀區兼具傳統與環保綠建築。<br>
+                    藉由各項研究、保存、傳襲及展演計畫的推動，<br>
+                    使傳統藝術觸角延伸到校園、呈現各地藝文風貌、落實到日常生活中，<br>
+                    建立臺灣的文化精神代表。<br>
+                    歷經六年的籌備，傳藝中心於民國91年（西元2002年）1月16日正式成立，<br>
+                    並於隔年10月4日全區落成啟用，<br>
+                    奠基於傳統經驗、立根於務實推展，<br>
+                    以縝密的態度、執著的心情、辛勤的雙手、努力開拓這項文化點燈的永續工程。<br>
+                    </span><br>
+                </div>
+            </dialog>
+
+
+            <!-- 5 -->
+            <div class="middle" id="show5">
+                <img class="rounded-3 travelimg" src="./images/travel/yilan/05.jpg" alt=""><br>
+                <span class="travlename">冬山河親水公園</span><br>
+            </div>
+            <dialog id="infoModal5" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">冬山河親水公園</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=24.672993,121.81581&hl=zh-TW&dirflg=r">
+                                    <span class="map">　宜蘭縣五結鄉親河路二段2號
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close5" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/yilan/05_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    冬山河為宜蘭第五大河，流經羅東、冬山、五結等三鄉鎮，<br>
+                    在全長24公里的冬山河流域中，<br>
+                    經規劃為以運動、遊憩、休閒多元功能的河濱遊憩區，<br>
+                    共分上、中、下三段水域，各自展現不同的遊憩風貌，<br>
+                    期望能成為「戶外水態博物園」。<br><br>
+                    
+                    親水公園是冬山河最重要的遊憩據點，以重建人與水的自然倫理為訴求，<br>
+                    模仿大自然造景並融入蘭陽本土色彩，<br>
+                    如水上舞臺、五座圓錐形卵石丘及海面上的龜山島，<br>
+                    不經意的將蘭陽地標引入園中。冬山河自古相傳有青龍及黃龍護岸，<br>
+                    因此河畔用卵石築起高低起伏、彎曲有致的龍坡，分別鑲上青、藍和黃、橘的陶片，<br>
+                    龍坡的階梯上，一方方有趣的嵌鑲畫，是宜蘭小朋友拼貼的傑作。<br>
+                    
+                    如今，宜蘭一年一度的端午龍舟賽、國際童玩節都在親水公園舉行；<br>
+                    農曆七夕情人節還搭起鵲橋，增添浪漫氣氛。<br>
+                    近幾年來，親水公園已成為臺灣旅遊觀光最HOT的景點之一了。<br>
+                    </span><br>
+                </div>
+            </dialog>
+
+
+
+
+            <!-- 6 -->
+            <div class="right" id="show6"><img class="rounded-3 travelimg" src="./images/travel/yilan/06.jpg"
+                    alt=""><br>
+                <span class="travlename">武荖坑風景區</span><br>
+            </div>
+
+            <dialog id="infoModal6" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">武荖坑風景區</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=24.610609,121.81446&hl=zh-TW&dirflg=r">
+                                    <span class="map">　宜蘭縣蘇澳鎮武荖坑路75號
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close6" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/yilan/06_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    武荖溪位於冬山鄉、蘇澳鎮交界處，是由東、西兩股溪水匯流而成，全長約24公里。<br>
+                    早期先民以為溪谷含有沙金，很多人曾湧入淘金，耗盡家財，結果鎩羽而歸，以台語發音，稱之「武荖坑」。<br>
+                    武荖坑下游阿兼城因地理環境良好、空氣清新、溪水水質清澈，<br>
+                    這裡孕育著無數標緻動人的女孩，清純美麗，<br>
+                    因此，「武荖坑大石鼓，阿兼城水查某」之美名，從此就不脛而走，流傳至今。<br><br>
+                    
+                    武荖溪谷林木茂盛、清流激湍、怪石嶙峋、曲徑蜿蜒、泉水甘醇，<br>
+                    素有「武荖林泉」美譽，也是新「蘭陽八景」之一。<br>
+                    區內草坡翠綠，溪中有數座欄砂壩，<br>
+                    形成幾座小瀑布，清流碧湍，更增幽靜舒爽。<br><br>
+                    
+                    溪流兩側，茂林叢叢，入目皆綠，自然景觀幽美，生態環境豐富，<br>
+                    尤以鳥類和蝴蝶最是引人入勝，溯溪同時兼能賞鳥和賞蝶，一舉數得，<br>
+                    是戶外踏青兼做自然生態教室的絕佳場所。<br>
+                    本區並規劃有露營場、炊事亭，設備相當完善，可容納五千人從事露營活動。<br>
+                    </span><br>
+                </div>
+            </dialog>
+
+            <div class="x"></div>
+        </div>
+
+
+
+
+        <hr>
+        <div class="randomdiv">
+            <table>
+                <tr>
+                    <td colspan="3"><a id="randomhref_0" href="#">
+                            <div class="imgtext">
+                                <img id="counry_0" class="rounded-3 randomimg" src="" alt=""><span
+                                    id="counry_text0">aa</span>
+                            </div>
+                        </a></td>
+                    <td colspan="3"><a id="randomhref_1" href="#">
+                            <div class="imgtext">
+                                <img id="counry_1" class="rounded-3 randomimg" src="" alt=""><span
+                                    id="counry_text1">aa</span>
+                            </div>
+                        </a></td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td colspan="2"><a id="randomhref_2" href="#">
+                            <div class="imgtext">
+                                <img id="counry_2" class="rounded-3 randomimg" src="" alt=""><span
+                                    id="counry_text2">aa</span>
+                            </div>
+                        </a></td>
+                    <td colspan="2"><a id="randomhref_3" href="#">
+                            <div class="imgtext">
+                                <img id="counry_3" class="rounded-3 randomimg" src="" alt=""><span
+                                    id="counry_text3">aa</span>
+                            </div>
+                        </a></td>
+                    <td colspan="2"><a id="randomhref_4" href="#">
+                            <div class="imgtext">
+                                <img id="counry_4" class="rounded-3 randomimg" src="" alt=""><span
+                                    id="counry_text4">aa</span>
+                            </div>
+                        </a></td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <!-- <hr>在這裡輸入新ㄉ東西 -->　
+        </div>
+
+
+        <script>
+            let county = [
+                "./images/county/county001.png", "./images/county/county002.png", "./images/county/county003.png",
+                "./images/county/county004.png", "./images/county/county005.png", "./images/county/county006.png",
+                "./images/county/county007.png", "./images/county/county008.png", "./images/county/county009.png",
+                "./images/county/county010.png", "./images/county/county011.png", "./images/county/county012.png",
+                "./images/county/county013.png", "./images/county/county014.png", "./images/county/county015.png",
+                "./images/county/county016.png", "./images/county/county017.png", "./images/county/county018.png",
+                "./images/county/county019.png", "./images/county/county020.png", "./images/county/county021.png",
+                "./images/county/county022.png"
+            ];
+            let county2 = [
+                "臺北市", "新北市", "基隆市",
+                "宜蘭縣", "桃園市", "新竹縣",
+                "新竹市", "苗栗縣", "臺中市",
+                "彰化縣", "南投縣", "雲林縣",
+                "嘉義縣", "嘉義市", "臺南市",
+                "高雄市", "屏東縣", "花蓮縣",
+                "台東縣", "澎湖縣", "金門縣",
+                "連江縣（馬祖）"
+            ];
+            let countyhref = [
+                "taipei.html", "newtaipei.html", "keelung.html",
+                "yilan.html", "taoyuan.html", "hsinchucounty.html",
+                "hsinchucity.html", "miaoli.html", "taichung.html",
+                "changhua.html", "nantou.html", "yunlin.html",
+                "chiayicounty.html", "chiayicity.html", "tainan.html",
+                "kaohsiung.html", "pingtung.html", "hualien.html",
+                "taitung.html", "penghu.html", "kinmen.html",
+                "matsu.html"
+            ];
+            // console.log(county.length);
+            // let a = Math.floor(Math.random() * county.length);
+            var str = '';
+            var arr = [];
+            for (let i = 0; i < 6; i++) {
+                str = Math.floor(Math.random() * county.length);
+                for (j = 0; j < arr.length; j++) {
+                    if (arr[j] == str) {
+                        arr.splice(j, 1);
+                        i--;
+                    }
+                }
+                arr.push(str);
+            }
+            for (let i = 0; i < 5; i++) {
+                // document.getElementById('counry_' + i).innerHTML = county[arr[i]];
+                document.getElementById('counry_' + i).src = county[arr[i]];
+                document.getElementById('counry_text' + i).innerHTML = county2[arr[i]];
+                document.getElementById('randomhref_' + i).href = countyhref[arr[i]];
+            }
+            for (let i = 0; i > 8; i++) {
+
+            }
+
+            // 1
+
+            // let btn = document.querySelector("#show1");
+            // let infoModal = document.querySelector("#infoModal1");
+            // let close = document.querySelector("#close");
+            // btn.addEventListener("click", function () {
+            //     document.getElementById("infoModal1").style.opacity = "0";
+            //     setTimeout(function () {
+            //         infoModal.showModal();
+            //         document.getElementById("infoModal1").style.opacity = "1";
+            //     }, 100);
+            // }
+            // )
+            // close.addEventListener("click", function () {
+            //     document.getElementById("infoModal1").style.opacity = "0";
+            //     setTimeout(function () {
+            //         document.getElementById("infoModal1").style.opacity = "1";
+            //         infoModal.close();
+            //     }, 500);
+            // })
+
+            for (let i = 1; i <= 6; i++) {
+                let btn = document.querySelector("#show" + i);
+                let infoModal = document.querySelector("#infoModal" + i);
+                let close = document.querySelector("#close" + i);
+                btn.addEventListener("click", function () {
+                    document.getElementById("infoModal" + i).style.opacity = "0";
+                    setTimeout(function () {
+                        infoModal.showModal();
+                        document.getElementById("infoModal" + i).style.opacity = "1";
+                    }, 100);
+                }
+                )
+                close.addEventListener("click", function () {
+                    document.getElementById("infoModal" + i).style.opacity = "0";
+                    setTimeout(function () {
+                        document.getElementById("infoModal" + i).style.opacity = "1";
+                        infoModal.close();
+                    }, 500);
+                })
+            }
+
+
+
+        // document.getElementById("infoModal").onclick = function () {
+        //     document.getElementById("infoModal").style.opacity = "0";
+        //     setTimeout(function () {
+        //         document.getElementById("infoModal").style.opacity = "1";
+        //         infoModal.close();
+        //     }, 500);
+        // }
+
+
+
+        </script>
+</body>
+
+</html>

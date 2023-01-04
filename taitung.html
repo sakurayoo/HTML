@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/tw_icon.png" type="image/png" sizes="16x16">
+    <!-- <link rel="stylesheet" href="css/bootstrap.css"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/offcanvas.css">
+    <link rel="stylesheet" href="css/alink.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+    <title>台東縣</title>
+    <style>
+        img {
+            opacity: 1;
+            transition: opacity 0.3s;
+        }
+
+        html {
+            font-size: 16px;
+            font-family: 微軟正黑體;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 5px 2px;
+        }
+
+        .randomimg {
+            /* height: 100%; */
+            width: 100%;
+            transition: 0.5s;
+            opacity: 0.5;
+        }
+
+        .imgtext {
+            position: relative;
+        }
+
+        .imgtext>span {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            color: white;
+            font-size: 2em;
+            text-shadow: 0 0 0.2em #000;
+            font-family: 微軟正黑體;
+            font-weight: bolder;
+        }
+
+        .imgtext:hover .rounded-3 {
+            opacity: 1;
+        }
+
+        .wrap {
+            /*父元素*/
+            width: 100%;
+            height: auto;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .x {
+            width: 5%;
+        }
+
+        .left {
+            width: 30%;
+        }
+
+        .middle {
+            width: 30%;
+
+        }
+
+        .right {
+            width: 30%;
+
+        }
+
+        .randomdiv {
+            width: 100%;
+        }
+
+        .banner {
+            background-image: url(./images/banner/taitung.jpg);
+            /* background-attachment: fixed; */
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .bannertext {
+            text-align: center;
+            font-size: 4em;
+            font-family: 微軟正黑體;
+            font-weight: bold;
+            color: #FFF;
+            text-shadow: 0 0 10px #000;
+            /* text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; */
+            line-height: -10px;
+        }
+
+        .bannertext_small {
+            text-align: center;
+            font-size: 1em;
+            font-family: 微軟正黑體;
+            font-weight: bold;
+            color: #FFF;
+            text-shadow: 0 0 5px #000;
+            line-height: -10px;
+        }
+
+
+        td {
+            vertical-align: middle;
+        }
+
+
+
+
+        .left,
+        .middle,
+        .right {
+            position: relative;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .left>span,
+        .middle>span,
+        .right>span {
+            position: absolute;
+            top: 0.5em;
+            left: 1em;
+            color: #FFF;
+            font-size: 1.5em;
+            font-family: 微軟正黑體;
+            text-shadow: 0 0 0.2em #000;
+            font-weight: bold;
+        }
+
+        .travelimg {
+            opacity: 0.8;
+            filter: brightness(50%);
+            width: 100%;
+            height: 200px;
+            transition: 0.5s;
+        }
+
+        .left:hover .rounded-3,
+        .middle:hover .rounded-3,
+        .right:hover .rounded-3 {
+            /* opacity:2; */
+            opacity: 1;
+            transform: scale(1.05);
+            filter: brightness(100%);
+
+        }
+
+        /* travlename */
+        dialog {
+            border: none;
+            box-shadow: 0 2px 6px rgb(0, 0, 0);
+            border-radius: 10px;
+            width: 1000px;
+            height: 500px;
+            background-color: rgba(255, 255, 255, 0.95);
+
+
+        }
+
+        dialog::backdrop {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        #infoModal1,
+        #infoModal2,
+        #infoModal3,
+        #infoModal4,
+        #infoModal5,
+        #infoModal6,
+        #infoModal7,
+        #infoModal8,
+        #infoModal9,
+        #infoModal10,
+        #infoModal11,
+        #infoModal12 {
+            transition: 0.5s;
+            /*opacity: 0.5; */
+
+        }
+
+        .map {
+            border-style: inset;
+            border-width: 1px;
+            border-color: red;
+            background-color: #FFF;
+        }
+
+        .rounded-5 {
+            opacity: 0.7;
+        }
+
+        .rounded-5:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="menu">
+        <div class="offcanvas offcanvas-start " id="demo">
+            <div class="offcanvas-header">
+                <h1 class="offcanvas-title"><a href="./index.html">探索台灣</a></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+            </div>
+
+            <div class="offcanvas-body">
+                <a href="about.html">
+                    <p>關於這個網站</p>
+                </a>
+                <a href="gowhere.html">
+                    <p>去哪裡玩</p>
+                </a>
+                <a href="goround.html">
+                    <p>去環島吧</p>
+                </a>
+                <a href="mailus.html">
+                    <p>來留言吧</p>
+                </a>
+
+            </div>
+        </div>
+        <div class="container-fluid mt-3">
+            <!-- <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#demo">Ｏ</button> -->
+            <button class="btn btn-primary btn-lg" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#demo">♥</button>
+        </div>
+    </div>
+    <div class="banner"><br><br><br><br>
+
+        <p class="bannertext">台東縣<br></p>
+        <p class="bannertext_small">
+
+            臺東擁有豐富的生態資源，無論是海岸、高山、森林、溪谷，<br>
+            都保持著自然完整的風貌，並孕育了多樣的動植物種類，處處都是天然美景。<br>
+            臺東各鄉鎮的物產豐饒，遠近馳名的縱谷好米、金針花、洛神花、臺東釋迦；<br>
+            漁產亦十分興盛，旗魚、柴魚片都是極富盛名的當地特產品。<br>
+            <br>
+            臺東充滿多族群的人文特色，不同族群的節日慶典，不同人文風貌的經典呈現，<br>
+            在這寬暢的大地上可以享受悠閒的生活步調，在這裡與各式各樣的人群相會，<br>
+            並從他們的口中聽聞有趣的歷史或神話，對每一個外地人而言，將會是豐收的知性饗宴。<br><br>
+
+            臺東更是單車樂活族的參訪聖地，不僅擁有全臺最早最完善的關山自行車道，<br>
+            在鹿野龍田、池上、臺東市、海岸沿線…等各地，都有專屬的自行車道，<br>
+            沿途充滿了自然與純樸的各種美景，宛若騎入自然的仙境一般。<br>
+        </p>
+        <!-- <button id="show">show</button> -->
+
+
+        <br><br><br><br><br>
+    </div>
+    <hr id="a">
+    <div>
+        <p style="text-align: center;">景點介紹</p>
+        <!-- 第一列 -->
+        <div class="wrap">
+            <div class="x"></div>
+
+
+            <!-- 1 -->
+            <div class="left" id="show1">
+                <img class="rounded-3 travelimg" src="./images/travel/taitung/01.jpg" alt=""><br>
+                <span class="travlename">知本溫泉</span>
+            </div>
+            <dialog id="infoModal1" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">知本溫泉</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=22.693043,121.01812&hl=zh-TW&dirflg=r">
+                                    <span class="map">　臺東縣卑南鄉
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close1" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/taitung/01_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    知本溫泉素有「東台第一景」的美譽，<br>
+                    早年在河床上即有溫泉汨汨冒出，屬鹼性碳酸泉，無色無味無臭，<br>
+                    水溫高達百度以上，泉質特佳。<br><br>
+
+                    由知本溪將知本分為內外溫泉區，內溫泉區雖然開發較晚，<br>
+                    但因有五星級溫泉觀光飯店進駐，成為當地大規模的商業區，<br>
+                    也吸引了更多要求高品質服務的外國觀光客前來。<br><br>
+                    
+                    一般人所熟知的「知本溫泉」即為外溫泉區，中小型溫泉旅館林立，<br>
+                    不論是住宿，或享受溫泉泳池、浴室都非常方便；<br>
+                    現今內外溫泉區版圖擴張，已經連成一氣，<br>
+                    但內溫泉由於靠近知本森林遊樂區之緣故似乎更得地利，<br>
+                    在景觀部分尤勝外溫泉區一籌。<br><br>
+                    
+                    知本溫泉區屬於原住民聚集地，故出產原住民美食及各式山菜野味，<br>
+                    除了山產店林立外，到處都有販賣釋迦、鳳梨、洛神花等特產的小販，<br>
+                    別有東臺灣的一番風情。</span><br>
+                </div>
+            </dialog>
+
+
+            <!-- 2 -->
+            <div class="middle" id="show2">
+                <img class="rounded-3 travelimg" src="./images/travel/taitung/02.jpg" alt=""><br>
+                <span class="travlename">綠島</span><br>
+            </div>
+            <dialog id="infoModal2" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">綠島</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=22.672185,121.46861&hl=zh-TW&dirflg=r">
+                                    <span class="map">　臺東縣綠島鄉南寮村298號
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close2" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/taitung/02_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    綠島舊名火燒島，位於臺東市東方約33公里的海面上，面積16.2平方公里，<br>
+                    由火山集塊岩所構成的島嶼，因長年受風化及海水侵蝕，形成曲折多變的海岸景觀。<br>
+                    巍峨奇岩巨石、陡峭台地海岸、潔淨的白色沙灘、翠綠草原、獨特的海底溫泉、<br>
+                    嶙峋珊瑚礁裙、綺麗海底世界、以及豐盛的植物等優渥的條件，<br>
+                    使得綠島這個遺世獨立的小島，搖身一變成東部的海上樂園。<br><br>
+
+                    民國49年（西元1960年）起政府積極開發綠島，<br>
+                    民國66年（西元1977年）推動改善綠島居民生活5項計畫，<br>
+                    增進島內設施，如機場、漁港、環島公路等。<br>
+                    近年來，臺東縣政府、觀光局東部海岸國家風景區管理處及綠島鄉公所的共同努力下，<br>
+                    將綠島建設成臺灣海上的觀光島嶼，成為國人從事水上休閒活動的最佳選擇。<br>
+                    然而，在生態保育的思潮帶動下，兼具生態與人文的生態旅遊模式，<br>
+                    已漸漸成為旅遊活動的主流。<br>
+
+                    </span><br>
+                </div>
+            </dialog>
+
+
+
+
+            <!-- 3 -->
+            <div class="right" id="show3"><img class="rounded-3 travelimg" src="./images/travel/taitung/03.jpg"
+                    alt=""><br>
+                <span class="travlename">三仙台
+                </span><br>
+            </div>
+
+            <dialog id="infoModal3" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">三仙台
+                                </span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=23.126135,121.42168&hl=zh-TW&dirflg=r">
+                                    <span class="map">　臺東縣成功鎮三仙里基翬路74號
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close3" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/taitung/03_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    三仙台位於成功東北方約3公里處（11號省道110.5K處），<br>
+                    是由突出的海岬與離岸小島所構成的。<br>
+                    因島上有三塊巨石，<br>
+                    民間穿鑿附會傳說八仙過海時呂洞賓、何仙姑、李鐵拐曾登臨此處而聲名大噪。<br><br>
+
+                    三仙台地質屬都巒山火山集塊岩，原來是一處岬角，<br>
+                    因海水侵蝕逐漸斷了岬角頸部，而成了離岸島。<br>
+                    附近海域魚類豐富，是漁場亦是有名的磯釣場所，<br>
+                    也是各級潛水的好地方。<br><br>
+                    
+                    三仙台的八拱紅色跨海步橋，造型如長龍臥波，氣勢壯觀；<br>
+                    島上地形景觀與生態資源極為獨特稀有，<br>
+                    海岸植物種類繁多，是研究海岸植物生態的重要據點，<br>
+                    可循規劃良好的步道觀賞沿途生態及地質觀賞。<br>
+                    上島遊覽約需2小時，<br>
+                    遊走其間可欣賞壺穴、海蝕洞、海蝕溝、海蝕凹璧等特殊地形，<br>
+                    以及珍貴稀有的海濱植物。<br>
+                    </span><br>
+
+                </div>
+            </dialog>
+
+            <div class="x"></div>
+        </div>
+
+
+        <!-- 第二列 -->
+        <div class="wrap">
+            <div class="x"></div>
+
+
+            <!-- 4 -->
+            <div class="left" id="show4">
+                <img class="rounded-3 travelimg" src="./images/travel/taitung/04.jpg" alt=""><br>
+                <span class="travlename">蘭嶼</span>
+            </div>
+            <dialog id="infoModal4" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">蘭嶼</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=22.024498,121.55606&hl=zh-TW&dirflg=r">
+                                    <span class="map">　臺東縣蘭嶼鄉
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close4" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/taitung/04_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    蘭嶼與綠島一樣，<br>
+                    都是由海底火山噴發，岩漿遇海水凝固後所形成的火山島。<br>
+                    由於島上西北角的山頭在夕陽映照下，<br>
+                    就像一顆紅色的人頭，所以舊稱「紅頭嶼」。<br>
+                    後來因島上盛產蘭花，更名為「蘭嶼」。<br>
+                    氣候濕熱多雨，山區密佈雨林型態的森林，<br>
+                    動植物種類繁多，不可勝數。<br>
+                    四周海域珊瑚遍布，又有黑潮流經此地，<br>
+                    常有魚群洄游，是海釣與潛水活動的天堂。<br>
+                    </span><br>
+                </div>
+            </dialog>
+
+
+            <!-- 5 -->
+            <div class="middle" id="show5">
+                <img class="rounded-3 travelimg" src="./images/travel/taitung/05.jpg" alt=""><br>
+                <span class="travlename">八仙洞</span><br>
+            </div>
+            <dialog id="infoModal5" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">八仙洞</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=23.397166,121.47667&hl=zh-TW&dirflg=r">
+                                    <span class="map">　臺東縣長濱鄉三間村水母丁1-4號
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close5" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/taitung/05_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    位於11號省道78K處，根據地質學家的研究，<br>
+                    此處的地形乃因地殼上升過程中受海水侵蝕，<br>
+                    由上而下依序所形成的一群大小不一的洞穴，<br>
+                    計有靈岩、潮音、永安、乾元、海雷等十多個，<br>
+                    目前建有完整的步道，通往各洞穴。<br>
+                    八仙洞也是考古學家最早發現舊石器時代史前文化遺址所在地，<br>
+                    為臺灣最早的史前文化遺址。<br>
+                    東管處在此設有「史前文化遺址」展示室，<br>
+                    其內展示史前人類文物與解說，<br>
+                    並且詳述洞穴之成因，值得前往解讀一番。</span><br>
+                </div>
+            </dialog>
+
+
+
+
+            <!-- 6 -->
+            <div class="right" id="show6"><img class="rounded-3 travelimg" src="./images/travel/taitung/06.jpg"
+                    alt=""><br>
+                <span class="travlename">鹿野遊客中心</span><br>
+            </div>
+
+            <dialog id="infoModal6" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">鹿野遊客中心</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=22.923840,121.12507&hl=zh-TW&dirflg=r">
+                                    <span class="map">　臺東縣鹿野鄉永安村高台路46號
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close6" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/taitung/06_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    花東兩縣位於臺灣東部，由於自然環境優美，民風淳樸，環境未受污染，<br>
+                    具有獨特的自然及人文景觀，觀光遊憩資源極為豐富。<br>
+                    為維護此彌足珍貴之觀光資源與自然生態體系，<br>
+                    同時為拓展國民旅遊空間，加速東部地區觀光事業發展，<br>
+                    民國85年（西元1996年）5月30日行政院核定花東縱谷地區劃設為國家級風景特定區，<br>
+                    並於民國85年（西元1996年）9月13日核准設置花東縱谷國家風景區管理處，<br>
+                    負責本特定區規劃建設與經營管理，<br>
+                    民國86年（西元1997年）5月1日交通部觀光局花東縱谷國家風景區管理處，<br>
+                    於瑞穗泛舟服務中心正式揭牌運作。 <br><br>
+
+                    花東縱谷線的觀光旅遊活動，最大的特色是體驗東臺灣的產業、平野幽谷之風情。<br>
+                    由於縱谷線本身所具備之產業、地景、田園、人文、聚落等資源，<br>
+                    讓旅途不只可以獲得鄉野休憩的舒適，還可進一步享受知性地、學習性的深刻樂趣。<br>
+                    整個花東縱谷沿線景點包括有卑南利吉地區、初鹿地區、鹿野延平地區、關山海端地區、<br>
+                    池上富里地區、玉里卓溪地區、瑞穗萬榮地區、光復鳳林地區、壽豐地區等。<br>
+                    </span><br>
+                </div>
+            </dialog>
+
+            <div class="x"></div>
+        </div>
+
+
+
+
+        <hr>
+        <div class="randomdiv">
+            <table>
+                <tr>
+                    <td colspan="3"><a id="randomhref_0" href="#">
+                            <div class="imgtext">
+                                <img id="counry_0" class="rounded-3 randomimg" src="" alt=""><span
+                                    id="counry_text0">aa</span>
+                            </div>
+                        </a></td>
+                    <td colspan="3"><a id="randomhref_1" href="#">
+                            <div class="imgtext">
+                                <img id="counry_1" class="rounded-3 randomimg" src="" alt=""><span
+                                    id="counry_text1">aa</span>
+                            </div>
+                        </a></td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td colspan="2"><a id="randomhref_2" href="#">
+                            <div class="imgtext">
+                                <img id="counry_2" class="rounded-3 randomimg" src="" alt=""><span
+                                    id="counry_text2">aa</span>
+                            </div>
+                        </a></td>
+                    <td colspan="2"><a id="randomhref_3" href="#">
+                            <div class="imgtext">
+                                <img id="counry_3" class="rounded-3 randomimg" src="" alt=""><span
+                                    id="counry_text3">aa</span>
+                            </div>
+                        </a></td>
+                    <td colspan="2"><a id="randomhref_4" href="#">
+                            <div class="imgtext">
+                                <img id="counry_4" class="rounded-3 randomimg" src="" alt=""><span
+                                    id="counry_text4">aa</span>
+                            </div>
+                        </a></td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <!-- <hr>在這裡輸入新ㄉ東西 -->　
+        </div>
+
+
+        <script>
+            let county = [
+                "./images/county/county001.png", "./images/county/county002.png", "./images/county/county003.png",
+                "./images/county/county004.png", "./images/county/county005.png", "./images/county/county006.png",
+                "./images/county/county007.png", "./images/county/county008.png", "./images/county/county009.png",
+                "./images/county/county010.png", "./images/county/county011.png", "./images/county/county012.png",
+                "./images/county/county013.png", "./images/county/county014.png", "./images/county/county015.png",
+                "./images/county/county016.png", "./images/county/county017.png", "./images/county/county018.png",
+                "./images/county/county019.png", "./images/county/county020.png", "./images/county/county021.png",
+                "./images/county/county022.png"
+            ];
+            let county2 = [
+                "臺北市", "新北市", "基隆市",
+                "宜蘭縣", "桃園市", "新竹縣",
+                "新竹市", "苗栗縣", "臺中市",
+                "彰化縣", "南投縣", "雲林縣",
+                "嘉義縣", "嘉義市", "臺南市",
+                "高雄市", "屏東縣", "花蓮縣",
+                "台東縣", "澎湖縣", "金門縣",
+                "連江縣（馬祖）"
+            ];
+            let countyhref = [
+                "taipei.html", "newtaipei.html", "keelung.html",
+                "yilan.html", "taoyuan.html", "hsinchucounty.html",
+                "hsinchucity.html", "miaoli.html", "taichung.html",
+                "changhua.html", "nantou.html", "yunlin.html",
+                "chiayicounty.html", "chiayicity.html", "tainan.html",
+                "kaohsiung.html", "pingtung.html", "hualien.html",
+                "taitung.html", "penghu.html", "kinmen.html",
+                "matsu.html"
+            ];
+            // console.log(county.length);
+            // let a = Math.floor(Math.random() * county.length);
+            var str = '';
+            var arr = [];
+            for (let i = 0; i < 6; i++) {
+                str = Math.floor(Math.random() * county.length);
+                for (j = 0; j < arr.length; j++) {
+                    if (arr[j] == str) {
+                        arr.splice(j, 1);
+                        i--;
+                    }
+                }
+                arr.push(str);
+            }
+            for (let i = 0; i < 5; i++) {
+                // document.getElementById('counry_' + i).innerHTML = county[arr[i]];
+                document.getElementById('counry_' + i).src = county[arr[i]];
+                document.getElementById('counry_text' + i).innerHTML = county2[arr[i]];
+                document.getElementById('randomhref_' + i).href = countyhref[arr[i]];
+            }
+            for (let i = 0; i > 8; i++) {
+
+            }
+
+            // 1
+
+            // let btn = document.querySelector("#show1");
+            // let infoModal = document.querySelector("#infoModal1");
+            // let close = document.querySelector("#close");
+            // btn.addEventListener("click", function () {
+            //     document.getElementById("infoModal1").style.opacity = "0";
+            //     setTimeout(function () {
+            //         infoModal.showModal();
+            //         document.getElementById("infoModal1").style.opacity = "1";
+            //     }, 100);
+            // }
+            // )
+            // close.addEventListener("click", function () {
+            //     document.getElementById("infoModal1").style.opacity = "0";
+            //     setTimeout(function () {
+            //         document.getElementById("infoModal1").style.opacity = "1";
+            //         infoModal.close();
+            //     }, 500);
+            // })
+
+            for (let i = 1; i <= 6; i++) {
+                let btn = document.querySelector("#show" + i);
+                let infoModal = document.querySelector("#infoModal" + i);
+                let close = document.querySelector("#close" + i);
+                btn.addEventListener("click", function () {
+                    document.getElementById("infoModal" + i).style.opacity = "0";
+                    setTimeout(function () {
+                        infoModal.showModal();
+                        document.getElementById("infoModal" + i).style.opacity = "1";
+                    }, 100);
+                }
+                )
+                close.addEventListener("click", function () {
+                    document.getElementById("infoModal" + i).style.opacity = "0";
+                    setTimeout(function () {
+                        document.getElementById("infoModal" + i).style.opacity = "1";
+                        infoModal.close();
+                    }, 500);
+                })
+            }
+
+
+
+        // document.getElementById("infoModal").onclick = function () {
+        //     document.getElementById("infoModal").style.opacity = "0";
+        //     setTimeout(function () {
+        //         document.getElementById("infoModal").style.opacity = "1";
+        //         infoModal.close();
+        //     }, 500);
+        // }
+
+
+
+        </script>
+</body>
+
+</html>

@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/tw_icon.png" type="image/png" sizes="16x16">
+    <!-- <link rel="stylesheet" href="css/bootstrap.css"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/offcanvas.css">
+    <link rel="stylesheet" href="css/alink.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <link rel="stylesheet" href="twicon/twicon.css">
+    <title>今天想去哪裡玩？</title>
+    <style>
+        img {
+            opacity: 1;
+            transition: opacity 0.3s;
+        }
+
+        img[data-src] {
+            opacity: 0;
+        }
+
+
+
+        html {
+            font-size: 16px;
+            font-family: 微軟正黑體;
+        }
+
+        .gowhereimg {
+            width: 100%;
+            height: auto;
+            /* position: absolute; */
+            z-index: -20;
+
+        }
+
+        .gowheretext {
+            position: relative;
+
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 5px 2px;
+        }
+
+        .randomimg {
+            /* height: 100%; */
+            width: 100%;
+            transition: 0.5s;
+            opacity: 0.5;
+        }
+
+        .imgtext {
+            position: relative;
+
+        }
+
+        .imgtext>span {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            color: white;
+            font-size: 2em;
+            text-shadow: 0 0 0.2em #000;
+            font-family: 微軟正黑體;
+            font-weight: bolder;
+
+        }
+
+        .imgtext:hover .rounded-3 {
+            opacity: 1;
+
+        }
+
+        .wrap {
+            /*父元素*/
+            width: 100%;
+            height: auto;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .left {
+            width: 60%;
+            /* background: url(./images/county/county003.png) no-repeat center/contain; */
+        }
+
+        .middle {
+            width: 40%;
+            background: url(./images/twmap.png) no-repeat center/contain;
+            position: relative;
+        }
+
+        .areatext {
+            position: absolute;
+            text-shadow: 0 0 0.2em rgba(0, 0, 0, 0.5);
+            color: #000;
+            background-color: rgba(255, 255, 255, 0.523);
+            border-style: inset;
+            border-width: 1px;
+            border-color: forestgreen;
+        }
+
+
+
+        .randomdiv {
+            width: 100%;
+        }
+
+        .somethingtext {
+            text-align: center;
+
+        }
+
+        .banner {
+            background-image: url(./images/banner/taiwan.jpg);
+            /* background-attachment: fixed; */
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+
+
+
+        .bannertext_small {
+            text-align: center;
+            font-size: 1em;
+            font-family: 微軟正黑體;
+            font-weight: bold;
+            color: #FFF;
+            text-shadow: 0 0 5px #000;
+            line-height: -10px;
+        }
+
+
+        #area {
+            font-weight: bolder;
+            font-size: 2em;
+            text-shadow: 0 0 5px #999;
+        }
+
+
+
+
+        .areaimgtext {
+            position: relative;
+
+        }
+
+        .areaimgtext>span {
+            position: absolute;
+            bottom: 10%;
+            right: 10%;
+            color: white;
+            font-size: 1em;
+            text-shadow: 0 0 0.2em #000;
+            font-family: 微軟正黑體;
+            font-weight: bolder;
+
+        }
+
+        .areaimgword1,
+        .areaimgword2,
+        .areaimgword3,
+        .areaimgword4,
+        .areaimgword5,
+        .areaimgword6,
+        .areaimgword7 {
+            position: absolute;
+        }
+
+        .areaimg {
+            width: 100%;
+            position: relative;
+            z-index: -1;
+            transition: 0.5s;
+        }
+
+        a:hover .areaimg {
+            opacity: 0.5;
+        }
+
+        td {
+            vertical-align: middle;
+        }
+
+        .areatext:hover .areaimg {
+            opacity: 0.5;
+        }
+
+
+        #tablecc {
+            transition: 0.5s;
+
+
+        }
+
+        .letters {
+            text-align: center;
+            font-size: 1em;
+            font-family: 微軟正黑體;
+            font-weight: bold;
+            color: #FFF;
+            text-shadow: 0 0 5px #000;
+            line-height: -10px;
+        }
+
+        .ml1 {
+            font-weight: 900;
+            font-size: 3.5em;
+        }
+
+        .ml1 .letter {
+            display: inline-block;
+            line-height: 1em;
+        }
+
+        .ml1 .text-wrapper {
+            position: relative;
+            display: inline-block;
+            padding-top: 0.1em;
+            padding-right: 0.05em;
+            padding-bottom: 0.15em;
+        }
+
+        .ml1 .line {
+            opacity: 0;
+            position: absolute;
+            left: 0;
+            height: 3px;
+            width: 100%;
+            background-color: #fff;
+            transform-origin: 0 0;
+        }
+
+        .ml1 .line1 {
+            top: 0;
+        }
+
+        .ml1 .line2 {
+            bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="menu">
+        <div class="offcanvas offcanvas-start " id="demo">
+            <div class="offcanvas-header">
+                <h1 class="offcanvas-title"><a href="./index.html">探索台灣</a></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+            </div>
+
+            <div class="offcanvas-body">
+                <a href="about.html">
+                    <p>關於這個網站</p>
+                </a>
+                <a href="gowhere.html">
+                    <p>去哪裡玩</p>
+                </a>
+                <a href="goround.html">
+                    <p>去環島吧</p>
+                </a>
+                <a href="mailus.html">
+                    <p>來留言吧</p>
+                </a>
+
+            </div>
+        </div>
+        <div class="container-fluid mt-3">
+            <!-- <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#demo">Ｏ</button> -->
+            <button class="btn btn-primary btn-lg" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#demo">♥</button>
+        </div>
+    </div>
+
+    <div class="banner"><br><br><br><br>
+
+        <h1 class="ml1">
+            <div style="text-align: center;">
+                <span class="text-wrapper">
+                    <span class="line line1"></span>
+                    <span class="letters">去哪裡玩</span>
+                    <span class="line line2"></span>
+                </span>
+            </div>
+        </h1>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+
+        <!-- <p class="bannertext">關於這個網站<br></p> -->
+        <div class="box" data-aos="fade-right" style="text-align: center;">
+            <span class="bannertext_small">
+                你應該親眼看看這些地方
+            </span>
+        </div>
+
+
+        <br><br><br><br><br>
+    </div>
+    <hr id="a">
+    <div class="box" data-aos="fade-right" style="text-align: center;">
+        <span >
+            <div class="wrap">
+                <div class="left" style="text-align: center;">
+                    <!-- <img class="rounded-3" style="width: 95%;" id="areaimg" src="./images/county/county003.png" alt=""> -->
+                    <table id="tablecc">
+                        <tr>
+                            <td style="width: 33%; height: auto;">
+                                <a id="areahref1" href="#">
+                                    <div class="areaimgtext">
+
+                                        <span id="areaimgword1"></span>
+                                        <img id="areaimgid1" class="areaimg rounded-5"
+                                            src="./images/county1/county087.png" alt="">
+                                    </div>
+                                </a>
+                            </td>
+                            <td style="width: 33%;">
+                                <a id="areahref3" href="#">
+                                    <div class="areaimgtext">
+                                        <span id="areaimgword3"></span>
+                                        <img id="areaimgid3" class="areaimg rounded-5"
+                                            src="./images/county1/county087.png" alt="">
+                                    </div>
+                                </a>
+                            </td>
+                            <td style="width: 33%;">
+                                <a id="areahref2" href="#">
+                                    <div class="areaimgtext">
+                                        <span id="areaimgword2"></span>
+                                        <img id="areaimgid2" class="areaimg rounded-5"
+                                            src="./images/county1/county087.png" alt="">
+                                    </div>
+                                </a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td style="width: 33%;">
+                                <a id="areahref4" href="#">
+                                    <div class="areaimgtext">
+                                        <span id="areaimgword4"></span>
+                                        <img id="areaimgid4" class="areaimg rounded-5"
+                                            src="./images/county1/county087.png" alt="">
+                                    </div>
+                                </a>
+                            </td>
+                            <td id="area">點選右方地圖<br>顯示各地區縣市</td>
+                            <td style="width: 33%;">
+                                <a id="areahref5" href="#">
+                                    <div class="areaimgtext">
+                                        <span id="areaimgword5"></span>
+                                        <img id="areaimgid5" class="areaimg rounded-5"
+                                            src="./images/county1/county087.png" alt="">
+                                    </div>
+                                </a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td style="width: 33%;">
+                                <a id="areahref6" href="#">
+                                    <div class="areaimgtext">
+                                        <span id="areaimgword6"></span>
+                                        <img id="areaimgid6" class="areaimg rounded-5"
+                                            src="./images/county1/county087.png" alt="">
+                                    </div>
+                                </a>
+                            </td>
+                            <td></td>
+                            <td style="width: 33%;">
+                                <a id="areahref7" href="#">
+                                    <div class="areaimgtext">
+                                        <span id="areaimgword7"></span>
+                                        <img id="areaimgid7" class="areaimg rounded-5"
+                                            src="./images/county1/county087.png" alt="">
+                                    </div>
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="middle " style="position: relative;">
+                    <!-- <p style="font-weight:bolder;font-size: 1.2em;">也許你該來看看這些景點</p> -->
+                    <div>
+                        <p class="areatext" id="areaclick_0" onmousedown="changeimg('1')" style="top:10%;left:55%;"><a
+                                href="#a">　北部　</a></p>
+                        <p class="areatext" id="areaclick_1" onmousedown="changeimg('2')" style="top:35%;left:30%;"><a
+                                href="#a">　中部　</a></p>
+                        <p class="areatext" id="areaclick_2" onmousedown="changeimg('3')" style="top:85%;left:40%;"><a
+                                href="#a">　南部　</a></p>
+                        <p class="areatext" id="areaclick_3" onmousedown="changeimg('4')" style="top:50%;left:60%;"><a
+                                href="#a">　東部　</a></p>
+                        <p class="areatext" id="areaclick_4" onmousedown="changeimg('5')" style="top:15%;left:15%;"><a
+                                href="#a">　離島　</a></p>
+                    </div>
+
+                </div>
+
+
+            </div>
+            <hr>
+            <div class="randomdiv">
+                <table>
+                    <tr>
+                        <td colspan="3"><a id="randomhref_0" href="#">
+                                <div class="imgtext">
+                                    <img id="counry_0" class="rounded-3 randomimg" src="" alt=""><span
+                                        id="counry_text0">aa</span>
+                                </div>
+                            </a></td>
+                        <td colspan="3"><a id="randomhref_1" href="#">
+                                <div class="imgtext">
+                                    <img id="counry_1" class="rounded-3 randomimg" src="" alt=""><span
+                                        id="counry_text1">aa</span>
+                                </div>
+                            </a></td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <td colspan="2"><a id="randomhref_2" href="#">
+                                <div class="imgtext">
+                                    <img id="counry_2" class="rounded-3 randomimg" src="" alt=""><span
+                                        id="counry_text2">aa</span>
+                                </div>
+                            </a></td>
+                        <td colspan="2"><a id="randomhref_3" href="#">
+                                <div class="imgtext">
+                                    <img id="counry_3" class="rounded-3 randomimg" src="" alt=""><span
+                                        id="counry_text3">aa</span>
+                                </div>
+                            </a></td>
+                        <td colspan="2"><a id="randomhref_4" href="#">
+                                <div class="imgtext">
+                                    <img id="counry_4" class="rounded-3 randomimg" src="" alt=""><span
+                                        id="counry_text4">aa</span>
+                                </div>
+                            </a></td>
+                    </tr>
+                </table>
+            </div>
+        </span>
+    </div>
+    <div>
+        <!-- <hr>在這裡輸入新ㄉ東西 -->　
+    </div>
+
+
+    <script>
+        let county = [
+            "./images/county/county001.png", "./images/county/county002.png", "./images/county/county003.png",
+            "./images/county/county004.png", "./images/county/county005.png", "./images/county/county006.png",
+            "./images/county/county007.png", "./images/county/county008.png", "./images/county/county009.png",
+            "./images/county/county010.png", "./images/county/county011.png", "./images/county/county012.png",
+            "./images/county/county013.png", "./images/county/county014.png", "./images/county/county015.png",
+            "./images/county/county016.png", "./images/county/county017.png", "./images/county/county018.png",
+            "./images/county/county019.png", "./images/county/county020.png", "./images/county/county021.png",
+            "./images/county/county022.png"
+        ];
+        let county2 = [
+            "臺北市", "新北市", "基隆市",
+            "宜蘭縣", "桃園市", "新竹縣",
+            "新竹市", "苗栗縣", "臺中市",
+            "彰化縣", "南投縣", "雲林縣",
+            "嘉義縣", "嘉義市", "臺南市",
+            "高雄市", "屏東縣", "花蓮縣",
+            "台東縣", "澎湖縣", "金門縣",
+            "連江縣（馬祖）"
+        ];
+        let countyhref = [
+            "taipei.html", "newtaipei.html", "keelung.html",
+            "yilan.html", "taoyuan.html", "hsinchucounty.html",
+            "hsinchucity.html", "miaoli.html", "taichung.html",
+            "changhua.html", "nantou.html", "yunlin.html",
+            "chiayicounty.html", "chiayicity.html", "tainan.html",
+            "kaohsiung.html", "pingtung.html", "hualien.html",
+            "taitung.html", "penghu.html", "kinmen.html",
+            "matsu.html"
+        ];
+        // console.log(county.length);
+        // let a = Math.floor(Math.random() * county.length);
+        var str = '';
+        var arr = [];
+        for (let i = 0; i < 6; i++) {
+            str = Math.floor(Math.random() * county.length);
+            for (j = 0; j < arr.length; j++) {
+                if (arr[j] == str) {
+                    arr.splice(j, 1);
+                    i--;
+                }
+            }
+            arr.push(str);
+        }
+        for (let i = 0; i < 5; i++) {
+            // document.getElementById('counry_' + i).innerHTML = county[arr[i]];
+            document.getElementById('counry_' + i).src = county[arr[i]];
+            document.getElementById('counry_text' + i).innerHTML = county2[arr[i]];
+            document.getElementById('randomhref_' + i).href = countyhref[arr[i]];
+        }
+
+
+        console.log("18".padStart(3, '0'));
+        function changeimg(change) {
+            document.getElementById("tablecc").style.opacity = "0";
+            setTimeout(function () {
+                document.getElementById("tablecc").style.opacity = "1";
+                let j = 1;
+                for (let i = 1; i < 8; i++) {
+                    document.getElementById('areaimgid' + i).src = "./images/county1/county087.png";
+                    document.getElementById('areaimgword' + i).innerText = "";
+                    document.getElementById('areahref' + i).href = "#a";
+                }
+                if (change == 1) {
+                    document.getElementById('area').innerHTML = '北部地區';
+                    for (let i = 1; i < 8; i++) {
+                        if (i <= 9) {
+                            document.getElementById('areaimgid' + j).src = "./images/county1/county00" + i + ".png";
+                            document.getElementById('areaimgword' + j).innerText = county2[i - 1];
+                            document.getElementById('areahref' + j).href = countyhref[i - 1];
+
+                        } else {
+                            document.getElementById('areaimgid' + j).src = "./images/county1/county0" + i + ".png";
+                            document.getElementById('areaimgword' + j).innerText = county2[i - 1];
+                            document.getElementById('areahref' + j).href = countyhref[i - 1];
+                        }
+
+                        j++;
+                    }
+                }
+                if (change == 2) {
+                    document.getElementById('area').innerHTML = '中部地區';
+                    for (let i = 8; i < 13; i++) {
+                        if (i <= 9) {
+                            document.getElementById('areaimgid' + j).src = "./images/county1/county00" + i + ".png";
+                            document.getElementById('areaimgword' + j).innerText = county2[i - 1];
+                            document.getElementById('areahref' + j).href = countyhref[i - 1];
+                        } else {
+                            document.getElementById('areaimgid' + j).src = "./images/county1/county0" + i + ".png";
+                            document.getElementById('areaimgword' + j).innerText = county2[i - 1];
+                            document.getElementById('areahref' + j).href = countyhref[i - 1];
+                        }
+
+                        j++;
+                    }
+                }
+                if (change == 3) {
+                    document.getElementById('area').innerHTML = '南部地區';
+                    for (let i = 13; i < 18; i++) {
+                        if (i <= 9) {
+                            document.getElementById('areaimgid' + j).src = "./images/county1/county00" + i + ".png";
+                            document.getElementById('areaimgword' + j).innerText = county2[i - 1];
+                            document.getElementById('areahref' + j).href = countyhref[i - 1];
+                        } else {
+                            document.getElementById('areaimgid' + j).src = "./images/county1/county0" + i + ".png";
+                            document.getElementById('areaimgword' + j).innerText = county2[i - 1];
+                            document.getElementById('areahref' + j).href = countyhref[i - 1];
+                        }
+                        j++;
+                    }
+                }
+                if (change == 4) {
+                    document.getElementById('area').innerHTML = '東部地區';
+                    for (let i = 18; i < 20; i++) {
+                        if (i <= 9) {
+                            document.getElementById('areaimgid' + j).src = "./images/county1/county00" + i + ".png";
+                            document.getElementById('areaimgword' + j).innerText = county2[i - 1];
+                            document.getElementById('areahref' + j).href = countyhref[i - 1];
+                        } else {
+                            document.getElementById('areaimgid' + j).src = "./images/county1/county0" + i + ".png";
+                            document.getElementById('areaimgword' + j).innerText = county2[i - 1];
+                            document.getElementById('areahref' + j).href = countyhref[i - 1];
+                        }
+                        j++;
+                    }
+                }
+                if (change == 5) {
+                    document.getElementById('area').innerHTML = '離島地區';
+                    for (let i = 20; i < 23; i++) {
+                        if (i <= 9) {
+                            document.getElementById('areaimgid' + j).src = "./images/county1/county00" + i + ".png";
+                            document.getElementById('areaimgword' + j).innerText = county2[i - 1];
+                            document.getElementById('areahref' + j).href = countyhref[i - 1];
+                        } else {
+                            document.getElementById('areaimgid' + j).src = "./images/county1/county0" + i + ".png";
+                            document.getElementById('areaimgword' + j).innerText = county2[i - 1];
+                            document.getElementById('areahref' + j).href = countyhref[i - 1];
+                        }
+                        j++;
+                    }
+                }
+            }, 300);
+
+        }
+        // function changeimg(change) {
+        //     document.getElementById('areaimg').src = change;
+        // }
+        //area:hover -> img change
+
+        // Wrap every letter in a span
+        var textWrapper = document.querySelector('.ml1 .letters');
+        textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+        anime.timeline({})
+            .add({
+                targets: '.ml1 .letter',
+                scale: [0.3, 1],
+                opacity: [0, 1],
+                translateZ: 0,
+                easing: "easeOutExpo",
+                duration: 800,
+                delay: (el, i) => 70 * (i + 1)
+            }).add({
+                targets: '.ml1 .line',
+                scaleX: [0, 1],
+                opacity: [0.5, 1],
+                easing: "easeOutExpo",
+                duration: 700,
+                offset: '-=875',
+                delay: (el, i, l) => 80 * (l - i)
+            }).add({
+                targets: '.ml1',
+                opacity: 0,
+                duration: 1000,
+                easing: "easeOutExpo",
+                delay: 10000000000000000000
+            });
+
+    </script>
+    <script>
+        AOS.init({
+            duration: 1500,
+        });
+    </script>
+</body>
+
+</html>

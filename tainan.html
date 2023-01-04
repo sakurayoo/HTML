@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/tw_icon.png" type="image/png" sizes="16x16">
+    <!-- <link rel="stylesheet" href="css/bootstrap.css"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/offcanvas.css">
+    <link rel="stylesheet" href="css/alink.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+    <title>臺南市</title>
+    <style>
+        img {
+            opacity: 1;
+            transition: opacity 0.3s;
+        }
+
+        html {
+            font-size: 16px;
+            font-family: 微軟正黑體;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 5px 2px;
+        }
+
+        .randomimg {
+            /* height: 100%; */
+            width: 100%;
+            transition: 0.5s;
+            opacity: 0.5;
+        }
+
+        .imgtext {
+            position: relative;
+        }
+
+        .imgtext>span {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            color: white;
+            font-size: 2em;
+            text-shadow: 0 0 0.2em #000;
+            font-family: 微軟正黑體;
+            font-weight: bolder;
+        }
+
+        .imgtext:hover .rounded-3 {
+            opacity: 1;
+        }
+
+        .wrap {
+            /*父元素*/
+            width: 100%;
+            height: auto;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .x {
+            width: 5%;
+        }
+
+        .left {
+            width: 30%;
+        }
+
+        .middle {
+            width: 30%;
+
+        }
+
+        .right {
+            width: 30%;
+
+        }
+
+        .randomdiv {
+            width: 100%;
+        }
+
+        .banner {
+            background-image: url(./images/banner/tainan.jpg);
+            /* background-attachment: fixed; */
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .bannertext {
+            text-align: center;
+            font-size: 4em;
+            font-family: 微軟正黑體;
+            font-weight: bold;
+            color: #FFF;
+            text-shadow: 0 0 10px #000;
+            /* text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; */
+            line-height: -10px;
+        }
+
+        .bannertext_small {
+            text-align: center;
+            font-size: 1em;
+            font-family: 微軟正黑體;
+            font-weight: bold;
+            color: #FFF;
+            text-shadow: 0 0 5px #000;
+            line-height: -10px;
+        }
+
+
+        td {
+            vertical-align: middle;
+        }
+
+
+
+
+        .left,
+        .middle,
+        .right {
+            position: relative;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .left>span,
+        .middle>span,
+        .right>span {
+            position: absolute;
+            top: 0.5em;
+            left: 1em;
+            color: #FFF;
+            font-size: 1.5em;
+            font-family: 微軟正黑體;
+            text-shadow: 0 0 0.2em #000;
+            font-weight: bold;
+        }
+
+        .travelimg {
+            opacity: 0.8;
+            filter: brightness(50%);
+            width: 100%;
+            height: 200px;
+            transition: 0.5s;
+        }
+
+        .left:hover .rounded-3,
+        .middle:hover .rounded-3,
+        .right:hover .rounded-3 {
+            /* opacity:2; */
+            opacity: 1;
+            transform: scale(1.05);
+            filter: brightness(100%);
+
+        }
+
+        /* travlename */
+        dialog {
+            border: none;
+            box-shadow: 0 2px 6px rgb(0, 0, 0);
+            border-radius: 10px;
+            width: 1000px;
+            height: 500px;
+            background-color: rgba(255, 255, 255, 0.95);
+
+
+        }
+
+        dialog::backdrop {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        #infoModal1,
+        #infoModal2,
+        #infoModal3,
+        #infoModal4,
+        #infoModal5,
+        #infoModal6,
+        #infoModal7,
+        #infoModal8,
+        #infoModal9,
+        #infoModal10,
+        #infoModal11,
+        #infoModal12 {
+            transition: 0.5s;
+            /*opacity: 0.5; */
+
+        }
+
+        .map {
+            border-style: inset;
+            border-width: 1px;
+            border-color: red;
+            background-color: #FFF;
+        }
+
+        .rounded-5 {
+            opacity: 0.7;
+        }
+
+        .rounded-5:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="menu">
+        <div class="offcanvas offcanvas-start " id="demo">
+            <div class="offcanvas-header">
+                <h1 class="offcanvas-title"><a href="./index.html">探索台灣</a></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+            </div>
+
+            <div class="offcanvas-body">
+                <a href="about.html">
+                    <p>關於這個網站</p>
+                </a>
+                <a href="gowhere.html">
+                    <p>去哪裡玩</p>
+                </a>
+                <a href="goround.html">
+                    <p>去環島吧</p>
+                </a>
+                <a href="mailus.html">
+                    <p>來留言吧</p>
+                </a>
+
+            </div>
+        </div>
+        <div class="container-fluid mt-3">
+            <!-- <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#demo">Ｏ</button> -->
+            <button class="btn btn-primary btn-lg" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#demo">♥</button>
+        </div>
+    </div>
+    <div class="banner"><br><br><br><br>
+
+        <p class="bannertext">臺南市<br></p>
+        <p class="bannertext_small">
+
+            臺南市是臺灣的發祥地，是全臺歷史最悠久的都市。<br>
+            西元1661年，鄭成功來台驅荷後，在臺南開府設治，屯墾拓殖，勵精圖治，<br>
+            當時中國大陸居民移居來臺者紛至沓來，商船雲集，<br>
+            市內商店櫛比，臺南都會之規模至是奠定。<br>
+            惟鄭王英年早歿，子經繼起，設聖廟、創學校，銳意經營，民生利賴。<br><br>
+        </p>
+        <!-- <button id="show">show</button> -->
+
+
+        <br><br><br><br><br>
+    </div>
+    <hr id="a">
+    <div>
+        <p style="text-align: center;">景點介紹</p>
+        <!-- 第一列 -->
+        <div class="wrap">
+            <div class="x"></div>
+
+
+            <!-- 1 -->
+            <div class="left" id="show1">
+                <img class="rounded-3 travelimg" src="./images/travel/tainan/01.jpg" alt=""><br>
+                <span class="travlename">安平古堡</span>
+            </div>
+            <dialog id="infoModal1" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">安平古堡</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=23.001509,120.16062&hl=zh-TW&dirflg=r">
+                                    <span class="map">　臺南市安平區國勝路82號
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close1" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/tainan/01_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    荷蘭人於西元1624年，<br>
+                    在安平建造了臺灣第一座城堡「熱蘭遮城」，也就是現在的安平古堡，<br>
+                    這裡曾是荷蘭人統治的中樞，更是對外貿易的總樞紐，<br>
+                    原本的建築格局分為方形內城與長方形外城。<br>
+                    西元1661年，鄭成功來台驅荷後，將此地改名為安平，<br>
+                    故熱蘭遮城也稱為「王城」或「臺灣城」，<br>
+                    俗稱安平古堡，是臺灣最早的一座城池。<br><br>
+
+                    清康熙年間，正式將臺灣納入版圖，<br>
+                    政治中心移至府城內，進而逐漸喪失其價值。<br>
+                    後來曾破壞城壁紅磚挪為建造億載金城之用，<br>
+                    到了日治時期，內城荷式建築全毀，<br>
+                    四周以紅磚砌成方形階臺，臺上建造西式平房作為海關宿舍。<br>
+                    而成為今日的紀念館風貌，二戰後改名為安平古堡，<br>
+                    目前紀念館邊殘存七十多公尺長的外城南牆殘壁依然屹立，<br>
+                    老榕攀爬，紅磚班駁，<br>
+                    是300餘年來僅存的歷史遺跡，訴說著曾經過往的滄桑。</span><br>
+                </div>
+            </dialog>
+
+
+            <!-- 2 -->
+            <div class="middle" id="show2">
+                <img class="rounded-3 travelimg" src="./images/travel/tainan/02.jpg" alt=""><br>
+                <span class="travlename">赤崁樓</span><br>
+            </div>
+            <dialog id="infoModal2" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">赤崁樓</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=22.997478,120.20254&hl=zh-TW&dirflg=r">
+                                    <span class="map">　臺南市中西區民族路二段212號
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close2" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/tainan/02_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    赤崁樓乃荷蘭人於西元1653年創建，原稱普羅民遮城（Provintia荷文為永恆之意），<br>
+                    漢人則稱之為「赤崁樓」、「番仔樓」或「紅毛樓」；<br>
+                    「赤崁樓」雖歷代都有改建，至今仍大約維持原貌。 <br><br>
+
+                    赤崁樓從荷蘭時期便是行政中心，西元1661年鄭成功改普羅民遮城為承天府治。<br>
+                    清領初期台江尚未淤塞前，浪濤可直達赤崁樓下，<br>
+                    「赤崁夕照」是當時著名的臺灣八景之一。<br>
+                    赤崁樓前有九座清領時期石龜馱碑，是從他處遷移至此，<br>
+                    傳說石龜為龍生九子之一，因好負重而變成龜狀。<br>
+                    另外「斷足石馬」的雕像有一傳說是因石馬入夜後會化作妖怪騷擾百姓，<br>
+                    所以才被斷足，成為現在的模樣。<br>
+                    後來，赤崁樓因民變的破壞及疏於管理而日漸頹圮，<br>
+                    而原本荷式建築的主體也加上了中式的建築，一度上面還祭祀了觀世音菩薩等神明。<br>
+                    日治時期，赤崁樓改為陸軍衛戍醫院，也陸續展開修建及整修，<br>
+                    二戰後，將木製結構改建為鋼筋混凝土結構，<br>
+                    並將主要入口改向，而成為今日赤崁樓的模樣。<br>
+
+                    </span><br>
+                </div>
+            </dialog>
+
+
+
+
+            <!-- 3 -->
+            <div class="right" id="show3"><img class="rounded-3 travelimg" src="./images/travel/tainan/03.jpg"
+                    alt=""><br>
+                <span class="travlename">億載金城</span><br>
+            </div>
+
+            <dialog id="infoModal3" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">億載金城
+                                </span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=22.987883,120.15925&hl=zh-TW&dirflg=r">
+                                    <span class="map">　臺南市安平區光州路3號
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close3" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/tainan/03_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    億載金城古稱為「安平大砲臺」或「二鯤鯓砲臺」。<br>
+                    西元1874年沈葆楨先抵安平，認為應建立大砲臺以保衛府城，<br>
+                    因此，西元1876年由法國工程師所設計完成的全臺第一座西式砲臺終於完成，<br>
+                    也是全臺第一座配備英國阿姆斯壯大砲的砲臺，<br>
+                    臺灣的海防軍事也因此而邁向近代化的一大步。<br>
+                    建築形制上，億載金城屬於西洋稜堡式的方形砲臺，<br>
+                    四角凸出，中央內凹。環繞砲臺並有護城河，<br>
+                    砲臺上分置大、小砲，城堡中央則為操練場；<br>
+                    形制完善、規模宏大，加上砲臺威力強大，<br>
+                    億載金城可說是臺灣南北砲臺中，劃時代的重要里程碑。<br><br>
+
+                    砲臺後遭毀損，曾一度荒廢，後被列為府城名勝之一而加以保存。<br>
+                    二戰後，大規模整修，形式和材質上已多有改變。<br>
+                    但整修後，仍大致可看出當年的規模。<br>
+                    外圍城高約2公尺，城垣四周有護城河，林木茂密，<br>
+                    由紅磚砌成的圓拱城門則高5公尺，穿過圓拱門，<br>
+                    城內所見是綠草如茵，平坦寬廣，並有沈葆楨的紀念銅像及仿製的古炮。<br>
+                    </span><br>
+
+                </div>
+            </dialog>
+
+            <div class="x"></div>
+        </div>
+
+
+        <!-- 第二列 -->
+        <div class="wrap">
+            <div class="x"></div>
+
+
+            <!-- 4 -->
+            <div class="left" id="show4">
+                <img class="rounded-3 travelimg" src="./images/travel/tainan/04.jpg" alt=""><br>
+                <span class="travlename">延平郡王祠</span>
+            </div>
+            <dialog id="infoModal4" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">延平郡王祠</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=22.987844,120.20778&hl=zh-TW&dirflg=r">
+                                    <span class="map">　臺南市中西區開山路152號
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close4" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/tainan/04_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    鄭成功去世後，後人為了感懷他的豐功偉績，特在此地立廟奉祀， <br>
+                    尊稱他為「開台聖王」和「開山王」，現在全臺灣的「開台聖王廟」有50餘所之多。 <br>
+                    各地寺廟祠堂香火不斷，也因此在臺灣留下了深厚的影響與眾多傳說。 <br>
+                    西元1874年，欽差大臣沈葆楨奉命來臺辦理防務， <br>
+                    深入瞭解民意，發現鄭成功對建設臺灣的貢獻，建議建祠紀念。 <br>
+                    清廷同意後撥款立祠，諡號忠烈，從福州載來工匠、材料， <br>
+                    將開山王廟擴建成「福州式」建築，並在正門石匾題「明延平郡王祠」。 <br> <br>
+
+                    祠中珍貴文物豐富，尤其為數眾多的清領時期楹聯， <br>
+                    包括沈葆楨手書，筆力雄渾、意義雋永，仍極具歷史價值。 <br>
+                    位於祠旁的「鄭成功文物館」收藏著許多臺南文物： <br>
+                    1樓主要陳列史前文物，說明臺灣與大陸的地緣關係，及先民生活的演進過程。 <br>
+                    2樓所展覽的多為臺南歷史文物，包括與府城相關的先賢，<br>
+                    例如鄭成功、沈葆楨等人的畫像或遺墨。 <br>
+                    此外，舊日府城的日常生活用品，如街牌、眠床、地契、銀票等均有陳列， <br>
+                    讓人深入了解先人生活起居狀況，十分值得一遊。 <br>
+                    </span><br>
+                </div>
+            </dialog>
+
+
+            <!-- 5 -->
+            <div class="middle" id="show5">
+                <img class="rounded-3 travelimg" src="./images/travel/tainan/05.jpg" alt=""><br>
+                <span class="travlename">西拉雅國家風景區</span><br>
+            </div>
+            <dialog id="infoModal5" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">西拉雅國家風景區</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=23.188554,120.33619&hl=zh-TW&dirflg=r">
+                                    <span class="map">　臺南市官田區官田里福田路99號
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close5" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/tainan/05_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    Siraya，是西拉雅族「人」的意思，<br>
+                    西拉雅族是居住在臺灣幾千年的原住民，<br>
+                    主要分布於嘉南平原，<br>
+                    可說是平埔族中漢化最早的族群。<br>
+                    為突顯西拉雅族文化的在地特色，<br>
+                    民國94年（西元2005年）籌設期間原名為「五庫國家風景區」<br>
+                    （曾文水庫、烏山頭水庫、白河水庫、尖山埤水庫和虎頭埤水庫），<br>
+                    基於對原住民的尊重與保存文化的表現，正式定名為「西拉雅國家風景區」，<br>
+                    並於民國94年（西元2005年）11月26日成立，為觀光局第13個國家風景區，<br>
+                    專責區域內規劃建設與經營管理工作、<br>
+                    提升遊憩品質並兼具振興地方產業之任務。</span><br>
+                </div>
+            </dialog>
+
+
+
+
+            <!-- 6 -->
+            <div class="right" id="show6"><img class="rounded-3 travelimg" src="./images/travel/tainan/06.jpg"
+                    alt=""><br>
+                <span class="travlename">奇美博物館</span><br>
+            </div>
+
+            <dialog id="infoModal6" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">奇美博物館</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=22.934560,120.22602&hl=zh-TW&dirflg=r">
+                                    <span class="map">　臺南市仁德區文華路二段66號
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close6" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/tainan/06_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    由實業家許文龍先生創辦於民國81年（西元1992年）的奇美博物館，<br>
+                    民國104年（西元2015年）元月搬遷至臺南都會公園，<br>
+                    以嶄新面貌與大眾見面。<br>
+                    奇美博物館是一座綜合性的博物館，<br>
+                    擁有西洋藝術、樂器、兵器與動物標本等多元的典藏品，<br>
+                    館內展廳包括藝術廳、樂器廳、兵器廳、動物廳、羅丹廳、雕塑大道以及特展廳等等，<br>
+                    提供文明之奇與藝術之美；<br>
+                    館外結合西洋神話元素打造特色景點，<br>
+                    寄望創建一處大眾共享共賞的園地，<br>
+                    成為人們的心靈避風港。<br>
+                    </span><br>
+                </div>
+            </dialog>
+
+            <div class="x"></div>
+        </div>
+
+
+
+
+        <hr>
+        <div class="randomdiv">
+            <table>
+                <tr>
+                    <td colspan="3"><a id="randomhref_0" href="#">
+                            <div class="imgtext">
+                                <img id="counry_0" class="rounded-3 randomimg" src="" alt=""><span
+                                    id="counry_text0">aa</span>
+                            </div>
+                        </a></td>
+                    <td colspan="3"><a id="randomhref_1" href="#">
+                            <div class="imgtext">
+                                <img id="counry_1" class="rounded-3 randomimg" src="" alt=""><span
+                                    id="counry_text1">aa</span>
+                            </div>
+                        </a></td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td colspan="2"><a id="randomhref_2" href="#">
+                            <div class="imgtext">
+                                <img id="counry_2" class="rounded-3 randomimg" src="" alt=""><span
+                                    id="counry_text2">aa</span>
+                            </div>
+                        </a></td>
+                    <td colspan="2"><a id="randomhref_3" href="#">
+                            <div class="imgtext">
+                                <img id="counry_3" class="rounded-3 randomimg" src="" alt=""><span
+                                    id="counry_text3">aa</span>
+                            </div>
+                        </a></td>
+                    <td colspan="2"><a id="randomhref_4" href="#">
+                            <div class="imgtext">
+                                <img id="counry_4" class="rounded-3 randomimg" src="" alt=""><span
+                                    id="counry_text4">aa</span>
+                            </div>
+                        </a></td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <!-- <hr>在這裡輸入新ㄉ東西 -->　
+        </div>
+
+
+        <script>
+            let county = [
+                "./images/county/county001.png", "./images/county/county002.png", "./images/county/county003.png",
+                "./images/county/county004.png", "./images/county/county005.png", "./images/county/county006.png",
+                "./images/county/county007.png", "./images/county/county008.png", "./images/county/county009.png",
+                "./images/county/county010.png", "./images/county/county011.png", "./images/county/county012.png",
+                "./images/county/county013.png", "./images/county/county014.png", "./images/county/county015.png",
+                "./images/county/county016.png", "./images/county/county017.png", "./images/county/county018.png",
+                "./images/county/county019.png", "./images/county/county020.png", "./images/county/county021.png",
+                "./images/county/county022.png"
+            ];
+            let county2 = [
+                "臺北市", "新北市", "基隆市",
+                "宜蘭縣", "桃園市", "新竹縣",
+                "新竹市", "苗栗縣", "臺中市",
+                "彰化縣", "南投縣", "雲林縣",
+                "嘉義縣", "嘉義市", "臺南市",
+                "高雄市", "屏東縣", "花蓮縣",
+                "台東縣", "澎湖縣", "金門縣",
+                "連江縣（馬祖）"
+            ];
+            let countyhref = [
+                "taipei.html", "newtaipei.html", "keelung.html",
+                "yilan.html", "taoyuan.html", "hsinchucounty.html",
+                "hsinchucity.html", "miaoli.html", "taichung.html",
+                "changhua.html", "nantou.html", "yunlin.html",
+                "chiayicounty.html", "chiayicity.html", "tainan.html",
+                "kaohsiung.html", "pingtung.html", "hualien.html",
+                "taitung.html", "penghu.html", "kinmen.html",
+                "matsu.html"
+            ];
+            // console.log(county.length);
+            // let a = Math.floor(Math.random() * county.length);
+            var str = '';
+            var arr = [];
+            for (let i = 0; i < 6; i++) {
+                str = Math.floor(Math.random() * county.length);
+                for (j = 0; j < arr.length; j++) {
+                    if (arr[j] == str) {
+                        arr.splice(j, 1);
+                        i--;
+                    }
+                }
+                arr.push(str);
+            }
+            for (let i = 0; i < 5; i++) {
+                // document.getElementById('counry_' + i).innerHTML = county[arr[i]];
+                document.getElementById('counry_' + i).src = county[arr[i]];
+                document.getElementById('counry_text' + i).innerHTML = county2[arr[i]];
+                document.getElementById('randomhref_' + i).href = countyhref[arr[i]];
+            }
+            for (let i = 0; i > 8; i++) {
+
+            }
+
+            // 1
+
+            // let btn = document.querySelector("#show1");
+            // let infoModal = document.querySelector("#infoModal1");
+            // let close = document.querySelector("#close");
+            // btn.addEventListener("click", function () {
+            //     document.getElementById("infoModal1").style.opacity = "0";
+            //     setTimeout(function () {
+            //         infoModal.showModal();
+            //         document.getElementById("infoModal1").style.opacity = "1";
+            //     }, 100);
+            // }
+            // )
+            // close.addEventListener("click", function () {
+            //     document.getElementById("infoModal1").style.opacity = "0";
+            //     setTimeout(function () {
+            //         document.getElementById("infoModal1").style.opacity = "1";
+            //         infoModal.close();
+            //     }, 500);
+            // })
+
+            for (let i = 1; i <= 6; i++) {
+                let btn = document.querySelector("#show" + i);
+                let infoModal = document.querySelector("#infoModal" + i);
+                let close = document.querySelector("#close" + i);
+                btn.addEventListener("click", function () {
+                    document.getElementById("infoModal" + i).style.opacity = "0";
+                    setTimeout(function () {
+                        infoModal.showModal();
+                        document.getElementById("infoModal" + i).style.opacity = "1";
+                    }, 100);
+                }
+                )
+                close.addEventListener("click", function () {
+                    document.getElementById("infoModal" + i).style.opacity = "0";
+                    setTimeout(function () {
+                        document.getElementById("infoModal" + i).style.opacity = "1";
+                        infoModal.close();
+                    }, 500);
+                })
+            }
+
+
+
+        // document.getElementById("infoModal").onclick = function () {
+        //     document.getElementById("infoModal").style.opacity = "0";
+        //     setTimeout(function () {
+        //         document.getElementById("infoModal").style.opacity = "1";
+        //         infoModal.close();
+        //     }, 500);
+        // }
+
+
+
+        </script>
+</body>
+
+</html>

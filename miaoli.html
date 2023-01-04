@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/tw_icon.png" type="image/png" sizes="16x16">
+    <!-- <link rel="stylesheet" href="css/bootstrap.css"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/offcanvas.css">
+    <link rel="stylesheet" href="css/alink.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+    <title>苗栗縣</title>
+    <style>
+        img {
+            opacity: 1;
+            transition: opacity 0.3s;
+        }
+
+        html {
+            font-size: 16px;
+            font-family: 微軟正黑體;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 5px 2px;
+        }
+
+        .randomimg {
+            /* height: 100%; */
+            width: 100%;
+            transition: 0.5s;
+            opacity: 0.5;
+        }
+
+        .imgtext {
+            position: relative;
+        }
+
+        .imgtext>span {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            color: white;
+            font-size: 2em;
+            text-shadow: 0 0 0.2em #000;
+            font-family: 微軟正黑體;
+            font-weight: bolder;
+        }
+
+        .imgtext:hover .rounded-3 {
+            opacity: 1;
+        }
+
+        .wrap {
+            /*父元素*/
+            width: 100%;
+            height: auto;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .x {
+            width: 5%;
+        }
+
+        .left {
+            width: 30%;
+        }
+
+        .middle {
+            width: 30%;
+
+        }
+
+        .right {
+            width: 30%;
+
+        }
+
+        .randomdiv {
+            width: 100%;
+        }
+
+        .banner {
+            background-image: url(./images/banner/miaoli.jpg);
+            /* background-attachment: fixed; */
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .bannertext {
+            text-align: center;
+            font-size: 4em;
+            font-family: 微軟正黑體;
+            font-weight: bold;
+            color: #FFF;
+            text-shadow: 0 0 10px #000;
+            /* text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; */
+            line-height: -10px;
+        }
+
+        .bannertext_small {
+            text-align: center;
+            font-size: 1em;
+            font-family: 微軟正黑體;
+            font-weight: bold;
+            color: #FFF;
+            text-shadow: 0 0 5px #000;
+            line-height: -10px;
+        }
+
+
+        td {
+            vertical-align: middle;
+        }
+
+
+
+
+        .left,
+        .middle,
+        .right {
+            position: relative;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .left>span,
+        .middle>span,
+        .right>span {
+            position: absolute;
+            top: 0.5em;
+            left: 1em;
+            color: #FFF;
+            font-size: 1.5em;
+            font-family: 微軟正黑體;
+            text-shadow: 0 0 0.2em #000;
+            font-weight: bold;
+        }
+
+        .travelimg {
+            opacity: 0.8;
+            filter: brightness(50%);
+            width: 100%;
+            height: 200px;
+            transition: 0.5s;
+        }
+
+        .left:hover .rounded-3,
+        .middle:hover .rounded-3,
+        .right:hover .rounded-3 {
+            /* opacity:2; */
+            opacity: 1;
+            transform: scale(1.05);
+            filter: brightness(100%);
+
+        }
+
+        /* travlename */
+        dialog {
+            border: none;
+            box-shadow: 0 2px 6px rgb(0, 0, 0);
+            border-radius: 10px;
+            width: 1000px;
+            height: 500px;
+            background-color: rgba(255, 255, 255, 0.95);
+
+
+        }
+
+        dialog::backdrop {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        #infoModal1,
+        #infoModal2,
+        #infoModal3,
+        #infoModal4,
+        #infoModal5,
+        #infoModal6,
+        #infoModal7,
+        #infoModal8,
+        #infoModal9,
+        #infoModal10,
+        #infoModal11,
+        #infoModal12 {
+            transition: 0.5s;
+            /*opacity: 0.5; */
+
+        }
+
+        .map {
+            border-style: inset;
+            border-width: 1px;
+            border-color: red;
+            background-color: #FFF;
+        }
+
+        .rounded-5 {
+            opacity: 0.7;
+        }
+
+        .rounded-5:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="menu">
+        <div class="offcanvas offcanvas-start " id="demo">
+            <div class="offcanvas-header">
+                <h1 class="offcanvas-title"><a href="./index.html">探索台灣</a></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+            </div>
+
+            <div class="offcanvas-body">
+                <a href="about.html">
+                    <p>關於這個網站</p>
+                </a>
+                <a href="gowhere.html">
+                    <p>去哪裡玩</p>
+                </a>
+                <a href="goround.html">
+                    <p>去環島吧</p>
+                </a>
+                <a href="mailus.html">
+                    <p>來留言吧</p>
+                </a>
+
+            </div>
+        </div>
+        <div class="container-fluid mt-3">
+            <!-- <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#demo">Ｏ</button> -->
+            <button class="btn btn-primary btn-lg" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#demo">♥</button>
+        </div>
+    </div>
+    <div class="banner"><br><br><br><br>
+
+        <p class="bannertext">苗栗縣<br></p>
+        <p class="bannertext_small">
+
+            苗栗縣位於新竹及臺中之間，是臺灣西部最適合旅遊及渡假的旅遊勝地。<br>
+            「桐花」、「木雕」、「溫泉」、「水果」、「陶瓷」及「客家菜」是苗栗觀光的6大特色，<br>
+            結合這6項的觀光資源，安排一趟3天2夜或2天1夜的渡假行程，是每位旅客來苗栗旅遊的最佳選擇。<br><br>
+        </p>
+        <!-- <button id="show">show</button> -->
+
+
+        <br><br><br><br><br>
+    </div>
+    <hr id="a">
+    <div>
+        <p style="text-align: center;">景點介紹</p>
+        <!-- 第一列 -->
+        <div class="wrap">
+            <div class="x"></div>
+
+
+            <!-- 1 -->
+            <div class="left" id="show1">
+                <img class="rounded-3 travelimg" src="./images/travel/miaoli/01.jpg" alt=""><br>
+                <span class="travlename">勝興車站</span>
+            </div>
+            <dialog id="infoModal1" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">勝興車站</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=24.38823,120.78205&hl=zh-TW&dirflg=r">
+                                    <span class="map">　苗栗縣三義鄉勝興村14鄰勝興88號
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close1" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/miaoli/01_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                        勝興火車站是西部縱貫鐵路的最高點，<br>
+                        站內月台有一座紀念碑，標高402.326公尺，為西部縱貫鐵路中最險峻、自然景觀最特殊的一段。<br>
+                        勝興車站整棟建築係以木頭為建材，為一日式虎牙式木造建築，虎牙式設計據說有避邪祈福的作用。<br><br>
+
+                        勝興火車站興建於西元1906年，至今已有百餘年的歷史，<br>
+                        站內設施有許多日治時代的設備，例如與泰安之間作為列車通行證的「電器站牌」，<br>
+                        現已改為中央控制系統，這套設備也就逐漸成為歷史。<br><br>
+
+                        民國87年（西元1998年）9月23日晚上9點10分車次167最後一班南下列車停靠後，<br>
+                        新舊山線完成切換，舊山線從此畫下完美句點。<br><br>
+
+                        現在到勝興車站的遊客卻多了一份緬懷，<br>
+                        停駛後列車不再來，反而多了新人拍攝婚紗的懷舊場景，<br>
+                        越野車手馳騁的新天地，還有三五成群的遊客走進隧道探險的新風貌。<br>
+                        擁有多項第一的勝興站，<br>
+                        已於民國88年（西元1999年）4月16日經苗栗縣政府公告為「縣定古蹟」，<br>
+                        至此深富歷史與觀光資源的文物得以保存。</span><br>
+                </div>
+            </dialog>
+
+
+            <!-- 2 -->
+            <div class="middle" id="show2">
+                <img class="rounded-3 travelimg" src="./images/travel/miaoli/02.jpg" alt=""><br>
+                <span class="travlename">龍騰斷橋</span><br>
+            </div>
+            <dialog id="infoModal2" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">龍騰斷橋</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=24.358435,120.77384&hl=zh-TW&dirflg=r">
+                                    <span class="map">　苗栗縣三義鄉龍騰村鄉道苗49線
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close2" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/miaoli/02_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                        龍騰舊稱「魚藤坪」，相傳先民在開墾初時，<br>
+                        鯉魚潭有鯉魚精危害地方，鄉民苦不堪言。<br>
+                        為了克制鯉魚精作怪，遂在龍騰山區遍植魚藤，<br>
+                        同時，又將東面的高山稱為關刀山，用意是藉關刀山斬魚藤，以毒殺鯉魚精，<br>
+                        最後魚怪果然不再危害，居民從此安居樂業。<br>
+                        至臺灣二戰後設村，村民認為「魚藤」不雅而改名為龍騰。<br><br>
+
+                        西元1935年4月21日清晨，臺灣中部大地震，震央即在關刀山附近，<br>
+                        三義地區受災慘重，巍峨的山線鐵路龍溪橋完全震毀，震後在原橋西側另建新橋，<br>
+                        遺下拱型橋柱，挺立在烈日風霜裡，供後人憑弔。<br>
+                        搭火車經三義時，龍騰斷橋遺跡打眼前掠過，令人印象深刻。<br><br>
+
+                        民國88年（西元1999年）9月21日再度遭受九二一大地震的無情摧殘，<br>
+                        由北端算起第五橋墩半殘拱口二次被震斷，<br>
+                        龍騰斷橋除了深具古樸之美外，也是經歷二次大地震的活見證。<br>
+                    </span><br>
+                </div>
+            </dialog>
+
+
+
+
+            <!-- 3 -->
+            <div class="right" id="show3"><img class="rounded-3 travelimg" src="./images/travel/miaoli/03.jpg"
+                    alt=""><br>
+                <span class="travlename">明德水庫風景區</span><br>
+            </div>
+
+            <dialog id="infoModal3" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">明德水庫風景區
+                                </span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=24.584586,120.88677&hl=zh-TW&dirflg=r">
+                                    <span class="map">　苗栗縣頭屋鄉明德路90-1號
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close3" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/miaoli/03_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                        明德水庫源頭獅潭溪在百壽折向西行後，<br>
+                        切穿八角棟山脈形成峽谷濬深的溪流，<br>
+                        昔稱『老田寮溪』，<br>
+                        明德水庫建成後改稱明德溪，<br>
+                        集水區內林木蓊鬱涵蓄了頗為富穩的水量；<br>
+                        明德水庫湖面200公頃，湖長8公里，並有日新、鴛鴦、海堂三島，<br>
+                        湖中並放殖大量淡水魚供遊客垂釣取樂。<br>
+                        明德水庫除了擁有豐富的生態資源以及山水景色，<br>
+                        另可在此地品嚐到頭屋名產─明德茶。<br>
+                    </span><br>
+
+                </div>
+            </dialog>
+
+            <div class="x"></div>
+        </div>
+
+
+        <!-- 第二列 -->
+        <div class="wrap">
+            <div class="x"></div>
+
+
+            <!-- 4 -->
+            <div class="left" id="show4">
+                <img class="rounded-3 travelimg" src="./images/travel/miaoli/04.jpg" alt=""><br>
+                <span class="travlename">火炎山自然保留區</span>
+            </div>
+            <dialog id="infoModal4" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">火炎山自然保留區</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=24.369396,120.72806&hl=zh-TW&dirflg=r">
+                                    <span class="map">　苗栗縣三義鄉、苑裡鎮交界
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close4" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/miaoli/04_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                        火炎山位於大安溪北側，以光禿挺拔的特殊景觀著名，<br>
+                        山上馬尾松林是國內稀有的特殊林相，<br>
+                        由農委會於民國75年（西元1986年）列為自然保留區。<br>
+                        火炎山自然保留區在地質上屬第四紀的台地堆積，是劇烈造山運動的產物，<br>
+                        其岩層主要由厚層礫石組成，間夾薄層砂岩，膠結力弱；<br>
+                        由於風化、侵蝕作用不斷，地形切割的支離破碎，<br>
+                        加上雨水的沖蝕，切割面往往又極為平整，<br>
+                        因此在外形上形成尖銳山峰的組合及深谷裡滿佈卵石的景象。<br>
+                        如由南向北觀之，則更能顯現其雄偉壯麗的景觀。<br>
+                        在南向的山澗有時無水，望似卵石河流。<br>
+                        谷口則堆積成礫石沖積扇，成為非常特殊的地貌。<br>
+                        尤其在夕陽餘暉的照映下，整座山容通紅，<br>
+                        好像火燄在跳動一般，遂有「火炎山」之稱。<br><br>
+
+                        火炎山每年3、4月，是東北季風漸漸轉弱的季節，原先在菲律賓過冬的灰面鷲，<br>
+                        會乘著溫暖的西南氣流到達火炎山，也因為此氣流的吸引，<br>
+                        灰面鷲會停留在火炎山上覓食，形成有趣溫馨的畫面。<br>
+                    </span><br>
+                </div>
+            </dialog>
+
+
+            <!-- 5 -->
+            <div class="middle" id="show5">
+                <img class="rounded-3 travelimg" src="./images/travel/miaoli/05.jpg" alt=""><br>
+                <span class="travlename">參山國家風景區-南庄</span><br>
+            </div>
+            <dialog id="infoModal5" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">參山國家風景區-南庄</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=24.598073,121.00007&hl=zh-TW&dirflg=r">
+                                    <span class="map">　苗栗縣南庄鄉東村大同路43號
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close5" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/miaoli/05_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                        本區饒富多變的地形地貌，高山、湖泊、峽谷、丘陵、瀑布等，<br>
+                        造就出令人驚艷的特殊景觀，搭配豐富的動、植物生態，如鳥類、魚類、昆蟲類等，<br>
+                        及隨季節更替的花卉與山林景觀，讓本區生意盎然。<br><br>
+
+                        人文方面，融合客家、閩南、賽夏及泰雅等不同族群，<br>
+                        展現多元包容的文化面貌，其所遺留下來的生活文物與傳統習俗，都是極待保存的珍貴資產。<br>
+                        此歷史悠久的名剎古寺、特色古厝等古蹟建築群也是本區重要觀光特色。<br><br>
+
+                        轄區內除有靜態的景觀、人文之旅外，還有動態的樂活之旅。<br>
+                        區內多條步道、自行車道相互串連，不僅是踏青賞景的最佳選擇，也是登山客與車友們的熱門首選，<br>
+                        尤其炎炎夏日走在綠蔭相伴的步道內，令人暑氣全消。到了冬天，則是泡湯的好時機，<br>
+                        優質的溫泉與設施完善的湯泉會館，是寒冬裡的溫暖享受。<br><br>
+
+                        本風景區因地理位置佳，氣候條件適宜，<br>
+                        擁有優良的土壤、水質，所培育出的農特產，如溫帶水果、高冷蔬菜、茶葉、鱒魚等，鮮甜味美，<br>
+                        尤其本區所產的茶更是遠近馳名，從獅頭山的東方美人茶、梨山的高山茶到八卦山的松柏長青茶，<br>
+                        一路由北往南茶韻飄香；還有原住民風味餐與客家美食，都是來此必嚐的在地好味道。</span><br>
+                </div>
+            </dialog>
+
+
+
+
+            <!-- 6 -->
+            <div class="right" id="show6"><img class="rounded-3 travelimg" src="./images/travel/miaoli/06.jpg"
+                    alt=""><br>
+                <span class="travlename">客家大院</span><br>
+            </div>
+
+            <dialog id="infoModal6" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">客家大院</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=24.471078,120.80132&hl=zh-TW&dirflg=r">
+                                    <span class="map">　苗栗縣銅鑼鄉龍泉15號
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close6" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/miaoli/06_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    苗栗縣民有客家、閩南、泰雅、賽夏、巴宰、道卡斯等族群，<br>
+                    其中客家佔65%，是名副其實的客家大縣，<br>
+                    縣政府乃在桐花公園內設置客家大院，原意作為桐花公園的管理站，<br>
+                    漸漸發展出傳統匠師與現代建築師共同構思的「客家大院」，<br>
+                    使得這座三合院融合了古典與現代建築美學；<br>
+                    在美麗的傳統建築風貌消失的今日，<br>
+                    苗栗縣政府虔誠將傳統客家三合院視為縣民心中的瑰寶，<br>
+                    喚起的更是追索古典文化頂層精神價值之熱情。<br>
+                    </span><br>
+                </div>
+            </dialog>
+
+            <div class="x"></div>
+        </div>
+
+
+
+
+        <hr>
+        <div class="randomdiv">
+            <table>
+                <tr>
+                    <td colspan="3"><a id="randomhref_0" href="#">
+                            <div class="imgtext">
+                                <img id="counry_0" class="rounded-3 randomimg" src="" alt=""><span
+                                    id="counry_text0">aa</span>
+                            </div>
+                        </a></td>
+                    <td colspan="3"><a id="randomhref_1" href="#">
+                            <div class="imgtext">
+                                <img id="counry_1" class="rounded-3 randomimg" src="" alt=""><span
+                                    id="counry_text1">aa</span>
+                            </div>
+                        </a></td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td colspan="2"><a id="randomhref_2" href="#">
+                            <div class="imgtext">
+                                <img id="counry_2" class="rounded-3 randomimg" src="" alt=""><span
+                                    id="counry_text2">aa</span>
+                            </div>
+                        </a></td>
+                    <td colspan="2"><a id="randomhref_3" href="#">
+                            <div class="imgtext">
+                                <img id="counry_3" class="rounded-3 randomimg" src="" alt=""><span
+                                    id="counry_text3">aa</span>
+                            </div>
+                        </a></td>
+                    <td colspan="2"><a id="randomhref_4" href="#">
+                            <div class="imgtext">
+                                <img id="counry_4" class="rounded-3 randomimg" src="" alt=""><span
+                                    id="counry_text4">aa</span>
+                            </div>
+                        </a></td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <!-- <hr>在這裡輸入新ㄉ東西 -->　
+        </div>
+
+
+        <script>
+            let county = [
+                "./images/county/county001.png", "./images/county/county002.png", "./images/county/county003.png",
+                "./images/county/county004.png", "./images/county/county005.png", "./images/county/county006.png",
+                "./images/county/county007.png", "./images/county/county008.png", "./images/county/county009.png",
+                "./images/county/county010.png", "./images/county/county011.png", "./images/county/county012.png",
+                "./images/county/county013.png", "./images/county/county014.png", "./images/county/county015.png",
+                "./images/county/county016.png", "./images/county/county017.png", "./images/county/county018.png",
+                "./images/county/county019.png", "./images/county/county020.png", "./images/county/county021.png",
+                "./images/county/county022.png"
+            ];
+            let county2 = [
+                "臺北市", "新北市", "基隆市",
+                "宜蘭縣", "桃園市", "新竹縣",
+                "新竹市", "苗栗縣", "臺中市",
+                "彰化縣", "南投縣", "雲林縣",
+                "嘉義縣", "嘉義市", "臺南市",
+                "高雄市", "屏東縣", "花蓮縣",
+                "台東縣", "澎湖縣", "金門縣",
+                "連江縣（馬祖）"
+            ];
+            let countyhref = [
+                "taipei.html", "newtaipei.html", "keelung.html",
+                "yilan.html", "taoyuan.html", "hsinchucounty.html",
+                "hsinchucity.html", "miaoli.html", "taichung.html",
+                "changhua.html", "nantou.html", "yunlin.html",
+                "chiayicounty.html", "chiayicity.html", "tainan.html",
+                "kaohsiung.html", "pingtung.html", "hualien.html",
+                "taitung.html", "penghu.html", "kinmen.html",
+                "matsu.html"
+            ];
+            // console.log(county.length);
+            // let a = Math.floor(Math.random() * county.length);
+            var str = '';
+            var arr = [];
+            for (let i = 0; i < 6; i++) {
+                str = Math.floor(Math.random() * county.length);
+                for (j = 0; j < arr.length; j++) {
+                    if (arr[j] == str) {
+                        arr.splice(j, 1);
+                        i--;
+                    }
+                }
+                arr.push(str);
+            }
+            for (let i = 0; i < 5; i++) {
+                // document.getElementById('counry_' + i).innerHTML = county[arr[i]];
+                document.getElementById('counry_' + i).src = county[arr[i]];
+                document.getElementById('counry_text' + i).innerHTML = county2[arr[i]];
+                document.getElementById('randomhref_' + i).href = countyhref[arr[i]];
+            }
+            for (let i = 0; i > 8; i++) {
+
+            }
+
+            // 1
+
+            // let btn = document.querySelector("#show1");
+            // let infoModal = document.querySelector("#infoModal1");
+            // let close = document.querySelector("#close");
+            // btn.addEventListener("click", function () {
+            //     document.getElementById("infoModal1").style.opacity = "0";
+            //     setTimeout(function () {
+            //         infoModal.showModal();
+            //         document.getElementById("infoModal1").style.opacity = "1";
+            //     }, 100);
+            // }
+            // )
+            // close.addEventListener("click", function () {
+            //     document.getElementById("infoModal1").style.opacity = "0";
+            //     setTimeout(function () {
+            //         document.getElementById("infoModal1").style.opacity = "1";
+            //         infoModal.close();
+            //     }, 500);
+            // })
+
+            for (let i = 1; i <= 6; i++) {
+                let btn = document.querySelector("#show" + i);
+                let infoModal = document.querySelector("#infoModal" + i);
+                let close = document.querySelector("#close" + i);
+                btn.addEventListener("click", function () {
+                    document.getElementById("infoModal" + i).style.opacity = "0";
+                    setTimeout(function () {
+                        infoModal.showModal();
+                        document.getElementById("infoModal" + i).style.opacity = "1";
+                    }, 100);
+                }
+                )
+                close.addEventListener("click", function () {
+                    document.getElementById("infoModal" + i).style.opacity = "0";
+                    setTimeout(function () {
+                        document.getElementById("infoModal" + i).style.opacity = "1";
+                        infoModal.close();
+                    }, 500);
+                })
+            }
+
+
+
+        // document.getElementById("infoModal").onclick = function () {
+        //     document.getElementById("infoModal").style.opacity = "0";
+        //     setTimeout(function () {
+        //         document.getElementById("infoModal").style.opacity = "1";
+        //         infoModal.close();
+        //     }, 500);
+        // }
+
+
+
+        </script>
+</body>
+
+</html>

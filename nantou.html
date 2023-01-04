@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/tw_icon.png" type="image/png" sizes="16x16">
+    <!-- <link rel="stylesheet" href="css/bootstrap.css"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/offcanvas.css">
+    <link rel="stylesheet" href="css/alink.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+    <title>南投縣</title>
+    <style>
+        img {
+            opacity: 1;
+            transition: opacity 0.3s;
+        }
+
+        html {
+            font-size: 16px;
+            font-family: 微軟正黑體;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 5px 2px;
+        }
+
+        .randomimg {
+            /* height: 100%; */
+            width: 100%;
+            transition: 0.5s;
+            opacity: 0.5;
+        }
+
+        .imgtext {
+            position: relative;
+        }
+
+        .imgtext>span {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            color: white;
+            font-size: 2em;
+            text-shadow: 0 0 0.2em #000;
+            font-family: 微軟正黑體;
+            font-weight: bolder;
+        }
+
+        .imgtext:hover .rounded-3 {
+            opacity: 1;
+        }
+
+        .wrap {
+            /*父元素*/
+            width: 100%;
+            height: auto;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .x {
+            width: 5%;
+        }
+
+        .left {
+            width: 30%;
+        }
+
+        .middle {
+            width: 30%;
+
+        }
+
+        .right {
+            width: 30%;
+
+        }
+
+        .randomdiv {
+            width: 100%;
+        }
+
+        .banner {
+            background-image: url(./images/banner/nantou.jpg);
+            /* background-attachment: fixed; */
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .bannertext {
+            text-align: center;
+            font-size: 4em;
+            font-family: 微軟正黑體;
+            font-weight: bold;
+            color: #FFF;
+            text-shadow: 0 0 10px #000;
+            /* text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; */
+            line-height: -10px;
+        }
+
+        .bannertext_small {
+            text-align: center;
+            font-size: 1em;
+            font-family: 微軟正黑體;
+            font-weight: bold;
+            color: #FFF;
+            text-shadow: 0 0 5px #000;
+            line-height: -10px;
+        }
+
+
+        td {
+            vertical-align: middle;
+        }
+
+
+
+
+        .left,
+        .middle,
+        .right {
+            position: relative;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .left>span,
+        .middle>span,
+        .right>span {
+            position: absolute;
+            top: 0.5em;
+            left: 1em;
+            color: #FFF;
+            font-size: 1.5em;
+            font-family: 微軟正黑體;
+            text-shadow: 0 0 0.2em #000;
+            font-weight: bold;
+        }
+
+        .travelimg {
+            opacity: 0.8;
+            filter: brightness(50%);
+            width: 100%;
+            height: 200px;
+            transition: 0.5s;
+        }
+
+        .left:hover .rounded-3,
+        .middle:hover .rounded-3,
+        .right:hover .rounded-3 {
+            /* opacity:2; */
+            opacity: 1;
+            transform: scale(1.05);
+            filter: brightness(100%);
+
+        }
+
+        /* travlename */
+        dialog {
+            border: none;
+            box-shadow: 0 2px 6px rgb(0, 0, 0);
+            border-radius: 10px;
+            width: 1000px;
+            height: 500px;
+            background-color: rgba(255, 255, 255, 0.95);
+
+
+        }
+
+        dialog::backdrop {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        #infoModal1,
+        #infoModal2,
+        #infoModal3,
+        #infoModal4,
+        #infoModal5,
+        #infoModal6,
+        #infoModal7,
+        #infoModal8,
+        #infoModal9,
+        #infoModal10,
+        #infoModal11,
+        #infoModal12 {
+            transition: 0.5s;
+            /*opacity: 0.5; */
+
+        }
+
+        .map {
+            border-style: inset;
+            border-width: 1px;
+            border-color: red;
+            background-color: #FFF;
+        }
+
+        .rounded-5 {
+            opacity: 0.7;
+        }
+
+        .rounded-5:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="menu">
+        <div class="offcanvas offcanvas-start " id="demo">
+            <div class="offcanvas-header">
+                <h1 class="offcanvas-title"><a href="./index.html">探索台灣</a></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+            </div>
+
+            <div class="offcanvas-body">
+                <a href="about.html">
+                    <p>關於這個網站</p>
+                </a>
+                <a href="gowhere.html">
+                    <p>去哪裡玩</p>
+                </a>
+                <a href="goround.html">
+                    <p>去環島吧</p>
+                </a>
+                <a href="mailus.html">
+                    <p>來留言吧</p>
+                </a>
+
+            </div>
+        </div>
+        <div class="container-fluid mt-3">
+            <!-- <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#demo">Ｏ</button> -->
+            <button class="btn btn-primary btn-lg" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#demo">♥</button>
+        </div>
+    </div>
+    <div class="banner"><br><br><br><br>
+
+        <p class="bannertext">南投縣<br></p>
+        <p class="bannertext_small">
+
+            若說中部地區是臺灣的心臟地帶，那南投地區即是「臺灣心」，因為南投是全臺灣唯一沒有臨海的縣！<br>
+
+            南投縣位居臺灣本島中央，面積約4,100平方公里，以臺灣最高峰——玉山為準點，<br>
+            用41座三千公尺以上的高山綿延出層巒起伏的綠海景觀，臺灣最長的河流——濁水溪蜿蜒而過，<br>
+            最美麗的湖泊——日月潭點綴其中，交織出令人讚嘆的山水奇景。<br>
+
+            農業為南投縣主要產業，特有的農家風情和豐富的物產塑造了另一種休閒旅遊風，<br>
+            目前縣境內已有數十處規劃完善的休閒農業區，恬靜悠閒的農村旅遊，是闔家渡假的好去處。<br>
+        </p>
+        <!-- <button id="show">show</button> -->
+
+
+        <br><br><br><br><br>
+    </div>
+    <hr id="a">
+    <div>
+        <p style="text-align: center;">景點介紹</p>
+        <!-- 第一列 -->
+        <div class="wrap">
+            <div class="x"></div>
+
+
+            <!-- 1 -->
+            <div class="left" id="show1">
+                <img class="rounded-3 travelimg" src="./images/travel/nantou/01.jpg" alt=""><br>
+                <span class="travlename">杉林溪森林生態渡假園區</span>
+            </div>
+            <dialog id="infoModal1" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">杉林溪森林生態渡假園區</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=23.636845,120.79465&hl=zh-TW&dirflg=r">
+                                    <span class="map">　南投縣竹山鎮溪山路6號
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close1" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/nantou/01_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    距溪頭17公里，佔地40公頃的杉林溪森林生態渡假園區，<br>
+                    位於溪頭往阿里山健行熱線之中途站，海拔1,600公尺，一年四季花期不斷；<br>
+                    春櫻吐蕊、夏石楠花開、秋蘭飄香、冬楓相映。<br>
+                    自溪頭孟宗山莊後的溪杉觀光道路進入，<br>
+                    著名景點依序為石井磯、青龍瀑布、聚英村、花卉中心、松瀧岩與天地眼，<br>
+                    其中後兩處一般車輛不准進入，須步行或搭專車。<br><br>
+
+                    過了溪杉公路上收費站即可見到「石井磯」指示牌，沿竹林小徑至杉林溪流旁，<br>
+                    可見因長期受溪流侵蝕而形成一窪窪如水井般石洞的「石井磯」景觀；<br>
+                    而「石井磯」下游地勢成直角下降，瀑水傾瀉形成「青龍瀑布」。<br>
+                    聚英村為此區本部，提供套房、小木屋、露營區等食宿服務，<br>
+                    停車場旁的花卉中心植有滿天星、繡球花與牡丹花。<br><br>
+                    
+                    溪杉公路的盡頭即為「松瀧岩瀑布」，瀑布兩旁各有一石洞，名為水濂洞。<br>
+                    左洞深約8公尺、高約20公尺、長約30公尺，右洞則比左洞大一倍。<br>
+                    靜坐洞內觀瀑，饒富趣味。至於「天地眼」則為本區最後一個景點，<br>
+                    因山壁上凹陷的兩個大洞宛如一雙眼而得名。</span><br>
+                </div>
+            </dialog>
+
+
+            <!-- 2 -->
+            <div class="middle" id="show2">
+                <img class="rounded-3 travelimg" src="./images/travel/nantou/02.jpg" alt=""><br>
+                <span class="travlename">九族文化村</span><br>
+            </div>
+            <dialog id="infoModal2" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">九族文化村</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=23.869105,120.94788&hl=zh-TW&dirflg=r">
+                                    <span class="map">　南投縣魚池鄉大林村金天巷45號
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close2" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/nantou/02_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    位於南投縣魚池鄉大林村金天巷45號的九族文化村，<br>
+                    係由水沙連歐洲花園、歡樂世界與原住民部落景觀區三大部份組成，<br>
+                    佔地62公頃，最高海拔900公尺。<br>
+                    擁有臺灣遊樂園8大最─臺灣最高的自由落體、<br>
+                    最大的歐洲花園、海拔最高、樹最多、原住民文化最豐富。<br>
+                    想在綠樹如蔭的山林間，欣賞原住民文化、體驗超刺激與快感的遊樂設施，<br>
+                    或者只是看場秀、品嘗原味餐等，<br>
+                    歡迎全家來體驗臺灣遊樂園最High的玩法。 <br>
+
+                    </span><br>
+                </div>
+            </dialog>
+
+
+
+
+            <!-- 3 -->
+            <div class="right" id="show3"><img class="rounded-3 travelimg" src="./images/travel/nantou/03.jpg"
+                    alt=""><br>
+                <span class="travlename">水里蛇窯</span><br>
+            </div>
+
+            <dialog id="infoModal3" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">水里蛇窯
+                                </span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=23.800656,120.86465&hl=zh-TW&dirflg=r">
+                                    <span class="map">　南投縣水里鄉頂崁村水信路一段512巷21號
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close3" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/nantou/03_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    這座獨一無二的蛇窯建於西元1927年，蛇窯源自大陸福州，<br>
+                    由民間經營，故稱民窯，至於官窯則稱龍窯。<br>
+                    蛇窯是順著斜坡地以土磚砌成，窯身甚長，遠望如蛇形，故名蛇窯。<br>
+                    水里蛇窯是臺灣現有最古老、最具傳統鄉土文化的柴燒窯。<br>
+                    這種由坯土和木材共同創出的藝術作品絕非現代化窯製品所能比擬。<br><br>
+
+                    蛇窯內並特為遊客精心規劃傳統文化介紹和工藝及陶藝作品展示，<br>
+                    另有蛇窯茶藝館供遊客休憩品茗。<br>
+                    多媒體視聽室介紹陶藝藝術，<br>
+                    陶藝教室則讓有興趣的遊客親手一嘗捏陶樂。<br>
+                    </span><br>
+
+                </div>
+            </dialog>
+
+            <div class="x"></div>
+        </div>
+
+
+        <!-- 第二列 -->
+        <div class="wrap">
+            <div class="x"></div>
+
+
+            <!-- 4 -->
+            <div class="left" id="show4">
+                <img class="rounded-3 travelimg" src="./images/travel/nantou/04.jpg" alt=""><br>
+                <span class="travlename">惠蓀林場</span>
+            </div>
+            <dialog id="infoModal4" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">惠蓀林場</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=24.091197,121.03372&hl=zh-TW&dirflg=r">
+                                    <span class="map">　南投縣仁愛鄉新生村山林巷1號
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close4" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/nantou/04_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    位於南投縣仁愛鄉的惠蓀林場，為中興大學所屬四大林場之一，面積廣達七千公頃，<br>
+                    海拔從450公尺至2,420公尺，綿延不斷的森林兼具溫、暖溫、亞熱三帶的不同特色，<br>
+                    其間蘊藏豐富多元的動植物生態，北港溪及其支流縱橫交錯，<br>
+                    造就了峽谷、瀑布、激流等天然景觀，景色渾然天成。<br><br>
+
+                    惠蓀擁有大面積的咖啡園，夏秋時結滿纍纍咖啡果實嬌紅欲滴，<br>
+                    形成另一種景觀，在群山環抱碧綠草坪上，一面品嚐香醇濃郁的臺灣咖啡，<br>
+                    一邊觀景，融入大自然懷抱，忘了塵俗之煩憂。<br><br>
+                    
+                    林區四季遊賞路線，規劃有賞鳥區、賞楓區、賞櫻區、賞螢區，<br>
+                    可享受森林浴、健行、賞鳥、賞花等樂趣。<br><br>
+                    
+                    林間規劃完善的遊憩步道，提供戲水、賞景、賞鳥、健行、森林浴等多項遊憩活動，<br>
+                    可以依自己的愛好、時間與體力，選擇不同的步道中體驗自然生態，<br>
+                    途中並可認識各種花草植物，聆聽蟲鳴鳥叫，<br>
+                    欣賞步道各具特色的景觀，充分享受戶外生活的樂趣。<br>
+                    </span><br>
+                </div>
+            </dialog>
+
+
+            <!-- 5 -->
+            <div class="middle" id="show5">
+                <img class="rounded-3 travelimg" src="./images/travel/nantou/05.jpg" alt=""><br>
+                <span class="travlename">日月潭國家風景區</span><br>
+            </div>
+            <dialog id="infoModal5" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">日月潭國家風景區</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=23.851592,120.90170&hl=zh-TW&dirflg=r">
+                                    <span class="map">　南投縣魚池鄉中山路599號
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close5" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/nantou/05_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    臺灣的水庫湖泊型風景區中應屬南投縣魚池鄉的日月潭最受矚目；<br>
+                    全潭面積827公頃，湖面周圍約33公里，北半部形如日輪，南半部形如月鉤，故而得名。<br>
+                    日月潭的水源來自濁水溪上游，而濁水溪發源於合歡山，故日月潭的源頭為合歡山。<br><br>
+
+                    最早日月潭只是個小湖泊，<br>
+                    日治時代，為了發電所需，日人從濁水溪最靠近日月潭的武界處，<br>
+                    攔砂截取濁水溪流水，修築了一條15公里長的地下水道，穿過水社大山進到日月潭，<br>
+                    淹沒眾多小山丘，而成今之泱泱湖泊。<br>
+                    由於臺灣的水庫普遍利用溪流截堵成潭，水庫狹長，景觀單調，<br>
+                    日月潭則是利用窪地注水成潭，水域由山巒環繞，層層相夾，<br>
+                    水道蜿蜒紛岐，遠觀近遊，處處是景。<br><br>
+                    
+                    由於它是國內少見的活水庫，水庫的水每日透過台電抽蓄發電循環使用，<br>
+                    宛如活水，不但藻類植物不易滋生，水質透明度佳，<br>
+                    故能繁殖肉質鮮膩的曲腰魚、奇力魚與潭蝦。</span><br>
+                </div>
+            </dialog>
+
+
+
+
+            <!-- 6 -->
+            <div class="right" id="show6"><img class="rounded-3 travelimg" src="./images/travel/nantou/06.jpg"
+                    alt=""><br>
+                <span class="travlename">牛耳藝術渡假村</span><br>
+            </div>
+
+            <dialog id="infoModal6" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">牛耳藝術渡假村</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=23.965617,120.94323&hl=zh-TW&dirflg=r">
+                                    <span class="map">　南投縣埔里鎮中山路四段1號
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close6" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/nantou/06_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    埔里牛耳藝術渡假村，<br>
+                    是為了收藏素人藝術家林淵先生的作品而成立的石雕公園，<br>
+                    創辦人黃炳松說：臺灣三位名雕刻家，<br>
+                    楊英風、朱銘、林淵生肖都屬牛，！<br>
+                    他們共同為臺灣藝術創作努力，<br>
+                    希望執雕刻藝術之牛耳，所以石雕公園以此為名。<br><br>
+
+                    民國76年（西元1987年）成立的埔里牛耳石雕公園，<br>
+                    園區佔地兩萬坪，經過多年的孕育成長，<br>
+                    已經從單純的石雕展示，發展成多元化的休閒渡假中心，<br>
+                    在此享受鄉野的藝術傳奇，舒適溫馨的渡假小木屋，<br>
+                    悠閒新活力的渡假會議，<br>
+                    花漾年華SPA館，健康蔬食桐詩桐畫餐廳，<br>
+                    繁花似夢賞桐花，生命的無限禮讚，<br>
+                    盡在埔里牛耳藝術渡假村！<br>
+                    </span><br>
+                </div>
+            </dialog>
+
+            <div class="x"></div>
+        </div>
+
+
+
+
+        <hr>
+        <div class="randomdiv">
+            <table>
+                <tr>
+                    <td colspan="3"><a id="randomhref_0" href="#">
+                            <div class="imgtext">
+                                <img id="counry_0" class="rounded-3 randomimg" src="" alt=""><span
+                                    id="counry_text0">aa</span>
+                            </div>
+                        </a></td>
+                    <td colspan="3"><a id="randomhref_1" href="#">
+                            <div class="imgtext">
+                                <img id="counry_1" class="rounded-3 randomimg" src="" alt=""><span
+                                    id="counry_text1">aa</span>
+                            </div>
+                        </a></td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td colspan="2"><a id="randomhref_2" href="#">
+                            <div class="imgtext">
+                                <img id="counry_2" class="rounded-3 randomimg" src="" alt=""><span
+                                    id="counry_text2">aa</span>
+                            </div>
+                        </a></td>
+                    <td colspan="2"><a id="randomhref_3" href="#">
+                            <div class="imgtext">
+                                <img id="counry_3" class="rounded-3 randomimg" src="" alt=""><span
+                                    id="counry_text3">aa</span>
+                            </div>
+                        </a></td>
+                    <td colspan="2"><a id="randomhref_4" href="#">
+                            <div class="imgtext">
+                                <img id="counry_4" class="rounded-3 randomimg" src="" alt=""><span
+                                    id="counry_text4">aa</span>
+                            </div>
+                        </a></td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <!-- <hr>在這裡輸入新ㄉ東西 -->　
+        </div>
+
+
+        <script>
+            let county = [
+                "./images/county/county001.png", "./images/county/county002.png", "./images/county/county003.png",
+                "./images/county/county004.png", "./images/county/county005.png", "./images/county/county006.png",
+                "./images/county/county007.png", "./images/county/county008.png", "./images/county/county009.png",
+                "./images/county/county010.png", "./images/county/county011.png", "./images/county/county012.png",
+                "./images/county/county013.png", "./images/county/county014.png", "./images/county/county015.png",
+                "./images/county/county016.png", "./images/county/county017.png", "./images/county/county018.png",
+                "./images/county/county019.png", "./images/county/county020.png", "./images/county/county021.png",
+                "./images/county/county022.png"
+            ];
+            let county2 = [
+                "臺北市", "新北市", "基隆市",
+                "宜蘭縣", "桃園市", "新竹縣",
+                "新竹市", "苗栗縣", "臺中市",
+                "彰化縣", "南投縣", "雲林縣",
+                "嘉義縣", "嘉義市", "臺南市",
+                "高雄市", "屏東縣", "花蓮縣",
+                "台東縣", "澎湖縣", "金門縣",
+                "連江縣（馬祖）"
+            ];
+            let countyhref = [
+                "taipei.html", "newtaipei.html", "keelung.html",
+                "yilan.html", "taoyuan.html", "hsinchucounty.html",
+                "hsinchucity.html", "miaoli.html", "taichung.html",
+                "changhua.html", "nantou.html", "yunlin.html",
+                "chiayicounty.html", "chiayicity.html", "tainan.html",
+                "kaohsiung.html", "pingtung.html", "hualien.html",
+                "taitung.html", "penghu.html", "kinmen.html",
+                "matsu.html"
+            ];
+            // console.log(county.length);
+            // let a = Math.floor(Math.random() * county.length);
+            var str = '';
+            var arr = [];
+            for (let i = 0; i < 6; i++) {
+                str = Math.floor(Math.random() * county.length);
+                for (j = 0; j < arr.length; j++) {
+                    if (arr[j] == str) {
+                        arr.splice(j, 1);
+                        i--;
+                    }
+                }
+                arr.push(str);
+            }
+            for (let i = 0; i < 5; i++) {
+                // document.getElementById('counry_' + i).innerHTML = county[arr[i]];
+                document.getElementById('counry_' + i).src = county[arr[i]];
+                document.getElementById('counry_text' + i).innerHTML = county2[arr[i]];
+                document.getElementById('randomhref_' + i).href = countyhref[arr[i]];
+            }
+            for (let i = 0; i > 8; i++) {
+
+            }
+
+            // 1
+
+            // let btn = document.querySelector("#show1");
+            // let infoModal = document.querySelector("#infoModal1");
+            // let close = document.querySelector("#close");
+            // btn.addEventListener("click", function () {
+            //     document.getElementById("infoModal1").style.opacity = "0";
+            //     setTimeout(function () {
+            //         infoModal.showModal();
+            //         document.getElementById("infoModal1").style.opacity = "1";
+            //     }, 100);
+            // }
+            // )
+            // close.addEventListener("click", function () {
+            //     document.getElementById("infoModal1").style.opacity = "0";
+            //     setTimeout(function () {
+            //         document.getElementById("infoModal1").style.opacity = "1";
+            //         infoModal.close();
+            //     }, 500);
+            // })
+
+            for (let i = 1; i <= 6; i++) {
+                let btn = document.querySelector("#show" + i);
+                let infoModal = document.querySelector("#infoModal" + i);
+                let close = document.querySelector("#close" + i);
+                btn.addEventListener("click", function () {
+                    document.getElementById("infoModal" + i).style.opacity = "0";
+                    setTimeout(function () {
+                        infoModal.showModal();
+                        document.getElementById("infoModal" + i).style.opacity = "1";
+                    }, 100);
+                }
+                )
+                close.addEventListener("click", function () {
+                    document.getElementById("infoModal" + i).style.opacity = "0";
+                    setTimeout(function () {
+                        document.getElementById("infoModal" + i).style.opacity = "1";
+                        infoModal.close();
+                    }, 500);
+                })
+            }
+
+
+
+        // document.getElementById("infoModal").onclick = function () {
+        //     document.getElementById("infoModal").style.opacity = "0";
+        //     setTimeout(function () {
+        //         document.getElementById("infoModal").style.opacity = "1";
+        //         infoModal.close();
+        //     }, 500);
+        // }
+
+
+
+        </script>
+</body>
+
+</html>

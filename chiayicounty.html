@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/tw_icon.png" type="image/png" sizes="16x16">
+    <!-- <link rel="stylesheet" href="css/bootstrap.css"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/offcanvas.css">
+    <link rel="stylesheet" href="css/alink.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+    <title>嘉義縣</title>
+    <style>
+        img {
+            opacity: 1;
+            transition: opacity 0.3s;
+        }
+
+        html {
+            font-size: 16px;
+            font-family: 微軟正黑體;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 5px 2px;
+        }
+
+        .randomimg {
+            /* height: 100%; */
+            width: 100%;
+            transition: 0.5s;
+            opacity: 0.5;
+        }
+
+        .imgtext {
+            position: relative;
+        }
+
+        .imgtext>span {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            color: white;
+            font-size: 2em;
+            text-shadow: 0 0 0.2em #000;
+            font-family: 微軟正黑體;
+            font-weight: bolder;
+        }
+
+        .imgtext:hover .rounded-3 {
+            opacity: 1;
+        }
+
+        .wrap {
+            /*父元素*/
+            width: 100%;
+            height: auto;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .x {
+            width: 5%;
+        }
+
+        .left {
+            width: 30%;
+        }
+
+        .middle {
+            width: 30%;
+
+        }
+
+        .right {
+            width: 30%;
+
+        }
+
+        .randomdiv {
+            width: 100%;
+        }
+
+        .banner {
+            background-image: url(./images/banner/chiayicounty.jpg);
+            /* background-attachment: fixed; */
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .bannertext {
+            text-align: center;
+            font-size: 4em;
+            font-family: 微軟正黑體;
+            font-weight: bold;
+            color: #FFF;
+            text-shadow: 0 0 10px #000;
+            /* text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; */
+            line-height: -10px;
+        }
+
+        .bannertext_small {
+            text-align: center;
+            font-size: 1em;
+            font-family: 微軟正黑體;
+            font-weight: bold;
+            color: #FFF;
+            text-shadow: 0 0 5px #000;
+            line-height: -10px;
+        }
+
+
+        td {
+            vertical-align: middle;
+        }
+
+
+
+
+        .left,
+        .middle,
+        .right {
+            position: relative;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .left>span,
+        .middle>span,
+        .right>span {
+            position: absolute;
+            top: 0.5em;
+            left: 1em;
+            color: #FFF;
+            font-size: 1.5em;
+            font-family: 微軟正黑體;
+            text-shadow: 0 0 0.2em #000;
+            font-weight: bold;
+        }
+
+        .travelimg {
+            opacity: 0.8;
+            filter: brightness(50%);
+            width: 100%;
+            height: 200px;
+            transition: 0.5s;
+        }
+
+        .left:hover .rounded-3,
+        .middle:hover .rounded-3,
+        .right:hover .rounded-3 {
+            /* opacity:2; */
+            opacity: 1;
+            transform: scale(1.05);
+            filter: brightness(100%);
+
+        }
+
+        /* travlename */
+        dialog {
+            border: none;
+            box-shadow: 0 2px 6px rgb(0, 0, 0);
+            border-radius: 10px;
+            width: 1000px;
+            height: 500px;
+            background-color: rgba(255, 255, 255, 0.95);
+
+
+        }
+
+        dialog::backdrop {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        #infoModal1,
+        #infoModal2,
+        #infoModal3,
+        #infoModal4,
+        #infoModal5,
+        #infoModal6,
+        #infoModal7,
+        #infoModal8,
+        #infoModal9,
+        #infoModal10,
+        #infoModal11,
+        #infoModal12 {
+            transition: 0.5s;
+            /*opacity: 0.5; */
+
+        }
+
+        .map {
+            border-style: inset;
+            border-width: 1px;
+            border-color: red;
+            background-color: #FFF;
+        }
+
+        .rounded-5 {
+            opacity: 0.7;
+        }
+
+        .rounded-5:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="menu">
+        <div class="offcanvas offcanvas-start " id="demo">
+            <div class="offcanvas-header">
+                <h1 class="offcanvas-title"><a href="./index.html">探索台灣</a></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+            </div>
+
+            <div class="offcanvas-body">
+                <a href="about.html">
+                    <p>關於這個網站</p>
+                </a>
+                <a href="gowhere.html">
+                    <p>去哪裡玩</p>
+                </a>
+                <a href="goround.html">
+                    <p>去環島吧</p>
+                </a>
+                <a href="mailus.html">
+                    <p>來留言吧</p>
+                </a>
+
+            </div>
+        </div>
+        <div class="container-fluid mt-3">
+            <!-- <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#demo">Ｏ</button> -->
+            <button class="btn btn-primary btn-lg" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#demo">♥</button>
+        </div>
+    </div>
+    <div class="banner"><br><br><br><br>
+
+        <p class="bannertext">嘉義縣<br></p>
+        <p class="bannertext_small">
+
+            往東去是鄒族的原鄉－阿里山，緊鄰著臺灣最高峰玉山山脈，<br>
+            有令人摒神讚嘆的日出、雲海、壯闊擎天的神木、豔麗的櫻花、<br>
+            舉世聞名的高山森林鐵路以及深藏不露的林間古道、溪谷、瀑布，<br>
+            更有鄒族原住民令人醉心的山林文化、祖靈傳說，<br>
+            在在的為這「高山青，澗水藍」的大阿里山地區增添耐人尋味的深度與魅力。<br>
+            往西行有東石、布袋等漁港蚵棚的海濱生態景觀，近年東石漁人碼頭是遊客最常造訪之夏季遊樂園，<br>
+            東石鰲鼓濕地已劃為全國最大的平地森林公園，<br>
+            遊客更可搭乘觀光漁筏由朴子溪、外傘頂洲、布袋好美寮自然保護區，<br>
+            體驗沿海漁業風光。平原地區更有北回歸線經過之北回歸線天文廣場，<br>
+            是一戶外教學最佳場所，亦有百年香煙繚繞之廟宇古蹟，<br>
+            每逢慶典時節往往是地方最慎重而歡慶之盛事，<br>
+            從媽祖繞境到衝水路迎客王，總是吸引來自全國各地朝聖人潮。<br>
+        </p>
+        <!-- <button id="show">show</button> -->
+
+
+        <br><br><br><br><br>
+    </div>
+    <hr id="a">
+    <div>
+        <p style="text-align: center;">景點介紹</p>
+        <!-- 第一列 -->
+        <div class="wrap">
+            <div class="x"></div>
+
+
+            <!-- 1 -->
+            <div class="left" id="show1">
+                <img class="rounded-3 travelimg" src="./images/travel/chiayicounty/01.jpg" alt=""><br>
+                <span class="travlename">奮起湖風景區</span>
+            </div>
+            <dialog id="infoModal1" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">奮起湖風景區</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=23.504190,120.69592&hl=zh-TW&dirflg=r">
+                                    <span class="map">　嘉義縣竹崎鄉中和村奮起湖
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close1" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/chiayicounty/01_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                        奮起湖位於嘉義縣竹崎鄉中和村，海拔約1,400公尺，<br>
+                        因東、西、北三面環山，中間低平，形如畚箕，故舊稱畚箕湖。<br>
+                        由於此區位於阿里山森林鐵路之中點，早年以老街、便當和四方竹聞名。<br>
+                        同時，它亦成為附近村落趕集聚散之地，因而村落聚集在火車站附近。<br><br>
+
+                        奮起湖的房舍依山坡而建，火車站下方有一條五百公尺左右的老街，<br>
+                        街中的店家販賣特產，例如當地的便當、豆腐和糕餅等美食，總是吸引不少遊客購買。<br>
+                        由於旅遊興盛，這條臺灣海拔最高的老街也成為許多人旅遊阿里山必訪的地點。<br>
+                        奮起湖老街位於車站下方，早年沒有街名，<br>
+                        當地人僅以「街仔」稱之，是奮起湖商家最早聚集的地方。<br>
+                        在阿里山公路、鐵路未開闢前，這兒即已略具雛形，可說是條百年老街。<br><br>
+
+                        遊客走在老街中，彷彿進入時光隧道。尤其，老街聯外道路，全是石階步道。<br>
+                        一層接著一層，上上下下，面積不大，像極了北臺灣九份的縮小版。<br>
+                        更因為地理環境和歷史背景有點類似九份，<br>
+                        因此也有人稱它是阿里山的九份，或是阿里山的悲情城市。</span><br>
+                </div>
+            </dialog>
+
+
+            <!-- 2 -->
+            <div class="middle" id="show2">
+                <img class="rounded-3 travelimg" src="./images/travel/chiayicounty/02.jpg" alt=""><br>
+                <span class="travlename">阿里山國家森林遊樂區</span><br>
+            </div>
+            <dialog id="infoModal2" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">阿里山國家森林遊樂區</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=23.511294,120.80367&hl=zh-TW&dirflg=r">
+                                    <span class="map">　嘉義縣阿里山鄉中正村59號
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close2" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/chiayicounty/02_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    相傳於250年以前，有一位名為阿巴里的鄒族酋長曾隻身來此打獵，<br>
+                    滿載而歸後，常帶族人來此，族人為感念他，便以其名為此命名。<br>
+                    其實阿里山共由十八座高山組成，屬於玉山山脈的支脈，隔同富溪與玉山主峰相望，<br>
+                    現在新中橫公路已將阿里山與玉山風景區串連起來。<br>
+                    阿里山森林遊樂區海拔高度2,216公尺，四周高山環列，氣候涼爽，<br>
+                    以日出、雲海、晚霞、森林、登山森林鐵路並列為阿里山五奇，<br>
+                    聞名國際。而鄒族原住民人文資源更增其觀光魅力。<br><br>
+
+                    阿里山地區橫跨臺灣森林垂直分佈之熱、暖、溫三帶，<br>
+                    蘊藏豐富的森林資源，尤以檜木名聞國際，漫步林間隨處可見。<br>
+                    紅檜、臺灣扁柏、臺灣杉、鐵杉及華山松稱為阿里山五木，<br>
+                    柳杉為本區人工造林最成功的外來樹種，沿森林鐵路漫山遍谷林木鬱成奇觀勝景。<br>
+                    每年三月中旬至四月中旬為本區之櫻花季，吉野櫻、重瓣櫻、山櫻花點綴滿山，<br>
+                    繽紛旖旎。其他花卉如森氏杜鵑、石楠花、毛地黃等等也陸續開放。<br>
+                    另有列入保護之臺灣一葉蘭自然保留區，亦值得欣賞。 <br>
+
+                    </span><br>
+                </div>
+            </dialog>
+
+
+
+
+            <!-- 3 -->
+            <div class="right" id="show3"><img class="rounded-3 travelimg" src="./images/travel/chiayicounty/03.jpg"
+                    alt=""><br>
+                <span class="travlename">布袋觀光漁市</span><br>
+            </div>
+
+            <dialog id="infoModal3" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">布袋觀光漁市
+                                </span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=23.379479,120.15556&hl=zh-TW&dirflg=r">
+                                    <span class="map">　嘉義縣布袋鎮中山路3號
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close3" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/chiayicounty/03_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    港內設置漁產品直銷中心，有生鮮區、加工區、餐飲區。<br>
+                    遊客可以自行選購新鮮的海產，<br>
+                    或請餐飲區代為調理，享受美味的海鮮大餐。<br>
+                    傳統的議價拍賣場也是不可錯過的鏡頭。<br>
+                    另外，也提供休閒漁業之旅服務，出海觀賞紅樹林、牡蠣養殖區，<br>
+                    或至外傘頂洲。港區附近的布袋商港，<br>
+                    有業者經營布袋至澎湖馬公之遊艇運輸，<br>
+                    為地方增添觀光收入。<br>
+                    </span><br>
+
+                </div>
+            </dialog>
+
+            <div class="x"></div>
+        </div>
+
+
+        <!-- 第二列 -->
+        <div class="wrap">
+            <div class="x"></div>
+
+
+            <!-- 4 -->
+            <div class="left" id="show4">
+                <img class="rounded-3 travelimg" src="./images/travel/chiayicounty/04.jpg" alt=""><br>
+                <span class="travlename">布袋鹽場</span>
+            </div>
+            <dialog id="infoModal4" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">布袋鹽場</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=23.381454,120.16863&hl=zh-TW&dirflg=r">
+                                    <span class="map">　嘉義縣布袋鎮新厝仔13號
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close4" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/chiayicounty/04_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    臺灣的西南海岸為一平直的沙崖，<br>
+                    由於日照特長，這一條狹長的海岸線，<br>
+                    遂形成一片特殊的鹽田景觀。<br>
+                    嘉義縣布袋鎮為全臺第一的鹽產地，<br>
+                    每年3至5月，日照最強且無雨水干擾，<br>
+                    為鹽場最忙碌的季節，<br>
+                    走近海邊，<br>
+                    只見一丘一丘潔白的鹽堆與迎風而來的濃濃鹽巴味。<br>
+                    </span><br>
+                </div>
+            </dialog>
+
+
+            <!-- 5 -->
+            <div class="middle" id="show5">
+                <img class="rounded-3 travelimg" src="./images/travel/chiayicounty/05.jpg" alt=""><br>
+                <span class="travlename">國立故宮博物院南部院區</span><br>
+            </div>
+            <dialog id="infoModal5" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">國立故宮博物院南部院區</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=23.473129,120.29271&hl=zh-TW&dirflg=r">
+                                    <span class="map">　嘉義縣太保市故宮大道888號
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close5" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/chiayicounty/05_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    故宮南院位於嘉義縣太保市，鄰近高鐵嘉義站，<br>
+                    除了博物館主體，院區中央另設有人工湖，<br>
+                    並有一景觀橋橫跨南端人工湖，可將參觀遊客接引至博物館二樓大廳。<br><br>
+
+                    博物館建築以中國水墨畫濃墨、飛白與渲染三種技法，<br>
+                    形成實量體展示空間及文物庫房、虛量體公共接待空間與穿透連接空間，<br>
+                    象徵著中華、印度與波斯三股文化交織出悠遠流長多元的亞洲文明，<br>
+                    而其建築造型由兩個流線型量體交織而成，<br>
+                    作為「龍」、「象」、「馬」文化象徵的隱喻。<br>
+                    為呼應主體建築的造型，銜接建築量體動勢，<br>
+                    景觀橋的結構形式與造型採用書法中草書的形式，<br>
+                    以富韻律的動態氣勢引導入館人群接近主體建築，<br>
+                    並提供參覽遊客最獨特與舒適的步行經驗。</span><br>
+                </div>
+            </dialog>
+
+
+
+
+            <!-- 6 -->
+            <div class="right" id="show6"><img class="rounded-3 travelimg" src="./images/travel/chiayicounty/06.jpg"
+                    alt=""><br>
+                <span class="travlename">頂湖自然生態公園</span><br>
+            </div>
+
+            <dialog id="infoModal6" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">頂湖自然生態公園</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=23.491319,120.72185&hl=zh-TW&dirflg=r">
+                                    <span class="map">　嘉義縣阿里山鄉
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close6" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/chiayicounty/06_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    頂湖位於石棹旁，是阿里山國家風景管理處近年規劃生態旅遊的重要據點之一。<br><br>
+
+                    頂湖環湖步道擁有孟宗竹林步道、天然原始林棧道、生痕化石等，<br>
+                    適合1到2小時的健行和漫步。<br>
+                    由台18線66K附近，在迷糊步道前方一百公尺處，<br>
+                    左轉約4公里上坡後轉入頂湖，眼前視野開闊，<br>
+                    經常可見當地農人在茶園裡耕作，山嵐在層層山巒間。<br>
+                    在園區內，可以沿著步道散步到涼亭、孟宗竹林。<br>
+                    另有一條原始林木棧道可到達大凍山，涼亭前有一塊巨石，<br>
+                    當地人稱為觀音石，表面還有生痕化石的痕跡。<br>
+                    </span><br>
+                </div>
+            </dialog>
+
+            <div class="x"></div>
+        </div>
+
+
+
+
+        <hr>
+        <div class="randomdiv">
+            <table>
+                <tr>
+                    <td colspan="3"><a id="randomhref_0" href="#">
+                            <div class="imgtext">
+                                <img id="counry_0" class="rounded-3 randomimg" src="" alt=""><span
+                                    id="counry_text0">aa</span>
+                            </div>
+                        </a></td>
+                    <td colspan="3"><a id="randomhref_1" href="#">
+                            <div class="imgtext">
+                                <img id="counry_1" class="rounded-3 randomimg" src="" alt=""><span
+                                    id="counry_text1">aa</span>
+                            </div>
+                        </a></td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td colspan="2"><a id="randomhref_2" href="#">
+                            <div class="imgtext">
+                                <img id="counry_2" class="rounded-3 randomimg" src="" alt=""><span
+                                    id="counry_text2">aa</span>
+                            </div>
+                        </a></td>
+                    <td colspan="2"><a id="randomhref_3" href="#">
+                            <div class="imgtext">
+                                <img id="counry_3" class="rounded-3 randomimg" src="" alt=""><span
+                                    id="counry_text3">aa</span>
+                            </div>
+                        </a></td>
+                    <td colspan="2"><a id="randomhref_4" href="#">
+                            <div class="imgtext">
+                                <img id="counry_4" class="rounded-3 randomimg" src="" alt=""><span
+                                    id="counry_text4">aa</span>
+                            </div>
+                        </a></td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <!-- <hr>在這裡輸入新ㄉ東西 -->　
+        </div>
+
+
+        <script>
+            let county = [
+                "./images/county/county001.png", "./images/county/county002.png", "./images/county/county003.png",
+                "./images/county/county004.png", "./images/county/county005.png", "./images/county/county006.png",
+                "./images/county/county007.png", "./images/county/county008.png", "./images/county/county009.png",
+                "./images/county/county010.png", "./images/county/county011.png", "./images/county/county012.png",
+                "./images/county/county013.png", "./images/county/county014.png", "./images/county/county015.png",
+                "./images/county/county016.png", "./images/county/county017.png", "./images/county/county018.png",
+                "./images/county/county019.png", "./images/county/county020.png", "./images/county/county021.png",
+                "./images/county/county022.png"
+            ];
+            let county2 = [
+                "臺北市", "新北市", "基隆市",
+                "宜蘭縣", "桃園市", "新竹縣",
+                "新竹市", "苗栗縣", "臺中市",
+                "彰化縣", "南投縣", "雲林縣",
+                "嘉義縣", "嘉義市", "臺南市",
+                "高雄市", "屏東縣", "花蓮縣",
+                "台東縣", "澎湖縣", "金門縣",
+                "連江縣（馬祖）"
+            ];
+            let countyhref = [
+                "taipei.html", "newtaipei.html", "keelung.html",
+                "yilan.html", "taoyuan.html", "hsinchucounty.html",
+                "hsinchucity.html", "miaoli.html", "taichung.html",
+                "changhua.html", "nantou.html", "yunlin.html",
+                "chiayicounty.html", "chiayicity.html", "tainan.html",
+                "kaohsiung.html", "pingtung.html", "hualien.html",
+                "taitung.html", "penghu.html", "kinmen.html",
+                "matsu.html"
+            ];
+            // console.log(county.length);
+            // let a = Math.floor(Math.random() * county.length);
+            var str = '';
+            var arr = [];
+            for (let i = 0; i < 6; i++) {
+                str = Math.floor(Math.random() * county.length);
+                for (j = 0; j < arr.length; j++) {
+                    if (arr[j] == str) {
+                        arr.splice(j, 1);
+                        i--;
+                    }
+                }
+                arr.push(str);
+            }
+            for (let i = 0; i < 5; i++) {
+                // document.getElementById('counry_' + i).innerHTML = county[arr[i]];
+                document.getElementById('counry_' + i).src = county[arr[i]];
+                document.getElementById('counry_text' + i).innerHTML = county2[arr[i]];
+                document.getElementById('randomhref_' + i).href = countyhref[arr[i]];
+            }
+            for (let i = 0; i > 8; i++) {
+
+            }
+
+            // 1
+
+            // let btn = document.querySelector("#show1");
+            // let infoModal = document.querySelector("#infoModal1");
+            // let close = document.querySelector("#close");
+            // btn.addEventListener("click", function () {
+            //     document.getElementById("infoModal1").style.opacity = "0";
+            //     setTimeout(function () {
+            //         infoModal.showModal();
+            //         document.getElementById("infoModal1").style.opacity = "1";
+            //     }, 100);
+            // }
+            // )
+            // close.addEventListener("click", function () {
+            //     document.getElementById("infoModal1").style.opacity = "0";
+            //     setTimeout(function () {
+            //         document.getElementById("infoModal1").style.opacity = "1";
+            //         infoModal.close();
+            //     }, 500);
+            // })
+
+            for (let i = 1; i <= 6; i++) {
+                let btn = document.querySelector("#show" + i);
+                let infoModal = document.querySelector("#infoModal" + i);
+                let close = document.querySelector("#close" + i);
+                btn.addEventListener("click", function () {
+                    document.getElementById("infoModal" + i).style.opacity = "0";
+                    setTimeout(function () {
+                        infoModal.showModal();
+                        document.getElementById("infoModal" + i).style.opacity = "1";
+                    }, 100);
+                }
+                )
+                close.addEventListener("click", function () {
+                    document.getElementById("infoModal" + i).style.opacity = "0";
+                    setTimeout(function () {
+                        document.getElementById("infoModal" + i).style.opacity = "1";
+                        infoModal.close();
+                    }, 500);
+                })
+            }
+
+
+
+        // document.getElementById("infoModal").onclick = function () {
+        //     document.getElementById("infoModal").style.opacity = "0";
+        //     setTimeout(function () {
+        //         document.getElementById("infoModal").style.opacity = "1";
+        //         infoModal.close();
+        //     }, 500);
+        // }
+
+
+
+        </script>
+</body>
+
+</html>

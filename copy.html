@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/tw_icon.png" type="image/png" sizes="16x16">
+    <!-- <link rel="stylesheet" href="css/bootstrap.css"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/offcanvas.css">
+    <link rel="stylesheet" href="css/alink.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+    <title>今天想去哪裡玩？</title>
+    <style>
+        img {
+            opacity: 1;
+            transition: opacity 0.3s;
+        }
+
+        html {
+            font-size: 16px;
+            font-family: 微軟正黑體;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 5px 2px;
+        }
+
+        .randomimg {
+            /* height: 100%; */
+            width: 100%;
+            transition: 0.5s;
+            opacity: 0.5;
+        }
+
+        .imgtext {
+            position: relative;
+
+        }
+
+        .imgtext>span {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            color: white;
+            font-size: 2em;
+            text-shadow: 0 0 0.2em #000;
+            font-family: 微軟正黑體;
+            font-weight: bolder;
+
+        }
+
+        .imgtext:hover .rounded-3 {
+            opacity: 1;
+
+        }
+
+        .wrap {
+            /*父元素*/
+            width: 100%;
+            height: auto;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .left {
+            width: 60%;
+        }
+
+        .right {
+            width: 40%;
+
+        }
+
+
+
+
+        .randomdiv {
+            width: 100%;
+        }
+
+        .banner {
+            background-image: url(./images/gowhere_3.jpg);
+            /* background-attachment: fixed; */
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .bannertext {
+            text-align: center;
+            font-size: 4em;
+            font-family: 微軟正黑體;
+            font-weight: bold;
+            color: #FFF;
+            text-shadow: 0 0 10px #000;
+            /* text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; */
+            line-height: -10px;
+        }
+
+        .bannertext_small {
+            text-align: center;
+            font-size: 1em;
+            font-family: 微軟正黑體;
+            font-weight: bold;
+            color: #FFF;
+            text-shadow: 0 0 5px #000;
+            line-height: -10px;
+        }
+
+
+        td {
+            vertical-align: middle;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="menu">
+        <div class="offcanvas offcanvas-start " id="demo">
+            <div class="offcanvas-header">
+                <h1 class="offcanvas-title"><a href="./index.html">探索台灣</a></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+            </div>
+
+            <div class="offcanvas-body">
+                <a href="about.html">
+                    <p>關於這個網站</p>
+                </a>
+                <a href="gowhere.html">
+                    <p>去哪裡玩</p>
+                </a>
+                <a href="goround.html">
+                    <p>去環島吧</p>
+                </a>
+                <a href="mailus.html">
+                    <p>來留言吧</p>
+                </a>
+
+            </div>
+        </div>
+        <div class="container-fluid mt-3">
+            <!-- <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#demo">Ｏ</button> -->
+            <button class="btn btn-primary btn-lg" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#demo">♥</button>
+        </div>
+    </div>
+    <div class="banner"><br><br><br><br>
+
+        <p class="bannertext">去哪裡玩<br></p>
+        <p class="bannertext_small">你應該親眼看看這些地方</p>
+        <br><br><br><br><br>
+    </div>
+    <hr id="a">
+
+    <hr>
+    <div class="randomdiv">
+        <table>
+            <tr>
+                <td colspan="3"><a id="randomhref_0" href="#">
+                        <div class="imgtext">
+                            <img id="counry_0" class="rounded-3 randomimg" src="" alt=""><span
+                                id="counry_text0">aa</span>
+                        </div>
+                    </a></td>
+                <td colspan="3"><a id="randomhref_1" href="#">
+                        <div class="imgtext">
+                            <img id="counry_1" class="rounded-3 randomimg" src="" alt=""><span
+                                id="counry_text1">aa</span>
+                        </div>
+                    </a></td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <td colspan="2"><a id="randomhref_2" href="#">
+                        <div class="imgtext">
+                            <img id="counry_2" class="rounded-3 randomimg" src="" alt=""><span
+                                id="counry_text2">aa</span>
+                        </div>
+                    </a></td>
+                <td colspan="2"><a id="randomhref_3" href="#">
+                        <div class="imgtext">
+                            <img id="counry_3" class="rounded-3 randomimg" src="" alt=""><span
+                                id="counry_text3">aa</span>
+                        </div>
+                    </a></td>
+                <td colspan="2"><a id="randomhref_4" href="#">
+                        <div class="imgtext">
+                            <img id="counry_4" class="rounded-3 randomimg" src="" alt=""><span
+                                id="counry_text4">aa</span>
+                        </div>
+                    </a></td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <!-- <hr>在這裡輸入新ㄉ東西 -->　
+    </div>
+
+
+    <script>
+        let county = [
+            "./images/county/county001.png", "./images/county/county002.png", "./images/county/county003.png",
+            "./images/county/county004.png", "./images/county/county005.png", "./images/county/county006.png",
+            "./images/county/county007.png", "./images/county/county008.png", "./images/county/county009.png",
+            "./images/county/county010.png", "./images/county/county011.png", "./images/county/county012.png",
+            "./images/county/county013.png", "./images/county/county014.png", "./images/county/county015.png",
+            "./images/county/county016.png", "./images/county/county017.png", "./images/county/county018.png",
+            "./images/county/county019.png", "./images/county/county020.png", "./images/county/county021.png",
+            "./images/county/county022.png"
+        ];
+        let county2 = [
+            "臺北市", "新北市", "基隆市",
+            "宜蘭縣", "桃園市", "新竹縣",
+            "新竹市", "苗栗縣", "臺中市",
+            "彰化縣", "南投縣", "雲林縣",
+            "嘉義縣", "嘉義市", "臺南市",
+            "高雄市", "屏東縣", "花蓮縣",
+            "台東縣", "澎湖縣", "金門縣",
+            "連江縣（馬祖）"
+        ];
+        let countyhref = [
+            "taipei.html", "newtaipei.html", "keelung.html",
+            "yilan.html", "taoyuan.html", "hsinchucounty.html",
+            "hsinchucity.html", "miaoli.html", "taichung.html",
+            "changhua.html", "nantou.html", "yunlin.html",
+            "chiayicounty.html", "chiayicity.html", "tainan.html",
+            "kaohsiung.html", "pingtung.html", "hualien.html",
+            "taitung.html", "penghu.html", "kinmen.html",
+            "matsu.html"
+        ];
+        // console.log(county.length);
+        // let a = Math.floor(Math.random() * county.length);
+        var str = '';
+        var arr = [];
+        for (let i = 0; i < 6; i++) {
+            str = Math.floor(Math.random() * county.length);
+            for (j = 0; j < arr.length; j++) {
+                if (arr[j] == str) {
+                    arr.splice(j, 1);
+                    i--;
+                }
+            }
+            arr.push(str);
+        }
+        for (let i = 0; i < 5; i++) {
+            // document.getElementById('counry_' + i).innerHTML = county[arr[i]];
+            document.getElementById('counry_' + i).src = county[arr[i]];
+            document.getElementById('counry_text' + i).innerHTML = county2[arr[i]];
+            document.getElementById('randomhref_' + i).href = countyhref[arr[i]];
+        }
+
+
+    </script>
+</body>
+
+</html>

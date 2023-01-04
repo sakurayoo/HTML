@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/tw_icon.png" type="image/png" sizes="16x16">
+    <!-- <link rel="stylesheet" href="css/bootstrap.css"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/offcanvas.css">
+    <link rel="stylesheet" href="css/alink.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+    <title>台北市</title>
+    <style>
+        img {
+            opacity: 1;
+            transition: opacity 0.3s;
+        }
+
+        html {
+            font-size: 16px;
+            font-family: 微軟正黑體;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 5px 2px;
+        }
+
+        .randomimg {
+            /* height: 100%; */
+            width: 100%;
+            transition: 0.5s;
+            opacity: 0.5;
+        }
+
+        .imgtext {
+            position: relative;
+        }
+
+        .imgtext>span {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            color: white;
+            font-size: 2em;
+            text-shadow: 0 0 0.2em #000;
+            font-family: 微軟正黑體;
+            font-weight: bolder;
+        }
+
+        .imgtext:hover .rounded-3 {
+            opacity: 1;
+        }
+
+        .wrap {
+            /*父元素*/
+            width: 100%;
+            height: auto;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .x {
+            width: 5%;
+        }
+
+        .left {
+            width: 30%;
+        }
+
+        .middle {
+            width: 30%;
+
+        }
+
+        .right {
+            width: 30%;
+
+        }
+
+
+
+
+        .randomdiv {
+            width: 100%;
+        }
+
+        .banner {
+            background-image: url(./images/gowhere_3.jpg);
+            /* background-attachment: fixed; */
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .bannertext {
+            text-align: center;
+            font-size: 4em;
+            font-family: 微軟正黑體;
+            font-weight: bold;
+            color: #FFF;
+            text-shadow: 0 0 10px #000;
+            /* text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; */
+            line-height: -10px;
+        }
+
+        .bannertext_small {
+            text-align: center;
+            font-size: 1em;
+            font-family: 微軟正黑體;
+            font-weight: bold;
+            color: #FFF;
+            text-shadow: 0 0 5px #000;
+            line-height: -10px;
+        }
+
+
+        td {
+            vertical-align: middle;
+        }
+
+
+
+
+        .left,
+        .middle,
+        .right {
+            position: relative;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .left>span,
+        .middle>span,
+        .right>span {
+            position: absolute;
+            top: 0.5em;
+            left: 1em;
+            color: #FFF;
+            font-size: 1.5em;
+            font-family: 微軟正黑體;
+            text-shadow: 0 0 0.2em #000;
+            font-weight: bold;
+        }
+
+        .travelimg {
+            opacity: 0.8;
+            filter: brightness(50%);
+            width: 100%;
+            height: 200px;
+            transition: 0.5s;
+        }
+
+        .left:hover .rounded-3,
+        .middle:hover .rounded-3,
+        .right:hover .rounded-3 {
+            /* opacity:2; */
+            opacity: 1;
+            transform: scale(1.05);
+            filter: brightness(100%);
+
+        }
+
+        /* travlename */
+        dialog {
+            border: none;
+            box-shadow: 0 2px 6px rgb(0, 0, 0);
+            border-radius: 10px;
+            width: 1000px;
+            height: 500px;
+            background-color: rgba(255, 255, 255, 0.95);
+
+
+        }
+
+        dialog::backdrop {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        #infoModal1, #infoModal2, #infoModal3,
+        #infoModal4, #infoModal5, #infoModal6,
+        #infoModal7, #infoModal8, #infoModal9,
+        #infoModal10, #infoModal11, #infoModal12 {
+            transition: 0.5s;
+            /*opacity: 0.5; */
+
+        }
+
+        .map {
+            border-style: inset;
+            border-width: 1px;
+            border-color: red;
+            background-color: #FFF;
+        }
+        .rounded-5{
+            opacity:0.7;
+        }
+        .rounded-5:hover{
+            opacity:1;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <div class="menu">
+        <div class="offcanvas offcanvas-start " id="demo">
+            <div class="offcanvas-header">
+                <h1 class="offcanvas-title"><a href="./index.html">探索台灣</a></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+            </div>
+
+            <div class="offcanvas-body">
+                <a href="about.html">
+                    <p>關於這個網站</p>
+                </a>
+                <a href="gowhere.html">
+                    <p>去哪裡玩</p>
+                </a>
+                <a href="goround.html">
+                    <p>去環島吧</p>
+                </a>
+                <a href="mailus.html">
+                    <p>來留言吧</p>
+                </a>
+
+            </div>
+        </div>
+        <div class="container-fluid mt-3">
+            <!-- <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#demo">Ｏ</button> -->
+            <button class="btn btn-primary btn-lg" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#demo">♥</button>
+        </div>
+    </div>
+    <div class="banner"><br><br><br><br>
+
+        <p class="bannertext">台北市<br></p>
+        <p class="bannertext_small">
+
+            在臺北，您每個所到之處，<br>多樣的文化特質都充沛鼓動著。<br>
+            雕龍畫棟的廟宇與現代的街道完美吻合，<br>還有許多世界級餐廳隨時提供您最正統的各式中華料理。<br>
+            別忘了，美味的夜市小吃不僅僅帶給您口腹的滿足，<br>更是引領您體驗臺灣生活的理想去處。<br></p>
+        <!-- <button id="show">show</button> -->
+
+
+        <br><br><br><br><br>
+    </div>
+    <hr id="a">
+    <div>
+        <p style="text-align: center;">景點介紹</p>
+        <!-- 第一列 -->
+        <div class="wrap">
+            <div class="x"></div>
+
+
+            <!-- 1 -->
+            <div class="left" id="show1">
+                <img class="rounded-3 travelimg" src="./images/travel/taipei/01.jpg" alt=""><br>
+                <span class="travlename">士林夜市</span>
+            </div>
+            <dialog id="infoModal1" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">士林夜市</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://www.google.com/maps/dir//25.086887,121.52536/@25.0868373,121.45525,12z/data=!3m1!4b1!4m2!4m1!3e3?hl=zh-TW">
+                                    <span class="map">　臺北市士林區大東路、大南路、文林路、基河路
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close1" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px;  ">
+                    <img class="rounded-5"   src="./images/travel/taipei/01_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                        為臺北市最具規模的夜市之一，以陽明戲院及慈誠宮為中心，<br>
+                        包含了文林路、大東路、大南路等熱鬧街市集結而成，<br>
+                        其中士林市場早在西元1910年即已興建，<br>
+                        以各種傳統小吃聞名國內外，許多觀光客皆慕名而來，<br>
+                        像是大餅包小餅、石頭火鍋或是士林大香腸等，<br>
+                        更是已經成為美食地標，無人不曉。<br><br>
+
+                        由於夜市鄰近許多學區，故以學生為主要的消費族群，<br>
+                        價格也比一般商店便宜許多，例如家具、衣飾、相片沖印店或寵物用品等，<br>
+                        都有其集散的區域，『情人巷』中的精品店與冰店，<br>
+                        更是吸引了不少當地學子以外的顧客前往。<br><br>
+
+                        士林夜市所含範圍極廣，在曲折巷弄內行走，<br>
+                        常有柳暗花明又一村的驚喜，週末假日時前往，<br>
+                        更是人山人海，擠得水洩不通，<br>
+                        常見一家大小提著大包小包剛採買的日用品，<br>
+                        嘴裡還塞著美味小吃，滿足之情溢於言表。</span><br>
+                </div>
+            </dialog>
+
+
+            <!-- 2 -->
+            <div class="middle" id="show2">
+                <img class="rounded-3 travelimg" src="./images/travel/taipei/02.jpg" alt=""><br>
+                <span class="travlename">陽明山國家公園</span><br>
+            </div>
+            <dialog id="infoModal2" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">陽明山國家公園</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=25.155744,121.54762&hl=zh-TW&dirflg=r">
+                                    <span class="map">　臺北市北投區竹子湖路1-20號
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close2" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/taipei/02_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    陽明山國家公園緊臨臺北都會區，全區以大屯火山群彙為主，<br>
+                    面積約11,338公頃，由內政部營建署陽明山國家公園管理處管理，<br>
+                    因火山活動造成的錐狀與鐘狀火山體、火口湖、硫氣孔、地熱與溫泉，<br>
+                    具有研究及娛樂價值，受季風影響，<br>
+                    植物相兼具高草原、矮草原、闊葉樹林、亞熱帶雨林與水生植物群落，<br>
+                    孕育臺灣水韭、大屯杜鵑、蝴蝶與鳥類，陽明山公園栽植的櫻花及杜鵑，<br>
+                    使本區成為臺北近郊最吸引人的賞花場所。<br><br>
+
+                    陽明山國家公園因受緯度及海拔之影響，氣候分屬亞熱帶氣候區與溫帶氣候區。<br>
+                    春季二、三月是陽明公園傳統的花季，色彩繽紛的各種杜鵑與滿山遍野的緋寒櫻，<br>
+                    吸引大批賞花人潮，讓陽明山的初春更顯生氣蓬勃。<br>
+                    夏季景色則因西南季風的吹拂、午後雷陣雨的影響，霧雨初晴時，<br>
+                    常可在山區覓得「虹橋跨立山谷」的景緻。而當秋天來時，芒草展現隨風搖曳的花海；<br>
+                    楓紅點綴枝頭，樹葉片片金黃，交織成一幅盛名遠播的「大屯秋色」；<br>
+                    冬季的陽明山則因受東北季風影響，山區經常寒風細雨，<br>
+                    低溫高濕，雲霧瀰漫。若遇強烈寒流來襲，七星山、竹子山、大屯山一帶偶可見白雪紛飛，<br>
+                    成為瑞雪覆蓋的銀白世界。<br>
+                    </span><br>
+                </div>
+            </dialog>
+
+
+
+
+            <!-- 3 -->
+            <div class="right" id="show3"><img class="rounded-3 travelimg" src="./images/travel/taipei/03.jpg"
+                    alt=""><br>
+                <span class="travlename">台北龍山寺</span><br>
+            </div>
+
+            <dialog id="infoModal3" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">臺北龍山寺
+                                </span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=25.037162,121.49990&hl=zh-TW&dirflg=r">
+                                    <span class="map">　臺北市萬華區廣州街211號
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close3" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/taipei/03_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    龍山寺，是當地居民信仰、活動、集會和指揮的中心。<br>
+                    據說以前有一個人把佩帶的觀音菩薩香火袋，遺掛在一棵大榕樹上，<br>
+                    到了夜晚竟然發出光芒。更奇怪的是有求必應，非常靈驗。<br>
+                    所以信徒就在那個地方建立龍山寺，從西元1738年開始，<br>
+                    到西元1740年落成。二百多年來，龍山寺經過多次的修建，<br>
+                    整個結構是完整「回」字形，在傳統的寺廟建築中，是一種非常尊貴的佈局。<br>
+                    在廣場上，可注意地板石材，其中切割較不整齊的部分，已有古老的歷史。<br>
+
+                    前臺灣海峽又叫「黑水溝」，風浪很大，移民都用石板來壓穩船艙，以能安全渡海來臺，<br>
+                    而這些石板，後來也就用來舖設龍山寺前的部分廣場。<br>
+                    再來，就可從前殿開始欣賞。首先，可以看到殿前有西元1918年所製臺灣獨一無二的銅鑄龍柱，<br>
+                    屋簷下的木雕、彩繪，也都非常生動。尤其用來支撐屋頂的「網目斗拱」，是臺灣寺廟的首次創作。<br>
+                    另外，大門左邊的石雕窗上，雕有精彩的三國演義故事；<br>
+                    右面則有一個八角竹節窗，上刻竹幹，是「竹報平安」的意思。<br>
+                    由於正門只有節慶祭典時才打開，所以平時都從廟宇左邊的門進入，右邊的門出來。<br>
+                    進到廟裡，可看到很多善男信女虔誠祭拜、誦經唸文。出了前殿，在天井上有一個香爐，<br>
+                    香爐上「憨番抬廟角」的有趣雕塑。天井兩旁還有鐘樓和鼓樓，<br>
+                    早上敲鐘、晚上擊鼓，來作為誦經、法會的提醒。<br>
+                    </span><br>
+
+                </div>
+            </dialog>
+
+            <div class="x"></div>
+        </div>
+
+
+        <!-- 第二列 -->
+        <div class="wrap">
+            <div class="x"></div>
+
+
+            <!-- 4 -->
+            <div class="left" id="show4">
+                <img class="rounded-3 travelimg" src="./images/travel/taipei/04.jpg" alt=""><br>
+                <span class="travlename">國立故宮博物院</span>
+            </div>
+            <dialog id="infoModal4" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">國立故宮博物院</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=25.102355,121.54849&hl=zh-TW&dirflg=r">
+                                    <span class="map">　臺北市士林區至善路二段221號
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close4" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/taipei/04_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    故宮收藏的文物珍寶，是舉世聞名的文化資產，<br>
+                    從帝王收藏到全民共有，傳承有序的國立故宮博物院典藏，<br>
+                    其收藏品的年代幾乎囊括了整個中華文化五千餘年未曾中斷的歷史，<br>
+                    在世界文明史上獨一無二。博物院內60多萬件收藏品中，<br>
+                    大多數是昔日中國皇室的收集品，皇室的收藏則始自1000多年前的宋朝。<br><br>
+
+                    隨著數位科技廣泛應用在博物館的展覽或硬體設備，<br>
+                    歷時三年的正館改建工程，於民國96年（西元2007年）2月改建完工後的新故宮，<br>
+                    除了提供煥然一新的展覽手法之外，也增建了數位學習空間，<br>
+                    如數位導覽大廳、多媒體放映室、多媒體兒童學習區等，<br>
+                    同時持續推動「數位典藏」、「數位博物館」以及「數位學習」等計畫，營造一個無圍牆的博物館。<br>
+                    而多樣化的餐飲服務、電影院以及文化商店等等，<br>
+                    讓遊客不僅可以參觀古文物、欣賞新藝術，甚至為約會地點，視故宮為生活的一部份。<br><br>
+                    
+                    承先啟後，再造新局，改建完工的故宮不僅代表華夏歷史的傳承，<br>
+                    展望未來更是與當代社會文化脈絡連結的新起點。<br>
+                    </span><br>
+                </div>
+            </dialog>
+
+
+            <!-- 5 -->
+            <div class="middle" id="show5">
+                <img class="rounded-3 travelimg" src="./images/travel/taipei/05.jpg" alt=""><br>
+                <span class="travlename">饒河街觀光夜市</span><br>
+            </div>
+            <dialog id="infoModal5" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">饒河街觀光夜市</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=25.050954,121.57752&hl=zh-TW&dirflg=r">
+                                    <span class="map">　臺北市松山區饒河街
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close5" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/taipei/05_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    饒河街夜市位於松山區八德路四段及撫遠街間的饒河街，全長600公尺，<br>
+                    是臺北市區的大型觀光夜市之一。饒河街與松山車站一帶舊稱錫口，<br>
+                    因基隆河水深，使本區得舟楫之便，而成為基隆、宜蘭貨物運至臺北城之轉運站，<br>
+                    當時商賈雲集、舟船輻輳，極一時之盛，故使本區有「小蘇州」之稱。<br>
+                    後因港岸河水淤積，停泊船隻漸少，再加上八德路拓寬後，饒河街成為次要道路，商業活動大減。<br>
+                    政府為了改善當地商家生計，遂於民國76年（西元1987年）將南松山橋下有照攤販集中至饒河街，<br>
+                    規劃為五百公尺長，為臺北市第二條觀光夜市。攤位整齊，內容琳琅滿目，<br>
+                    蚵仔麵線、牛雜麵、冰品攤等應有盡有。除了小吃外，各種日用百貨如服飾、皮鞋亦物美價廉，<br>
+                    此外還有民俗技藝表演及土產展售等。<br><br>
+
+                    饒河街夜市全長約六百公尺，位於撫遠街與松山火車站前的入口處，<br>
+                    各設有一座燈火璀璨的牌樓，由牌樓處開始進入夜市區。<br>
+                    饒河街夜市之一大特色，以定期舉辦傳統技藝表演而聞名。<br>
+                    兩側商店及騎樓下的攤販不計其數，因此來到此地的人，<br>
+                    無論採買服飾、生活用品或吃喝玩樂，絕對能盡其所欲。<br>
+                    </span><br>
+                </div>
+            </dialog>
+
+
+
+
+            <!-- 6 -->
+            <div class="right" id="show6"><img class="rounded-3 travelimg" src="./images/travel/taipei/06.jpg"
+                    alt=""><br>
+                <span class="travlename">國立中正紀念堂</span><br>
+            </div>
+
+            <dialog id="infoModal6" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">國立中正紀念堂</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=25.034611,121.52178&hl=zh-TW&dirflg=r">
+                                    <span class="map">　臺北市中正區中山南路21號
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close6" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/taipei/06_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    占地24.79公頃的中正紀念堂位於臺北市中心，<br>
+                    是為追念蔣中正總統而建造的紀念堂，<br>
+                    造型仿北京天壇之頂、埃及金字塔之體，<br>
+                    高聳威嚴，正廳置放蔣中正總統坐姿銅像，<br>
+                    底座部份設有展覽室和放映室，陳列蔣中正總統一生對國家民族偉大勳業之文物，<br>
+                    供民眾參觀，紀念堂左右分列戲劇院與音樂廳，<br>
+                    古色古香的中國宮殿式建築，莊嚴宏偉，<br>
+                    許多國內外之文化表演均在此進行。由於占地廣闊、建築美麗，<br>
+                    是民眾活動聚會及婚紗攝影的勝地，更成為國外旅客必訪之地。<br><br>
+
+                    3層臺階高14.5公尺，主體牆高24公尺，斗拱至寶頂尖高31.5公尺，<br>
+                    合共70公尺。大門高16公尺，重75噸，為青銅鑄建。正堂分上下2層，<br>
+                    上層平面為40公尺見方，四角各突出7.5公尺，後方居中立蔣中正總統座姿銅像，以供瞻仰。<br>
+                    下層大廳設有中央通廊、文物展視室、演藝廳、1展廳、一樓藝廊、2展廳、3展廳、行政區、博物館商店等。<br>
+                    </span><br>
+                </div>
+            </dialog>
+
+            <div class="x"></div>
+        </div>
+        <!-- 第三列 -->
+        <div class="wrap">
+            <div class="x"></div>
+
+
+            <!-- 7 -->
+            <div class="left" id="show7">
+                <img class="rounded-3 travelimg" src="./images/travel/taipei/07.jpg" alt=""><br>
+                <span class="travlename">台北101</span>
+            </div>
+            <dialog id="infoModal7" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">台北101</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=25.033976,121.56453&hl=zh-TW&dirflg=rW">
+                                    <span class="map">　臺北市信義區信義路五段7號
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close7" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/taipei/07_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    TAIPEI 101座落於台北最菁華地段，是國內建築界有史以來最大的工程專案。<br>
+                    該專案主要由國內十四家企業共同組成的台北金融大樓股份有限公司，<br>
+                    與國內外專業團隊聯手規劃，並由國際級建築大師李祖原精心設計，<br>
+                    超越單一量體的設計觀，以吉祥數字「八」（「發」的諧音），<br>
+                    作為設計單元。每八層樓為一個結構單元，彼此接續、層層相疊，構築整體。<br>
+                    在外觀上形成有節奏的律動美感，開創國際摩天大樓新風格。<br><br>
+
+                    TAIPEI 101多節式外觀，<br>
+                    以高科技巨型結構（Mega Structure）確保防災防風的顯著效益。<br>
+                    每八層形成一組自主構成的空間，自然化解高層建築引起之氣流對地面造成的風場效應，<br>
+                    透過建築設計綠化植栽區的區隔，確保行人的安全與舒適性。<br>
+                    大樓造型宛若勁竹節節高昇、柔韌有餘，象徵生生不息的傳統建築意涵。<br>
+                    內斜七度的建築面，層層往上遞增；<br>
+                    無反射光害的高度透明省能隔熱帷幕玻璃，讓人們在台灣的最高建築內，<br>
+                    觀天看地。高科技材質及創意照明，以透明、清晰、營造視覺穿透效果，<br>
+                    與自然及週遭環境大尺度的融合。<br>
+                    </span><br>
+                </div>
+            </dialog>
+
+
+            <!-- 8 -->
+            <div class="middle" id="show8">
+                <img class="rounded-3 travelimg" src="./images/travel/taipei/08.jpg" alt=""><br>
+                <span class="travlename">大稻埕碼頭</span><br>
+            </div>
+            <dialog id="infoModal8" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">大稻埕碼頭</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=25.056615,121.50714&hl=zh-TW&dirflg=r">
+                                    <span class="map">　臺北市大同區大稻埕碼頭
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close8" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/taipei/08_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    大稻埕原是平埔族的居住地，<br>
+                    因萬華（艋舺）同安人發生激烈的械鬥，造成族人移至大稻埕定居，<br>
+                    開始大稻埕淡水河旁商店和房屋的興建，淡水港開放後，<br>
+                    大稻埕在劉銘傳的治理下成為臺北城最繁華的物資集散中心，<br>
+                    以茶葉、布料為主要貿易交易，當時的延平北路及貴德街一帶便是商業活動的重心，<br>
+                    也讓大稻埕早年的歷史多采多姿、令人回味。<br><br>
+
+                    大稻埕碼頭位於淡水河畔，現今五號水門處（環河北路、民生西路口）。<br>
+                    大稻埕的發展歷史，與大稻埕碼頭有著密切的關係，淡水開港通商，<br>
+                    外商洋行紛紛到此開設商號，促成大稻埕往後的繁華。<br>
+                    現今雖然碼頭功能不復當年，但已轉型為民眾休閒遊憩的去處。<br>
+                    
+                    近年來大稻埕碼頭除了迎節慶放煙火之外，沿岸並闢建自行車道，<br>
+                    民眾可以悠閒騎單車享受河畔之旅，同時欣賞大稻埕的古意景緻。<br>
+                    </span><br>
+                </div>
+            </dialog>
+
+
+
+
+            <!-- 9 -->
+            <div class="right" id="show9"><img class="rounded-3 travelimg" src="./images/travel/taipei/09.jpg"
+                    alt=""><br>
+                <span class="travlename">大安森林公園</span><br>
+            </div>
+
+            <dialog id="infoModal9" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">大安森林公園</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=25.032435,121.53490&hl=zh-TW&dirflg=r">
+                                    <span class="map">　臺北市大安區新生南路二段1號
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close9" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/taipei/09_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    大安森林公園地處市中心，<br>
+                    東臨建國南路、西臨新生南路、南側為和平東路、北側為信義路，<br>
+                    在民國83年（西元1994年）正式開放。<br>
+                    園區內喬木蒼翠蓊鬱，灌木層次井然有序，百花爭妍，鳥語花香，<br>
+                    漫步期間有如置身於美侖美奐的森林之中。<br><br>
+
+                    大安森林公園不僅生態豐富，<br>
+                    亦是北市螢火蟲重要的復育種源區，可於季節期見到螢火蟲蹤跡；<br>
+                    園區內規劃一大型音樂舞台提供藝文表演，亦為台北市重要表演重鎮，<br>
+                    本區周邊是無障礙休閒遊憩區，提供身障朋友們最友善的休閒空間；<br>
+                    公園東南邊種植南洋風情的植物，行走期間頗有身處於熱帶椰林，享受微風徐吹的清新感。<br><br>
+                    
+                    大安森林公園蔚為「都市之肺」，淨化空氣與調節氣溫，來到大安森林公園休憩，<br>
+                    遊走公園內，處處皆是美景，不定期可以欣賞藝文表演，<br>
+                    享受森林浴與芬多精，值得旅人停下腳步休憩的好去處。<br>
+                    </span><br>
+                </div>
+            </dialog>
+
+            <div class="x"></div>
+        </div>
+        <!-- 第四列 -->
+        <div class="wrap">
+            <div class="x"></div>
+
+
+            <!-- 10 -->
+            <div class="left" id="show10">
+                <img class="rounded-3 travelimg" src="./images/travel/taipei/10.jpg" alt=""><br>
+                <span class="travlename">台北市立動物園</span>
+            </div>
+            <dialog id="infoModal10" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">台北市立動物園</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=24.998346,121.58103&hl=zh-TW&dirflg=r">
+                                    <span class="map">　臺北市文山區新光路二段30號
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close10" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/taipei/10_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    臺北市立動物園位於文山區又稱木柵動物園，國立政治大學附近。<br>
+                    民國75年（西元1986年）10月31日正式開放，目前園區總面積165公頃，<br>
+                    園內的設計，充分利用該地形，維護景觀及自然生態。<br><br>
+
+                    展示區包括臺灣動物區、兒童動物區、熱帶雨林區、非洲動物區、沙漠動物區、<br>
+                    澳洲動物區、溫帶動物區、鳥園、昆蟲館、企鵝館、無尾熊館、<br>
+                    兩棲爬蟲動物館、大貓熊館、穿山甲館、教育中心等，<br>
+                    一般生活中不易見到的動物，在這裡都可以親眼看見，<br>
+                    並經由專業詳細的解說，能更進一步瞭解動物們的生活環境與習性，<br>
+                    具有教育、保育研究及休閒娛樂的意義。<br><br>
+                    
+                    園區除了動物展示區外，另有野餐區、野外動物植物觀察區、青少年體能訓練場，<br>
+                    讓您在觀賞動物之餘，也能享受登山健行、欣賞自然風光，<br>
+                    是一座多元化的博物館、是一所展現生命多樣性的教學博物館、<br>
+                    一處野生動物的保育據點、為民眾提供豐富的知性遊憩的最佳休閒處。<br>
+                    </span><br>
+                </div>
+            </dialog>
+
+
+            <!-- 11 -->
+            <div class="middle" id="show11">
+                <img class="rounded-3 travelimg" src="./images/travel/taipei/11.jpg" alt=""><br>
+                <span class="travlename">貓空纜車</span><br>
+            </div>
+            <dialog id="infoModal11" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">貓空纜車</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=24.996027,121.57629&hl=zh-TW&dirflg=r">
+                                    <span class="map">　臺北市文山區新光路二段8號
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close11" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/taipei/11_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    貓空纜車為臺北市第一條纜車系統，<br>
+                    係採用法國POMA公司所生產的自動循環式系統，<br>
+                    最短發車間隔為12秒，全程搭乘時間約為20分鐘。<br>
+                    每節車廂可容納8人，單向最高載客量約為每小時2,000人。<br>
+                    車廂有144部，另有3部備用車廂。<br>
+                    全長達4.03公里，行駛路線成7字型，共有4個停靠站，<br>
+                    依序為「動物園站」、「動物園南站」、「指南宮站」及「貓空站」。<br>
+                    另外還有2個不停靠的轉角站，主要目的為引導鋼纜進行轉彎，<br>
+                    幾近90度的大轉彎，也是貓空纜車一大特色。<br>
+                    在纜車上能從高空俯瞰貓空茶園的景色，<br>
+                    隨著纜車上山，也別有一番刺激感。<br>
+                    </span><br>
+                </div>
+            </dialog>
+
+
+
+
+            <!-- 12 -->
+            <div class="right" id="show12"><img class="rounded-3 travelimg" src="./images/travel/taipei/12.jpg"
+                    alt=""><br>
+                <span class="travlename">花博公園</span><br>
+            </div>
+
+            <dialog id="infoModal12" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">花博公園</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=25.070753,121.52048&hl=zh-TW&dirflg=r">
+                                    <span class="map">　臺北市中山區玉門街1號
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close12" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/taipei/12_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    「2010臺北國際花卉博覽會」（簡稱臺北花博），<br>
+                    是臺灣第一次獲得國際授權舉辦的世界級博覽會，<br>
+                    營運171天創下896萬3,666參觀人次的佳績，<br>
+                    為延續花博美麗的力量，臺北市政府於花博會後規劃花博公園，<br>
+                    並整合原花博圓山、美術與新生等三大園區，<br>
+                    辦理文創、藝術、親子、多元教育、銀髮、幸福、樂活…等主題之佈展與系列活動，<br>
+                    以提昇市民文化、藝術、科技、環保、生態…等素養，成為優質休憩場所。<br>
+                    </span><br>
+                </div>
+            </dialog>
+
+            <div class="x"></div>
+        </div>
+
+
+ 
+
+
+    <hr>
+    <div class="randomdiv">
+        <table>
+            <tr>
+                <td colspan="3"><a id="randomhref_0" href="#">
+                        <div class="imgtext">
+                            <img id="counry_0" class="rounded-3 randomimg" src="" alt=""><span
+                                id="counry_text0">aa</span>
+                        </div>
+                    </a></td>
+                <td colspan="3"><a id="randomhref_1" href="#">
+                        <div class="imgtext">
+                            <img id="counry_1" class="rounded-3 randomimg" src="" alt=""><span
+                                id="counry_text1">aa</span>
+                        </div>
+                    </a></td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <td colspan="2"><a id="randomhref_2" href="#">
+                        <div class="imgtext">
+                            <img id="counry_2" class="rounded-3 randomimg" src="" alt=""><span
+                                id="counry_text2">aa</span>
+                        </div>
+                    </a></td>
+                <td colspan="2"><a id="randomhref_3" href="#">
+                        <div class="imgtext">
+                            <img id="counry_3" class="rounded-3 randomimg" src="" alt=""><span
+                                id="counry_text3">aa</span>
+                        </div>
+                    </a></td>
+                <td colspan="2"><a id="randomhref_4" href="#">
+                        <div class="imgtext">
+                            <img id="counry_4" class="rounded-3 randomimg" src="" alt=""><span
+                                id="counry_text4">aa</span>
+                        </div>
+                    </a></td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <!-- <hr>在這裡輸入新ㄉ東西 -->　
+    </div>
+
+
+    <script>
+        let county = [
+            "./images/county/county001.png", "./images/county/county002.png", "./images/county/county003.png",
+            "./images/county/county004.png", "./images/county/county005.png", "./images/county/county006.png",
+            "./images/county/county007.png", "./images/county/county008.png", "./images/county/county009.png",
+            "./images/county/county010.png", "./images/county/county011.png", "./images/county/county012.png",
+            "./images/county/county013.png", "./images/county/county014.png", "./images/county/county015.png",
+            "./images/county/county016.png", "./images/county/county017.png", "./images/county/county018.png",
+            "./images/county/county019.png", "./images/county/county020.png", "./images/county/county021.png",
+            "./images/county/county022.png"
+        ];
+        let county2 = [
+            "臺北市", "新北市", "基隆市",
+            "宜蘭縣", "桃園市", "新竹縣",
+            "新竹市", "苗栗縣", "臺中市",
+            "彰化縣", "南投縣", "雲林縣",
+            "嘉義縣", "嘉義市", "臺南市",
+            "高雄市", "屏東縣", "花蓮縣",
+            "台東縣", "澎湖縣", "金門縣",
+            "連江縣（馬祖）"
+        ];
+        let countyhref = [
+            "taipei.html", "newtaipei.html", "keelung.html",
+            "yilan.html", "taoyuan.html", "hsinchucounty.html",
+            "hsinchucity.html", "miaoli.html", "taichung.html",
+            "changhua.html", "nantou.html", "yunlin.html",
+            "chiayicounty.html", "chiayicity.html", "tainan.html",
+            "kaohsiung.html", "pingtung.html", "hualien.html",
+            "taitung.html", "penghu.html", "kinmen.html",
+            "matsu.html"
+        ];
+        // console.log(county.length);
+        // let a = Math.floor(Math.random() * county.length);
+        var str = '';
+        var arr = [];
+        for (let i = 0; i < 6; i++) {
+            str = Math.floor(Math.random() * county.length);
+            for (j = 0; j < arr.length; j++) {
+                if (arr[j] == str) {
+                    arr.splice(j, 1);
+                    i--;
+                }
+            }
+            arr.push(str);
+        }
+        for (let i = 0; i < 5; i++) {
+            // document.getElementById('counry_' + i).innerHTML = county[arr[i]];
+            document.getElementById('counry_' + i).src = county[arr[i]];
+            document.getElementById('counry_text' + i).innerHTML = county2[arr[i]];
+            document.getElementById('randomhref_' + i).href = countyhref[arr[i]];
+        }
+        for (let i = 0; i > 8; i++) {
+
+        }
+
+        // 1
+
+        // let btn = document.querySelector("#show1");
+        // let infoModal = document.querySelector("#infoModal1");
+        // let close = document.querySelector("#close");
+        // btn.addEventListener("click", function () {
+        //     document.getElementById("infoModal1").style.opacity = "0";
+        //     setTimeout(function () {
+        //         infoModal.showModal();
+        //         document.getElementById("infoModal1").style.opacity = "1";
+        //     }, 100);
+        // }
+        // )
+        // close.addEventListener("click", function () {
+        //     document.getElementById("infoModal1").style.opacity = "0";
+        //     setTimeout(function () {
+        //         document.getElementById("infoModal1").style.opacity = "1";
+        //         infoModal.close();
+        //     }, 500);
+        // })
+
+        for (let i = 1; i <= 12; i++) {
+            let btn = document.querySelector("#show" + i);
+            let infoModal = document.querySelector("#infoModal" + i);
+            let close = document.querySelector("#close" + i);
+            btn.addEventListener("click", function () {
+                document.getElementById("infoModal" + i).style.opacity = "0";
+                setTimeout(function () {
+                    infoModal.showModal();
+                    document.getElementById("infoModal" + i).style.opacity = "1";
+                }, 100);
+            }
+            )
+            close.addEventListener("click", function () {
+                document.getElementById("infoModal" + i).style.opacity = "0";
+                setTimeout(function () {
+                    document.getElementById("infoModal" + i).style.opacity = "1";
+                    infoModal.close();
+                }, 500);
+            })
+        }
+
+
+
+        // document.getElementById("infoModal").onclick = function () {
+        //     document.getElementById("infoModal").style.opacity = "0";
+        //     setTimeout(function () {
+        //         document.getElementById("infoModal").style.opacity = "1";
+        //         infoModal.close();
+        //     }, 500);
+        // }
+
+
+
+    </script>
+</body>
+
+</html>

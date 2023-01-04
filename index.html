@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/tw_icon.png" type="image/png" sizes="16x16">
+    <title>你好台灣，與我一起探索</title>
+    <link rel="icon" href="images/tw_icon.png" type="image/png" sizes="16x16">
+    <style>
+        html {
+            font-size: 16px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        div {
+            margin: 0 auto;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            /* line-height: 1px; */
+        }
+
+
+        .hellovideo {
+            margin: auto;
+            display: block;
+            /* position: relative; */
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            z-index: -1;
+            width: 80%;
+            height: 80%;
+            object-fit: cover;
+        }
+
+
+        body {
+            align-items: center;
+            justify-content: center;
+            font-size: 100%;
+        }
+
+        table {
+            text-align: center;
+            vertical-align: middle;
+            width: 100%;
+            height: 100%;
+        }
+
+        .hellotext {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            margin: auto;
+        }
+
+        .hellotaiwan {
+            font-family: 微軟正黑體;
+            font-weight: bold;
+            color: #FFF;
+            text-shadow: 0 0 10px #000;
+            font-size: 6rem;
+            line-height: -10px;
+        }
+
+        .withus {
+            font-family: 微軟正黑體;
+            font-weight: bold;
+            color: #FFF;
+            text-shadow: 0 0 10px #000;
+            font-size: 1rem;
+        }
+
+        .playimg {
+            width: 10%;
+        }
+
+        .playimg:hover,
+        .withus:hover,
+        .hellotaiwan:hover {
+            -webkit-filter: invert(100%);
+            filter: invert(100%);
+        }
+
+        .container {
+            position: relative;
+
+        }
+
+        .container_video {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -20;
+            filter: blur(5px);
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <video width="80%" autoplay="" muted="" loop="" class="container_video">
+            <source src="./video/index_video.mp4" type="video/mp4">
+        </video>
+
+        <br><br><br>
+        <div>
+            <table>
+                <tr>
+                    <table>
+                        <tr>
+                            <td>
+                                <video width="80%" autoplay="" muted="" loop="" class="hellovideo">
+                                    <source src="./video/index_video.mp4" type="video/mp4">
+                                </video><br><br><br><br><br><br><br>
+                                <a href="about.html">
+                                    <span class="hellotaiwan">探 索<br>台 灣</span><br><br><br>
+                                    <p class="withus">▶點擊我，與我一起探索</p>
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                    <br><br>
+
+                </tr>
+            </table>
+
+        </div>
+        <div class="outer">
+
+        </div>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+.menu {
+    z-index: 9999;
+    position: fixed ! important;
+    left: 0px;
+    top: 0px;
+}
+
+.offcanvas {
+    position: absolute;
+    width: 260px;
+    right: 0px;
+    top: 0px;
+}
+
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:visited {
+    background-color: pink !important;
+    border-color: palevioletred !important;
+}
+
+.offcanvas {
+    position: fixed;
+}

@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/tw_icon.png" type="image/png" sizes="16x16">
+    <!-- <link rel="stylesheet" href="css/bootstrap.css"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/offcanvas.css">
+    <link rel="stylesheet" href="css/alink.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+    <title>新北市</title>
+    <style>
+        img {
+            opacity: 1;
+            transition: opacity 0.3s;
+        }
+
+        html {
+            font-size: 16px;
+            font-family: 微軟正黑體;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 5px 2px;
+        }
+
+        .randomimg {
+            /* height: 100%; */
+            width: 100%;
+            transition: 0.5s;
+            opacity: 0.5;
+        }
+
+        .imgtext {
+            position: relative;
+        }
+
+        .imgtext>span {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            color: white;
+            font-size: 2em;
+            text-shadow: 0 0 0.2em #000;
+            font-family: 微軟正黑體;
+            font-weight: bolder;
+        }
+
+        .imgtext:hover .rounded-3 {
+            opacity: 1;
+        }
+
+        .wrap {
+            /*父元素*/
+            width: 100%;
+            height: auto;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .x {
+            width: 5%;
+        }
+
+        .left {
+            width: 30%;
+        }
+
+        .middle {
+            width: 30%;
+
+        }
+
+        .right {
+            width: 30%;
+
+        }
+
+
+
+
+        .randomdiv {
+            width: 100%;
+        }
+
+        .banner {
+            background-image: url(./images/banner/newtaipei.jpg);
+            /* background-attachment: fixed; */
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .bannertext {
+            text-align: center;
+            font-size: 4em;
+            font-family: 微軟正黑體;
+            font-weight: bold;
+            color: #FFF;
+            text-shadow: 0 0 10px #000;
+            /* text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; */
+            line-height: -10px;
+        }
+
+        .bannertext_small {
+            text-align: center;
+            font-size: 1em;
+            font-family: 微軟正黑體;
+            font-weight: bold;
+            color: #FFF;
+            text-shadow: 0 0 5px #000;
+            line-height: -10px;
+        }
+
+
+        td {
+            vertical-align: middle;
+        }
+
+
+
+
+        .left,
+        .middle,
+        .right {
+            position: relative;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .left>span,
+        .middle>span,
+        .right>span {
+            position: absolute;
+            top: 0.5em;
+            left: 1em;
+            color: #FFF;
+            font-size: 1.5em;
+            font-family: 微軟正黑體;
+            text-shadow: 0 0 0.2em #000;
+            font-weight: bold;
+        }
+
+        .travelimg {
+            opacity: 0.8;
+            filter: brightness(50%);
+            width: 100%;
+            height: 200px;
+            transition: 0.5s;
+        }
+
+        .left:hover .rounded-3,
+        .middle:hover .rounded-3,
+        .right:hover .rounded-3 {
+            /* opacity:2; */
+            opacity: 1;
+            transform: scale(1.05);
+            filter: brightness(100%);
+
+        }
+
+        /* travlename */
+        dialog {
+            border: none;
+            box-shadow: 0 2px 6px rgb(0, 0, 0);
+            border-radius: 10px;
+            width: 1000px;
+            height: 500px;
+            background-color: rgba(255, 255, 255, 0.95);
+
+
+        }
+
+        dialog::backdrop {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        #infoModal1,
+        #infoModal2,
+        #infoModal3,
+        #infoModal4,
+        #infoModal5,
+        #infoModal6,
+        #infoModal7,
+        #infoModal8,
+        #infoModal9,
+        #infoModal10,
+        #infoModal11,
+        #infoModal12 {
+            transition: 0.5s;
+            /*opacity: 0.5; */
+
+        }
+
+        .map {
+            border-style: inset;
+            border-width: 1px;
+            border-color: red;
+            background-color: #FFF;
+        }
+        .rounded-5{
+            opacity:0.7;
+        }
+        .rounded-5:hover{
+            opacity:1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="menu">
+        <div class="offcanvas offcanvas-start " id="demo">
+            <div class="offcanvas-header">
+                <h1 class="offcanvas-title"><a href="./index.html">探索台灣</a></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+            </div>
+
+            <div class="offcanvas-body">
+                <a href="about.html">
+                    <p>關於這個網站</p>
+                </a>
+                <a href="gowhere.html">
+                    <p>去哪裡玩</p>
+                </a>
+                <a href="goround.html">
+                    <p>去環島吧</p>
+                </a>
+                <a href="mailus.html">
+                    <p>來留言吧</p>
+                </a>
+
+            </div>
+        </div>
+        <div class="container-fluid mt-3">
+            <!-- <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#demo">Ｏ</button> -->
+            <button class="btn btn-primary btn-lg" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#demo">♥</button>
+        </div>
+    </div>
+    <div class="banner"><br><br><br><br>
+
+        <p class="bannertext">新北市<br></p>
+        <p class="bannertext_small">
+
+            新北市是臺灣本島最北的城市，環繞整個臺北市，<br>
+            總面積達二千多平方公里，海岸線長達120餘公里，幅員遼闊，<br>
+            新北市的東北、北部、西北部均臨海，市內北海岸與東北角海岸擁有豐富的海景奇觀及海岸風光，<br>
+            每逢夏日，海上盡是弄潮張帆的人潮，整條綿延的山海線，銜接成臺北人最鍾愛的黃金旅遊路線。<br></p>
+        <!-- <button id="show">show</button> -->
+
+
+        <br><br><br><br><br>
+    </div>
+    <hr id="a">
+    <div>
+        <p style="text-align: center;">景點介紹</p>
+        <!-- 第一列 -->
+        <div class="wrap">
+            <div class="x"></div>
+
+
+            <!-- 1 -->
+            <div class="left" id="show1">
+                <img class="rounded-3 travelimg" src="./images/travel/newtaipei/01.jpg" alt=""><br>
+                <span class="travlename">九份</span>
+            </div>
+            <dialog id="infoModal1" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">九份</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=25.109819,121.84341&hl=zh-TW&dirflg=r">
+                                    <span class="map">　新北市瑞芳區基山街、輕便路、汽車路、豎崎路一帶
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close1" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/newtaipei/01_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                        同時擁有高山屏障與遼闊海景的九份，除了有首屈一指的山海風光，春夏秋冬晴雨晨昏日夜景致各具特色。<br>
+                        區內任何面海窗戶、陽臺、門口埕等地，<br>
+                        均可欣賞到不同季節、相異時段的自然景觀、青鬱尖聳的「雞籠山」與開闊碧藍的港灣海濱。<br><br>
+                        「春櫻花、夏清風、秋芒花、冬雲霧」為九份美麗多變之四季容顏最佳寫照。<br>
+                        春日踏青，臺陽公司瑞芳礦場辦事處與福山宮前埕，幾叢櫻花迎面展姿。<br>
+                        夏日山嵐清風，溫差效應造成日吹山風、夜吹海風，令人暑氣全消。<br>
+                        晚秋時分芒花抽穗，隨著東北季風吹拂，一波波白芒如浪潮般在山巒間浪漫搖曳，<br>
+                        駐足頌德公園上方涼亭、大竿林、雞籠山及往雙溪的102縣道上，感受款款詩意。<br>
+                        冬日霪雨連綿，細雨中石階兀自流著瀑布般的水流，<br>
+                        寒意襲人的繚繞霧氣，為九份增添幾許若隱若現的另一種冷清、蕭瑟面貌。<br><br>
+                        白天若無雲霧瀰漫，海上一片清朗蔚藍，可遠眺層層的海浪；<br>
+                        入夜後，海面上漁火點點，更襯托出山城夜晚的寧靜。<br>
+                        其它諸如坐看日出雲起、晚霞滿天、觀星賞月...，均令人動容，難以忘懷。</span><br>
+                </div>
+            </dialog>
+
+
+            <!-- 2 -->
+            <div class="middle" id="show2">
+                <img class="rounded-3 travelimg" src="./images/travel/newtaipei/02.jpg" alt=""><br>
+                <span class="travlename">淡水老街</span><br>
+            </div>
+            <dialog id="infoModal2" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">淡水老街</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=25.171038,121.43895&hl=zh-TW&dirflg=r">
+                                    <span class="map">　新北市淡水區中正路
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close2" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/newtaipei/02_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                        拜訪淡水，徒步悠遊是不錯的賞玩方式，<br>
+                        中正路、真理街、重建街、三民街、清水街一帶，最能展現老街古風及各時期建築特色。<br>
+                        遊客可搭乘往返淡水、八里及淡水、大稻埕間的渡輪，淡水河風情，盡收眼底。<br><br>
+
+                        一般所說的淡水老街，泛指中正路一帶（從渡船碼頭附近到與中山路交會口路段），<br>
+                        含其周圍鄰接之三民街、重建街等。老街上零星可見一些局部保留舊建築趣味的屋舍，<br>
+                        加上古董藝品店林立，更顯其古樸風味。沿街可欣賞精雕細琢的石藝、木雕作品，<br>
+                        店家細心收藏多年的古董文物，飄逸優雅的詩詞字畫，以及各色裝飾藝品。<br><br>
+
+                        看河、觀山、坐船，古老的遊趣一直延伸到現在，因有淡水河、渡船頭、漁人碼頭等景點，<br>
+                        加上捷運的便利，讓淡水老街的魅力無人能擋。<br>
+                    </span><br>
+                </div>
+            </dialog>
+
+
+
+
+            <!-- 3 -->
+            <div class="right" id="show3"><img class="rounded-3 travelimg" src="./images/travel/newtaipei/03.jpg"
+                    alt=""><br>
+                <span class="travlename">野柳地質公園</span><br>
+            </div>
+
+            <dialog id="infoModal3" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">野柳地質公園
+                                </span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=25.205290,121.68992&hl=zh-TW&dirflg=r">
+                                    <span class="map">　新北市萬里區港東路167-1號
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close3" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/newtaipei/03_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                        「野柳」為大屯山餘脈伸出海中的岬角，從金山遠眺，猶如潛入海中的巨龜，<br>
+                        故又名為「野柳龜」。其因波浪侵蝕、岩石風化及地殼運動等作用，<br>
+                        造就了海蝕洞溝、燭狀石、蕈狀岩、豆腐岩、蜂窩岩、壺穴、溶蝕盤等各種奇特景觀。<br>
+                        女王頭、仙女鞋、燭臺石等，更是聞名國際的海蝕奇觀。<br>
+                        區內的林添禎塑像是紀念其當年捨身救人的英勇事蹟。<br><br>
+
+                        燭臺石的「燭火」其實是岩層裡堅硬的球形結核，因較能抵抗海蝕，而露出錐形頂部，<br>
+                        海水沿其邊緣迴流激盪，產生環狀溝槽，由於結核外圍有一帶堅硬的環圈，<br>
+                        海水便順此環圈向下侵蝕、切割，形成圓錐狀外形，真可謂鬼斧神工之佳作。<br>
+                        所以「野柳」不但是臺灣著名的觀光遊憩據點，更是一處地質地形景觀豐富的教室，<br>
+                        值得我們細究觀賞，相信在您觀賞之後，不得不讚嘆大自然之偉大神奇了！<br>
+                    </span><br>
+
+                </div>
+            </dialog>
+
+            <div class="x"></div>
+        </div>
+
+
+        <!-- 第二列 -->
+        <div class="wrap">
+            <div class="x"></div>
+
+
+            <!-- 4 -->
+            <div class="left" id="show4">
+                <img class="rounded-3 travelimg" src="./images/travel/newtaipei/04.jpg" alt=""><br>
+                <span class="travlename">碧潭風景區</span>
+            </div>
+            <dialog id="infoModal4" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">碧潭風景區</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=24.956896,121.53699&hl=zh-TW&dirflg=r">
+                                    <span class="map">　新北市新店區新店路
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close4" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/newtaipei/04_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    碧潭為臺灣昔日八大景之一，風景秀麗，<br>
+                    位於捷運新店總站附近，交通甚為便利，<br>
+                    為臺北都會區民眾假日旅遊休憩的好去處。<br><br>
+
+                    新店溪流經碧潭出現曲流、岩壁及丘陵，<br>
+                    碧潭因河岸寬廣，水色澄碧、平靜如潭而得其名，<br>
+                    適宜划船、游泳、釣魚等活動，景致十分宜人。<br>
+                    早年前考試院長孫科曾在潭西岸的懸崖巨石上題有「碧潭」二字，<br>
+                    巨石頂上民間居民蓋有亭台，名為碧亭，將潭西山裝點綴地秀麗不凡。<br><br>
+                    
+                    碧潭吊橋長約200公尺，建於西元1937年，橫跨碧潭之水上，佇立於碧潭兩岸，<br>
+                    此有如長虹懸空跨越兩岸，成為本地主要特色標誌。<br>
+                    站於橋上欣賞碧潭之美景，湖光山色、葉舟點點，把碧潭裝點得如詩如畫，<br>
+                    這歷史悠久的遊覽勝地，為新店區旅遊主要的觀光景點。<br>
+                    </span><br>
+                </div>
+            </dialog>
+
+
+            <!-- 5 -->
+            <div class="middle" id="show5">
+                <img class="rounded-3 travelimg" src="./images/travel/newtaipei/05.jpg" alt=""><br>
+                <span class="travlename">烏來</span><br>
+            </div>
+            <dialog id="infoModal5" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">烏來</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=24.864935,121.55198&hl=zh-TW&dirflg=r">
+                                    <span class="map">　新北市烏來區烏來街45-1號
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close5" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/newtaipei/05_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    烏來是臺灣北部著名的山地鄉，位於水源保護區，<br>
+                    居民以泰雅族居多，南勢溪和桶後溪交流處，<br>
+                    此處兩側山峰高聳，溪流蜿蜒而過，形成峻秀的山水奇景，<br>
+                    以溫泉、臺車、瀑布和雲仙樂園等聞名。<br><br>
+
+                    相傳『烏來』一詞原為泰雅族原住民的用語，意思是「溫泉」，<br>
+                    所以當地的溫泉也相當有名，泉質為弱鹼性碳酸泉，清徹透明。<br>
+                    著名的烏來瀑布，瀑高約80公尺，如白練凌空，聲勢浩大。<br>
+                    此外觀光台車亦為烏來的特色之一，<br>
+                    原用以運輸林木為主，現為遊客登山遊覽之交通工具，<br>
+                    瀑布對面山麓的山地文化村為原住民民俗文物館改建而成，<br>
+                    介紹泰雅族原住民文化及風俗習慣，並展示昔日原住民文物，<br>
+                    原住民歌舞表演更是文化村內的重頭戲。<br>
+                    賞遊烏來，彷如進入世外桃源、人間仙境，是觀光休閒的最佳去處。<br>
+                    </span><br>
+                </div>
+            </dialog>
+
+
+
+
+            <!-- 6 -->
+            <div class="right" id="show6"><img class="rounded-3 travelimg" src="./images/travel/newtaipei/06.jpg"
+                    alt=""><br>
+                <span class="travlename">白沙灣</span><br>
+            </div>
+
+            <dialog id="infoModal6" style="  background-color:  rgba(255, 255, 255, 0.9); ">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;">
+                                <span style="font-size: 2em;font-weight: bolder;">白沙灣</span>
+                            </td>
+                            <td style="text-align: right;"><a target="_blank"
+                                    href="https://maps.google.com/maps?f=d&saddr=&daddr=25.284314,121.51720&hl=zh-TW&dirflg=r">
+                                    <span class="map">　新北市石門區德茂里下員坑
+                                        <img src="./images/gps.png" height="16px" alt="">　</span></a>
+                                　<button id="close6" type="button" class="btn btn-dark">×</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div style="position: absolute; bottom: 10px; right: 10px; ">
+                    <img class="rounded-5" src="./images/travel/newtaipei/06_1.jpg" width="400px" alt="">
+                </div>
+                <div><span style="position: absolute; text-shadow: 0 0 5px #FFF; font-weight: bolder;">
+                    沿著北部濱海公路兜風，一定會發現這塊適合賞海景、吹海風的白色沙灘，<br>
+                    綿延一公里的貝殼白沙，在碧海藍天的映照下，令人心曠神怡。<br>
+                    自日治時代就很有名氣的白沙灣海水浴場，位於石門區麟山鼻與富貴角之間，<br>
+                    是由富貴角及麟山鼻合抱而成的半月形天然海灣，向來以沙質潔白聞名，<br>
+                    來到這裡的遊客，除了享受貝殼沙踏在腳底的細緻感受，<br>
+                    還有各式各樣的水上活動可以參與，<br>
+                    游泳、釣魚、帆船、潛水、玩風浪板，都是夏日最受歡迎的活動。 <br>
+                    </span><br>
+                </div>
+            </dialog>
+
+            <div class="x"></div>
+        </div>
+
+
+
+
+        <hr>
+        <div class="randomdiv">
+            <table>
+                <tr>
+                    <td colspan="3"><a id="randomhref_0" href="#">
+                            <div class="imgtext">
+                                <img id="counry_0" class="rounded-3 randomimg" src="" alt=""><span
+                                    id="counry_text0">aa</span>
+                            </div>
+                        </a></td>
+                    <td colspan="3"><a id="randomhref_1" href="#">
+                            <div class="imgtext">
+                                <img id="counry_1" class="rounded-3 randomimg" src="" alt=""><span
+                                    id="counry_text1">aa</span>
+                            </div>
+                        </a></td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td colspan="2"><a id="randomhref_2" href="#">
+                            <div class="imgtext">
+                                <img id="counry_2" class="rounded-3 randomimg" src="" alt=""><span
+                                    id="counry_text2">aa</span>
+                            </div>
+                        </a></td>
+                    <td colspan="2"><a id="randomhref_3" href="#">
+                            <div class="imgtext">
+                                <img id="counry_3" class="rounded-3 randomimg" src="" alt=""><span
+                                    id="counry_text3">aa</span>
+                            </div>
+                        </a></td>
+                    <td colspan="2"><a id="randomhref_4" href="#">
+                            <div class="imgtext">
+                                <img id="counry_4" class="rounded-3 randomimg" src="" alt=""><span
+                                    id="counry_text4">aa</span>
+                            </div>
+                        </a></td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <!-- <hr>在這裡輸入新ㄉ東西 -->　
+        </div>
+
+
+        <script>
+            let county = [
+                "./images/county/county001.png", "./images/county/county002.png", "./images/county/county003.png",
+                "./images/county/county004.png", "./images/county/county005.png", "./images/county/county006.png",
+                "./images/county/county007.png", "./images/county/county008.png", "./images/county/county009.png",
+                "./images/county/county010.png", "./images/county/county011.png", "./images/county/county012.png",
+                "./images/county/county013.png", "./images/county/county014.png", "./images/county/county015.png",
+                "./images/county/county016.png", "./images/county/county017.png", "./images/county/county018.png",
+                "./images/county/county019.png", "./images/county/county020.png", "./images/county/county021.png",
+                "./images/county/county022.png"
+            ];
+            let county2 = [
+                "臺北市", "新北市", "基隆市",
+                "宜蘭縣", "桃園市", "新竹縣",
+                "新竹市", "苗栗縣", "臺中市",
+                "彰化縣", "南投縣", "雲林縣",
+                "嘉義縣", "嘉義市", "臺南市",
+                "高雄市", "屏東縣", "花蓮縣",
+                "台東縣", "澎湖縣", "金門縣",
+                "連江縣（馬祖）"
+            ];
+            let countyhref = [
+                "taipei.html", "newtaipei.html", "keelung.html",
+                "yilan.html", "taoyuan.html", "hsinchucounty.html",
+                "hsinchucity.html", "miaoli.html", "taichung.html",
+                "changhua.html", "nantou.html", "yunlin.html",
+                "chiayicounty.html", "chiayicity.html", "tainan.html",
+                "kaohsiung.html", "pingtung.html", "hualien.html",
+                "taitung.html", "penghu.html", "kinmen.html",
+                "matsu.html"
+            ];
+            // console.log(county.length);
+            // let a = Math.floor(Math.random() * county.length);
+            var str = '';
+            var arr = [];
+            for (let i = 0; i < 6; i++) {
+                str = Math.floor(Math.random() * county.length);
+                for (j = 0; j < arr.length; j++) {
+                    if (arr[j] == str) {
+                        arr.splice(j, 1);
+                        i--;
+                    }
+                }
+                arr.push(str);
+            }
+            for (let i = 0; i < 5; i++) {
+                // document.getElementById('counry_' + i).innerHTML = county[arr[i]];
+                document.getElementById('counry_' + i).src = county[arr[i]];
+                document.getElementById('counry_text' + i).innerHTML = county2[arr[i]];
+                document.getElementById('randomhref_' + i).href = countyhref[arr[i]];
+            }
+            for (let i = 0; i > 8; i++) {
+
+            }
+
+            // 1
+
+            // let btn = document.querySelector("#show1");
+            // let infoModal = document.querySelector("#infoModal1");
+            // let close = document.querySelector("#close");
+            // btn.addEventListener("click", function () {
+            //     document.getElementById("infoModal1").style.opacity = "0";
+            //     setTimeout(function () {
+            //         infoModal.showModal();
+            //         document.getElementById("infoModal1").style.opacity = "1";
+            //     }, 100);
+            // }
+            // )
+            // close.addEventListener("click", function () {
+            //     document.getElementById("infoModal1").style.opacity = "0";
+            //     setTimeout(function () {
+            //         document.getElementById("infoModal1").style.opacity = "1";
+            //         infoModal.close();
+            //     }, 500);
+            // })
+
+            for (let i = 1; i <= 6; i++) {
+                let btn = document.querySelector("#show" + i);
+                let infoModal = document.querySelector("#infoModal" + i);
+                let close = document.querySelector("#close" + i);
+                btn.addEventListener("click", function () {
+                    document.getElementById("infoModal" + i).style.opacity = "0";
+                    setTimeout(function () {
+                        infoModal.showModal();
+                        document.getElementById("infoModal" + i).style.opacity = "1";
+                    }, 100);
+                }
+                )
+                close.addEventListener("click", function () {
+                    document.getElementById("infoModal" + i).style.opacity = "0";
+                    setTimeout(function () {
+                        document.getElementById("infoModal" + i).style.opacity = "1";
+                        infoModal.close();
+                    }, 500);
+                })
+            }
+
+
+
+        // document.getElementById("infoModal").onclick = function () {
+        //     document.getElementById("infoModal").style.opacity = "0";
+        //     setTimeout(function () {
+        //         document.getElementById("infoModal").style.opacity = "1";
+        //         infoModal.close();
+        //     }, 500);
+        // }
+
+
+
+        </script>
+</body>
+
+</html>
